@@ -28,6 +28,20 @@ Se han elaborado las especificaciones generales para el correcto funcionamiento 
 
 <img src= "especificacion.jpg">
 
+## estados 
+
+### Feliz:
+La mascota se encuentra feliz
+
+### Saludable:
+La mascota se encuentra feliz 
+
+### Enfermo:
+La mascota se encuantra enferma
+
+### Agotado:
+La mascota se encuentra agostada
+
 # Arquitectura del sistma 
 
 ## Periférico: Sensor de Luz
