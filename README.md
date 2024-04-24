@@ -22,15 +22,14 @@ Integrar dos sensores, uno de sonido para detectar cuando la mascota es desperta
 Desarrollar la lógica de control para coordinar las interacciones del usuario y los estímulos ambientales.
 Implementar salidas visuales utilizando un display de 7 segmentos y una matriz de puntos de 8x8 para representar el estado y la puntuación de la mascota.
 Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
-## Especificaciones
+# Especificacion del sistema
 
 Se realizo las especificaciones generales del funcionamiento del proyecto, representado en la caja negra en general de la FPGA representando cada modulo que se va a usar, y tambien representando las cajas negras de los respectivos modulos 
 
 <img src= "especificacion.jpg">
 
-# Especificacion del sistema
-
 # Arquitectura del sistma 
+
 ## Periférico: Sensor de Luz
 
 Funcionalidad: Un sensor de luz es un dispositivo que detecta la intensidad de la luz en el ambiente. Se utilizará para determinar el nivel de iluminación en nuestro entorno ,con esto se definirá la noche y el día para nuestra mascota  
