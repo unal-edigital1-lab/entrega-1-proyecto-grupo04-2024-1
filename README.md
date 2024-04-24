@@ -48,3 +48,30 @@ Asigna a cada botón una función específica (alimentar, premiar, regañar, res
      test_pressed <= (botones[4]) ? 1'b1 : 1'b0;
      end
      endmodule
+
+### Módulo de sensor de sonido: 
+Este módulo leerá el sensor de sonido y generará una señal para indicar si se ha detectado sonido (la mascota ha sido despertada).
+
+Desarrolla un módulo que lea el sensor de sonido y genere una señal cuando se detecte sonido.
+Considera la sensibilidad del sensor y establece un umbral adecuado para detectar sonido de manera confiable.
+
+ '''
+ module sensor_sonido(input wire clk, // Señal de reloj
+    input wire sonido, // Señal del sensor de sonido
+    output reg despertar); // Señal de salida para despertar
+
+ reg [3:0] contador;
+
+ always @(posedge clk) begin
+    if (sonido) begin
+    contador <= 4'd5; // Tiempo de espera para estabilizar la señal
+    despertar <= 1'b1;
+    end else if (contador > 0) begin
+    contador <= contador - 1;
+     despertar <= 1'b1; // Mantener señal alta durante el tiempo de estabilización
+    end else begin
+        despertar <= 1'b0;
+    end
+ end
+ endmodule
+'''
