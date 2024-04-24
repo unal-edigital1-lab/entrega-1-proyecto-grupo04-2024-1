@@ -24,7 +24,7 @@ Implementar salidas visuales utilizando un display de 7 segmentos y una matriz d
 Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 # Especificacion del sistema
 
-Se realizo las especificaciones generales del funcionamiento del proyecto, representado en la caja negra en general de la FPGA representando cada modulo que se va a usar, y tambien representando las cajas negras de los respectivos modulos 
+Se elaboraron las especificaciones generales para el funcionamiento del proyecto. Esto incluyó la representación esquemática de la FPGA como una caja negra que abarca cada uno de los módulos a utilizarse. Además, se detallaron las funciones de las cajas negras correspondientes a cada módulo específico.
 
 <img src= "especificacion.jpg">
 
@@ -111,3 +111,15 @@ always @(*) begin
 end
 endmodule
 ```
+### módulo de matriz de puntos de 8x8:
+
+se crea un módulo que controle la matriz de puntos de 8x8 y represente gráficamente el estado de la mascota.
+
+
+
+module matriz_puntos(input wire [7:0] estado, // Señal de entrada para el estado de la mascota
+                     output reg [7:0] matriz[7:0]); // Señal de salida para la matriz de puntos de 8x8
+
+// Aquí se implementaría la lógica para mostrar el estado de la mascota en la matriz de puntos
+endmodule
+>>>>>>> ec32649 (matris 8x8)
