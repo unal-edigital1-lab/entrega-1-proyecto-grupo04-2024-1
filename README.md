@@ -24,7 +24,7 @@ Implementar salidas visuales utilizando un display de 7 segmentos y una matriz d
 Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 # Especificacion del sistema
 
-Se elaboraron las especificaciones generales para el funcionamiento del proyecto. Esto incluyó la representación esquemática de la FPGA como una caja negra que abarca cada uno de los módulos a utilizarse. Además, se detallaron las funciones de las cajas negras correspondientes a cada módulo específico.
+Se han elaborado las especificaciones generales para el correcto funcionamiento del proyecto, incluyendo una representación esquemática de la FPGA. Esta FPGA se visualiza como una caja negra que integra cada uno de los módulos necesarios para el proyecto. Además, se han detallado las funciones específicas de cada módulo, representados también como cajas negras individuales. Se ha especificado además el uso del protocolo SPI para el control de la matriz de 8x8, la cual mostrará visualmente los estados de nuestra mascota virtual.
 
 <img src= "especificacion.jpg">
 
@@ -45,7 +45,7 @@ Este módulo coordinará todas las funcionalidades y componentes del Tamagotchi.
 
 se define un módulo que detecte cuándo se presionan los botones y genere señales correspondientes para indicar qué botón se ha presionado.
 Utiliza un registro de retardo para evitar rebotes en los botones y garantizar una detección precisa de las pulsaciones.
-luego se Asigna a cada botón una función específica (alimentar, premiar, regañar, reset, test).
+luego se Asigna a cada botón una función específica (alimentar, premiar, regañar, reset, test) y ademas definir los modos de uso de la mascota virtual.
 
 
     '''
@@ -73,7 +73,7 @@ luego se Asigna a cada botón una función específica (alimentar, premiar, rega
 
 Este módulo leerá el sensor de sonido y generará una señal para indicar si se ha detectado sonido (la mascota ha sido despertada).
 con esto buscamos un módulo que lea el sensor de sonido y genere una señal cuando se detecte sonido.
-para esto considera la sensibilidad del sensor y establece un umbral adecuado para detectar sonido de manera confiable. Ademas identificar los estados en los que puede transicionar el Tamagotchi dependiendo la proximidad de su amo.
+para esto considera la sensibilidad del sensor y establece un umbral adecuado para detectar sonido de manera confiable. Ademas identificar los estados en los que puede transicionar el Tamagotchi dependiendo la proximidad de su amo. Este mecanismo es esencial para simular una interacción más realista y dinámica con el usuario. 
 
 ```
  module sensor_sonido(input wire clk, // Señal de reloj
@@ -98,9 +98,8 @@ para esto considera la sensibilidad del sensor y establece un umbral adecuado pa
  ```
 ### Módulo de sensor de luz:
 
-Este módulo leerá el sensor de luz y generará una señal para indicar si es de día o de noche.
-en este caso se crea un módulo que lea el sensor de luz y determine si es de día o de noche.
-con esto podemos definir umbrales para distinguir entre la luz del día y la oscuridad (noche), y poder hacer trancisiones entre los estados del Tamagotchi .
+
+Este módulo está diseñado para leer las señales de un sensor de luz y generar indicaciones precisas sobre si es de día o de noche. La funcionalidad principal del módulo es determinar el estado de iluminación actual, utilizando umbrales predefinidos para diferenciar claramente entre la luz diurna y la oscuridad nocturna. Basándose en esta información, el módulo puede gestionar transiciones automáticas entre los estados del Tamagotchi, adaptando su comportamiento a las condiciones de luz ambiental.
 
 ```
 module sensor_luz(input wire luz, // Señal del sensor de luz
@@ -113,7 +112,7 @@ endmodule
 ```
 ### módulo de matriz de puntos de 8x8:
 
-se crea un módulo que controle la matriz de puntos de 8x8 y represente gráficamente el estado de la mascota.
+El módulo diseñado se encarga de gestionar una matriz de puntos de 8x8, la cual se utiliza para representar gráficamente el estado actual de la mascota virtual. A través del protocolo SPI, este módulo puede controlar y actualizar los estados del Tamagotchi, permitiendo así la transición entre diferentes estados de manera visual. Este sistema garantiza una interacción fluida y dinámica con el usuario, mostrando cambios en tiempo real según las acciones que se ejecuten sobre el Tamagotchi, como alimentarlo, jugar con él o atender sus necesidades de descanso, lo que enriquece la experiencia de cuidar a la mascota virtual.
 
 
 
