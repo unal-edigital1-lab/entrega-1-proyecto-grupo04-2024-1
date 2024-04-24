@@ -55,7 +55,7 @@ Este módulo leerá el sensor de sonido y generará una señal para indicar si s
 Desarrolla un módulo que lea el sensor de sonido y genere una señal cuando se detecte sonido.
 Considera la sensibilidad del sensor y establece un umbral adecuado para detectar sonido de manera confiable.
 
- '''
+```
  module sensor_sonido(input wire clk, // Señal de reloj
     input wire sonido, // Señal del sensor de sonido
     output reg despertar); // Señal de salida para despertar
@@ -73,5 +73,6 @@ Considera la sensibilidad del sensor y establece un umbral adecuado para detecta
         despertar <= 1'b0;
     end
  end
- endmodule
-'''
+ endmodule 
+ 
+ ```
