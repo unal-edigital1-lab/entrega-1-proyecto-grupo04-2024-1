@@ -27,4 +27,24 @@ Define un módulo que detecte cuándo se presionan los botones y genere señales
 Utiliza un registro de retardo para evitar rebotes en los botones y garantizar una detección precisa de las pulsaciones.
 Asigna a cada botón una función específica (alimentar, premiar, regañar, reset, test).
 
-    
+
+    '''
+
+    module botones(
+        input wire clk, // Señal de reloj
+        input wire [4:0] botones, // Señales de los botones
+        output reg alimentar_pressed, // Señales de salida para cada botón
+        output reg premiar_pressed,
+        output reg regañar_pressed,
+        output reg reset_pressed,
+        output reg test_pressed);
+     
+     always @(posedge clk) begin 
+
+     alimentar_pressed <= (botones[0]) ? 1'b1 : 1'b0;
+     premiar_pressed <= (botones[1]) ? 1'b1 : 1'b0;
+     regañar_pressed <= (botones[2]) ? 1'b1 : 1'b0;
+     reset_pressed <= (botones[3]) ? 1'b1 : 1'b0;
+     test_pressed <= (botones[4]) ? 1'b1 : 1'b0;
+     end
+     endmodule
