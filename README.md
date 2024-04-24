@@ -20,3 +20,11 @@ Comunicación con el sistema: El sensor de luz se comunica con el sistema princi
 
 ### b) Uso de un lenguaje adecuado para describir el sistema.
 
+#### Módulo principal del Tamagotchi: 
+Este módulo coordinará todas las funcionalidades y componentes del Tamagotchi. Contendrá la lógica de control principal y estará conectado a los botones, sensores y salidas.
+
+Define un módulo que detecte cuándo se presionan los botones y genere señales correspondientes para indicar qué botón se ha presionado.
+Utiliza un registro de retardo para evitar rebotes en los botones y garantizar una detección precisa de las pulsaciones.
+Asigna a cada botón una función específica (alimentar, premiar, regañar, reset, test).
+
+    
