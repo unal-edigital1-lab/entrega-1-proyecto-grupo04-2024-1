@@ -23,9 +23,9 @@ Comunicación con el sistema: El sensor de luz se comunica con el sistema princi
 #### Módulo principal del Tamagotchi: 
 Este módulo coordinará todas las funcionalidades y componentes del Tamagotchi. Contendrá la lógica de control principal y estará conectado a los botones, sensores y salidas.
 
-Define un módulo que detecte cuándo se presionan los botones y genere señales correspondientes para indicar qué botón se ha presionado.
+se define un módulo que detecte cuándo se presionan los botones y genere señales correspondientes para indicar qué botón se ha presionado.
 Utiliza un registro de retardo para evitar rebotes en los botones y garantizar una detección precisa de las pulsaciones.
-Asigna a cada botón una función específica (alimentar, premiar, regañar, reset, test).
+luego se Asigna a cada botón una función específica (alimentar, premiar, regañar, reset, test).
 
 
     '''
@@ -51,9 +51,8 @@ Asigna a cada botón una función específica (alimentar, premiar, regañar, res
 
 ### Módulo de sensor de sonido: 
 Este módulo leerá el sensor de sonido y generará una señal para indicar si se ha detectado sonido (la mascota ha sido despertada).
-
-Desarrolla un módulo que lea el sensor de sonido y genere una señal cuando se detecte sonido.
-Considera la sensibilidad del sensor y establece un umbral adecuado para detectar sonido de manera confiable.
+con esto buscamos un módulo que lea el sensor de sonido y genere una señal cuando se detecte sonido.
+para esto considera la sensibilidad del sensor y establece un umbral adecuado para detectar sonido de manera confiable.
 
 ```
  module sensor_sonido(input wire clk, // Señal de reloj
@@ -76,4 +75,3 @@ Considera la sensibilidad del sensor y establece un umbral adecuado para detecta
  endmodule 
  
  ```
- 
