@@ -110,4 +110,20 @@ always @(*) begin
     dia = (luz) ? 1'b1 : 1'b0; // Si la señal de luz está activa, es de día
 end
 endmodule
+<<<<<<< HEAD
 ```
+=======
+
+```
+### módulo de matriz de puntos de 8x8:
+
+se crea un módulo que controle la matriz de puntos de 8x8 y represente gráficamente el estado de la mascota.
+
+
+```
+module matriz_puntos(input wire [7:0] estado, // Señal de entrada para el estado de la mascota
+                     output reg [7:0] matriz[7:0]); // Señal de salida para la matriz de puntos de 8x8
+
+// Aquí se implementaría la lógica para mostrar el estado de la mascota en la matriz de puntos
+endmodule
+>>>>>>> ec32649 (matris 8x8)
