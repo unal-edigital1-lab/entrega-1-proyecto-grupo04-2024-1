@@ -16,7 +16,11 @@ Funcionalidad: Un sensor de luz es un dispositivo que detecta la intensidad de l
 
 Implementación en HDL: En el lenguaje de descripción de hardware, el sensor de luz se implementa como un módulo que tiene una interfaz de entrada y salida. La interfaz de entrada se utiliza para recibir las señales del sensor de luz cuando detecta un cambio en la intensidad de la luz. La interfaz de salida se utiliza para enviar estos datos al sistema principal.
 
-Comunicación con el sistema: El sensor de luz se comunica con el sistema principal a través de una interfaz de bus. Cuando el sensor detecta un cambio en la intensidad de la luz,solo tendremos dos estados, iluminación máxima e iluminación mínima.osea solo un 1 y un 0, cero para cuando el sensor esté en su mínimo valor.  
+Comunicación con el sistema: El sensor de luz se comunica con el sistema principal a través de una interfaz de bus. Cuando el sensor detecta un cambio en la intensidad de la luz,solo tendremos dos estados, iluminación máxima e iluminación mínima.osea solo un 1 y un 0, cero para cuando el sensor esté en su mínimo valor.
+## Periferico: Matriz 8x8
+Funcionalidad: Una matriz 8x8 es un dispositivo que permite visualizar nuestra mascota en una cuadricula de 8x8.
+Implementación en HDL: En el lenguaje de descripción de hardware, la matriz 8x8 se implementa como un módulo que tiene una interfaz de entrada y salida. La interfaz de entrada se utiliza para recibir los datos que se van a mostrar en la matriz. La interfaz de salida se utiliza para enviar señales de control a la matriz 8x8.
+Comunicación con el sistema: La matriz 8x8 se comunica con el sistema principal a través del protocolo SPI. El sistema principal envía los datos que se van a mostrar a través del bus SPI a la matriz 8x8. La matriz 8x8 recibe estos datos y los muestra al usuario.
 
 ### b) Uso de un lenguaje adecuado para describir el sistema.
 
