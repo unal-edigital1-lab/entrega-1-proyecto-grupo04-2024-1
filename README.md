@@ -30,16 +30,16 @@ Se han elaborado las especificaciones generales para el correcto funcionamiento 
 
 ## estados 
 
-## Feliz: 
+### Feliz: 
 Tu mascota está super feliz. No para de moverse y parece que siempre está sonriendo.
 
-## Saludable: 
+### Saludable: 
 Tu mascota está lleno de vida. Juega mucho y siempre está listo para la acción.
 
-## Enfermo: 
+### Enfermo: 
  tu mascota no se siente muy bien hoy. Está más quieto de lo normal y no juega tanto tiene un gesto de incomodidad.
 
-## Agotado:
+### Agotado:
 Tu mascota está muy cansado. Ha jugado tanto que ahora solo quiere descansar un rato y su rotros muestra un gesto de cansancio.
 
 # Arquitectura del sistma 
