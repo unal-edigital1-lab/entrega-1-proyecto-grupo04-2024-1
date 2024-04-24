@@ -106,4 +106,4 @@ always @(*) begin
     dia = (luz) ? 1'b1 : 1'b0; // Si la señal de luz está activa, es de día
 end
 endmodule
-```.
+```
