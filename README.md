@@ -10,8 +10,8 @@ Desarrollar la lógica de control para coordinar las interacciones del usuario y
 Implementar salidas visuales utilizando un display de 7 segmentos y una matriz de puntos de 8x8 para representar el estado y la puntuación de la mascota.
 Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 
-## Periféricos 
-# Periférico: Sensor de Luz
+# Periféricos 
+## Periférico: Sensor de Luz
 
 Funcionalidad: Un sensor de luz es un dispositivo que detecta la intensidad de la luz en el ambiente. Se utilizará para determinar el nivel de iluminación en nuestro entorno ,con esto se definirá la noche y el día para nuestra mascota  
 
