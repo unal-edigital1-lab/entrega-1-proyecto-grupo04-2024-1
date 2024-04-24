@@ -41,7 +41,8 @@ Tu mascota está lleno de vida. Juega mucho y siempre está listo para la acció
 
 ### Agotado:
 Tu mascota está muy cansado. Ha jugado tanto que ahora solo quiere descansar un rato y su rotros muestra un gesto de cansancio.
-
+<img src= "estados.jpg">
+<img src= "niveles.jpg">
 # Arquitectura del sistma 
 
 ## Periférico: Sensor de Luz
