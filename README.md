@@ -128,7 +128,7 @@ A continuación, especificaremos las conexiones que el sensor necesita para que 
 
 ##### Pines de Alimentación
 
-•	VCC: Fuente de alimentación de 5V en la FPGA.
+•	VCC: Fuente de alimentación de 3.3V en la FPGA.
 
 •	GND: Tierra en la FPGA.
 
