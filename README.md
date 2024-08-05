@@ -398,3 +398,22 @@ El diagrama de flujo describe un sistema de juego donde se simula el cuidado de 
 Si alguna de las condiciones críticas como la Salud llega a cero, la mascota muere, y el juego requiere que se realice un reinicio. Este sistema de juego enseña sobre el cuidado y la atención necesaria para mantener el bienestar de un ser, aunque sea virtual, enfatizando la importancia de la observación y la respuesta a las necesidades de los que dependen de nosotros.
 
 <img src= "Diagrama de flujo.jpg">
+
+
+## maquina de estados.
+
+       Estado Inicial: La mascota comienza con niveles equilibrados de salud, energía, diversión, hambre y felicidad.
+
+    Transiciones:
+        Si alguno de estos niveles baja demasiado, la mascota cambia a un estado específico, como Hambriento, Aburrido, Cansado, Enfermo, o Triste.
+        Los usuarios pueden realizar acciones como alimentar, jugar o curar, que restauran esos niveles y devuelven la mascota al estado Saludable.
+
+    Estado Final: Si la salud de la mascota llega a cero, entra en el estado Muere, concluyendo la simulación.
+
+Importancia:
+
+Esta FSM permite que la mascota reaccione de forma dinámica a las interacciones del usuario y a las condiciones de su entorno, ofreciendo una experiencia interactiva y educativa que simula el cuidado de una mascota real.
+
+<img src= "maquina de estados.png">
+
+
