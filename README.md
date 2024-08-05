@@ -99,8 +99,44 @@ AEN(RGBC Enable):Habilita el convertidor analogico digital.
 
 •	Transición a Idle: Después de completar la medición, el sensor vuelve al estado inactivo.
 
-## Sensor de movimiento PIR HC-SR501
 
+### Funcionalidad 
+
+El sensor TCS34725 se empleará para que la mascota virtual interactúe de manera más interactiva con su dueño, teniendo una experiencia basada en la detección de colores específicos. Cada color detectado por el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
+
+##### Color Azul:
+Se utilizará para simular el suministro de agua a la mascota. Cuando el sensor detecte el color azul, se interpretará como si la mascota estuviera bebiendo agua, lo que contribuirá a mantener su nivel de salud.
+
+##### Color Verde: 
+Este color será indicativo de alimentación. La detección del verde indicará que la mascota está siendo alimentada, lo que ayudará a satisfacer su hambre.
+
+##### Color Rojo: 
+Se usará para representar interacciones afectivas entre el dueño y la mascota como abrazos. La presencia del color rojo aumentará su nivel de felicidad, reflejando el cariño y la atención que recibe de su dueño. Además, con este color podrá salir del estado de tristeza. 
+
+
+### Implementación HDL y Conexión
+
+
+##### 1.	Módulo I2C en HDL: 
+Se implementa un módulo existente I2C en código Verilog para manejar la comunicación entre la FPGA y el sensor TCS34725.
+
+##### 2.	Manejo de Datos: 
+Se desarrolla una lógica en Verilog que interprete los datos recibidos del sensor y los transforme en las acciones anteriormente descritas dentro del juego del Tamagotchi.
+
+##### 3.	Alimentación y Conexiones Físicas: 
+A continuación, especificaremos las conexiones que el sensor necesita para que esté correctamente alimentado y conectado a los pines I2C de la FPGA.
+
+##### Pines de Comunicación I2C
+El TCS34725 utiliza el protocolo I2C para la comunicación de datos, lo que significa que tiene pines específicos para esta función:
+
+1.	SCL (Serial Clock Line): Es el reloj del bus I2C. Este pin se conecta al pin correspondiente de SCL en la FPGA.
+   
+3.	SDA (Serial Data Line): Es la línea de datos del bus I2C. Este pin se conecta al pin correspondiente de SDA en la FPGA.
+
+
+
+## Sensor de movimiento PIR HC-SR501
+Para implementar este sensor, necesitaremos lo siguiente:
 <img src= "SENSOR PIR .png">
 
 •	Voltaje de Alimentación: 4.5V a 12V DC
@@ -138,10 +174,41 @@ El HC-SR501 tiene una distancia máxima de detección de 7 metros. Puede ajustar
 Con este potenciómetro se puede ajustar el tiempo que la salida permanece en ALTO tras la detección de movimiento. Como mínimo, el retardo es de 3 segundos y como máximo, de 300 segundos o 5 minutos. Gire el potenciómetro en el sentido de las agujas del reloj para aumentar el retardo y en el sentido contrario para disminuirlo.
 #### Puente de selección de disparo
 El puente (amarillo) permite seleccionar uno de los dos modos de disparo. Puede ajustarse a L (disparo simple) o H (disparo repetido):
+
 •	Disparo simple - La salida se pondrá en ALTO en cuanto se detecte movimiento. Permanecerá en ALTO durante el tiempo establecido por el potenciómetro. Cualquier movimiento durante este periodo no se procesa y no reinicia el temporizador.
+
 •	Disparo repetido - Cada vez que se detecta movimiento, el temporizador de retardo se reinicia.
+
 La diferencia entre el modo de disparo simple y el repetitivo se muestra en la siguiente figura.
 <img src= "TIEMPO.png">
+
+### Funcionalidad 
+
+El sensor de movimiento PIR HC-SR501 enriquece la interacción entre la mascota virtual y su entorno, facilitando respuestas automáticas a la presencia o ausencia de personas. Este sensor juega un papel crucial en la regulación de los estados de actividad y descanso de la mascota, asegurando una experiencia más realista y adaptativa para el usuario.
+
+##### Modo de Descanso Automático:
+
+Si no se detecta movimiento en el rango del sensor durante un período establecido, el sensor envía una señal a la FPGA para que la mascota virtual entre en modo de descanso, simbolizando que la mascota está durmiendo.
+
+Este modo permite que la mascota virtual conserve energía y reduzca sus actividades, imitando un comportamiento natural de descanso después de periodos de juego o actividad prolongada.
+
+##### Despertar y Activación:
+
+Cuando una persona entra en el rango de detección del sensor, este activa la mascota virtual, despertándola de su estado de descanso. La mascota se activa inmediatamente, estando lista para interactuar con el dueño.
+
+### Implementación HDL y Conexión
+
+En el entorno de desarrollo FPGA, se configura el pin seleccionado para que funcione como entrada digital, dependiendo del estado de esta señal se activara las funciones anteriormente descritas, además cuando se detecta un flanco ascendente, indicara movimiento utilizando un disparo simple. 
+
+##### Pines de Alimentación
+
+•	VCC: Fuente de alimentación de 5V en la FPGA.
+
+•	GND: Tierra en la FPGA.
+
+•	OUT: Pin configurado como entrada en la FPGA, proporciona una salida digital, lo que significa que sólo tiene dos estados posibles: alto (1) y bajo (0).
+
+
 ## Pantalla LCD 16X2
 <img src= "LCD.png">
 
@@ -165,22 +232,6 @@ La diferencia entre el modo de disparo simple y el repetitivo se muestra en la s
 
 <img src= "CAJALCD.png">
 
-### Componentes y conexiones
-
-#### Microprocesador (MPU):
-Función: Controla la pantalla enviando comandos y datos.
-Conexiones: Se conecta a los pines RS, R/W, E y DB0-DB7 de la pantalla.
-#### Pines de Control:
-RS (Registro de Selección): Selecciona entre comandos (0) y datos (1).
-R/W (Lectura/Escritura): Selecciona entre lectura (1) y escritura (0).
-E (Enable): Habilita la comunicación con la pantalla.
-#### Pines de Datos (DB0-DB7):
-Función: Transmiten los datos y comandos entre el MPU y la pantalla.
-Modo de Operación: Puede operar en modo de 4 bits (DB4-DB7) o 8 bits (DB0-DB7).
-#### Controlador/Driver IC (ICST7066U-0L-BT-BC o equivalente):
-Función: Interpreta los comandos y datos del MPU y controla la pantalla.
-Conexiones: Internamente conectado a los pines de datos y control de la pantalla
-
 ### Funcionamiento
 
 1.	Inicialización:
@@ -189,6 +240,68 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 •	El MPU utiliza los pines RS, R/W y E para seleccionar y enviar datos o comandos a través de los pines de datos (DB0-DB7).
 3.	Visualización:
 •	El controlador interpreta los datos y comandos recibidos y actualiza la pantalla en consecuencia, mostrando los caracteres en las posiciones especificadas.
+
+### Funcionalidad 
+
+La pantalla LCD 16x2 juega un papel fundamental en la interacción entre el usuario y su mascota virtual, proporcionando una interfaz visual que muestra de forma clara y directa el estado emocional y físico de la mascota.
+
+##### Visualización de Estados Emocionales y Físicos
+
+La pantalla está configurada para mostrar emojis y mensajes que representan diferentes estados emocionales y físicos de la mascota, tales como:
+
+•	Feliz: Indica que la mascota está contenta y satisfecha.
+
+•	Triste: Refleja que la mascota necesita más atención o cariño.
+
+•	Enfermo: Muestra que la mascota requiere cuidados médicos o descanso.
+
+•	Hambriento: Alerta al usuario de que es necesario alimentar a la mascota.
+
+•	Cansado: Sugiere que la mascota necesita dormir o descansar.
+
+•	Aburrido: Señala que la mascota necesita más interacción o jugar.
+
+Dependiendo de cómo el usuario interactúa con la mascota virtual (alimentación, juego, descanso), la pantalla actualizará dinámicamente los íconos o mensajes para reflejar el nuevo estado de la mascota. Esto permite al usuario entender inmediatamente las consecuencias de sus acciones y ajustar su comportamiento para mejorar el bienestar de la mascota.
+
+### Implementación HDL y Conexión
+
+Se desarrolla una descripción en Verilog que gestione la comunicación con el LCD. Se incluye una lógica para inicializar el display, escribir comandos y agregar caracteres especiales que respondan según las señales que se envíen desde la FPGA, asegurándose de mostrar el estado en que se encuentre la mascota. 
+
+### Componentes y conexiones
+
+#### Microprocesador (MPU):
+
+Función: Controla la pantalla enviando comandos y datos.
+
+Conexiones: Se conecta a los pines RS, R/W, E y DB0-DB7 de la pantalla.
+
+##### Pines de Alimentación
+
+•	VCC: Fuente de alimentación de 5V en la FPGA.
+
+•	GND: Tierra en la FPGA.
+
+##### Pines de Control:
+
+RS (Registro de Selección): Selecciona entre comandos (0) y datos (1).
+
+R/W (Lectura/Escritura): Selecciona entre lectura (1) y escritura (0).
+
+E (Enable): Habilita la comunicación con la pantalla.
+
+##### Pines de Datos (DB0-DB7):
+
+Función: Transmiten los datos y comandos entre el MPU y la pantalla.
+
+Modo de Operación: Puede operar en modo de 4 bits (DB4-DB7) o 8 bits (DB0-DB7).
+
+##### Controlador/Driver IC (ICST7066U-0L-BT-BC o equivalente):
+
+Función: Interpreta los comandos y datos del MPU y controla la pantalla.
+
+Conexiones: Internamente conectado a los pines de datos y control de la pantalla
+
+
 ## Display de 7 segmentos (ánodo común)
 <img src= "DISPLAY7R.png">
 •    Display 7 Segmentos
@@ -230,40 +343,29 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 
 •	Operación: -20°C a 70°C.
 
+### Funcionalidad 
 
-Se han elaborado las especificaciones generales para el correcto funcionamiento del proyecto, incluyendo una representación esquemática de la FPGA. Esta FPGA se visualiza como una caja negra que integra cada uno de los módulos necesarios para el proyecto. Además, se han detallado las funciones específicas de cada módulo, representados también como cajas negras individuales. Se ha especificado además
-el uso del protocolo SPI para el control de la matriz de 8x8, la cual mostrará visualmente los estados de nuestra mascota virtual.
+Los displays de 7 segmentos en nuestro proyecto actúan como paneles de información crucial, mostrando de manera efectiva los niveles estadísticos que reflejan el bienestar de la mascota virtual. Estos niveles varían de 1 a 5 y representan diferentes aspectos del estado de la mascota, incluyendo hambre, diversión, descanso, salud y felicidad.
 
-<img src= "especificacion.jpg">
+•	Hambre: Indica si está llena o hambrienta la mascota.
 
-## estados 
+•	Diversión: Refleja cuánta diversión está recibiendo la mascota.
 
-### Feliz: 
-Tu mascota está super feliz. No para de moverse y parece que siempre está sonriendo.
+•	Descanso: Muestra cuán descansada está la mascota.
 
-### Saludable: 
-Tu mascota está lleno de vida. Juega mucho y siempre está listo para la acción.
+•	Salud: Señala el estado de salud general de la mascota.
 
-### Enfermo: 
- tu mascota no se siente muy bien hoy. Está más quieto de lo normal y no juega tanto tiene un gesto de incomodidad.
+•	Felicidad: Expresa el nivel de felicidad de la mascota.
 
-### Agotado:
-Tu mascota está muy cansado. Ha jugado tanto que ahora solo quiere descansar un rato y su rotros muestra un gesto de cansancio.
-<img src= "estados.jpeg">
-<img src= "niveles.jpeg">
-# Arquitectura del sistma 
+A medida que el dueño interactúa con la mascota, estos niveles pueden aumentar o disminuir. Por ejemplo, alimentar a la mascota incrementará el nivel de hambre, mientras que jugar con ella aumentará su nivel de diversión y felicidad.
 
-## Periférico: Sensor de Luz
+### Implementación HDL y Conexión
 
-Funcionalidad: Un sensor de luz es un dispositivo que detecta la intensidad de la luz en el ambiente. Se utilizará para determinar el nivel de iluminación en nuestro entorno ,con esto se definirá la noche y el día para nuestra mascota  
+Cada display está controlado directamente desde la FPGA, la cual envía señales para ajustar los valores mostrados en función de las interacciones realizadas con la mascota virtual mediate la descripción de hardware. Los cambios en los niveles se reflejan inmediatamente en los displays de 7 segmentos, proporcionando retroalimentación instantánea al dueño sobre las necesidades actuales de la mascota.
 
-Implementación en HDL: En el lenguaje de descripción de hardware, el sensor de luz se implementa como un módulo que tiene una interfaz de entrada y salida. La interfaz de entrada se utiliza para recibir las señales del sensor de luz cuando detecta un cambio en la intensidad de la luz. La interfaz de salida se utiliza para enviar estos datos al sistema principal.
+##### Pines de Alimentación
 
-Comunicación con el sistema: El sensor de luz se comunica con el sistema principal a través de una interfaz de bus. Cuando el sensor detecta un cambio en la intensidad de la luz,solo tendremos dos estados, iluminación máxima e iluminación mínima.osea solo un 1 y un 0, cero para cuando el sensor esté en su mínimo valor.  
+•	VCC: Fuente de alimentación de 5V en la FPGA.
 
+•	GND: Tierra en la FPGA.
 
-
-
-// Aquí se implementaría la lógica para mostrar el estado de la mascota en la matriz de puntos
-endmodule
->>>>>>> ec32649 (matris 8x8)
