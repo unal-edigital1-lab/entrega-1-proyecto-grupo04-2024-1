@@ -24,11 +24,11 @@ Implementar salidas visuales utilizando un display de 7 segmentos y una pantalla
 Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 ## Especificacion de los componentes para el proyecto 
 ## Perifericos 
-•	Sensor RGB (Sensor de colores) Tcs 34725
-•	Sensor de movimiento  PIR HC-SR501
-•	Pantalla LCD 16X2 
-•	Display 7 seg 
-•	4 interruptores 
+•	Sensor RGB (Sensor de colores) Tcs 34725//
+•	Sensor de movimiento  PIR HC-SR501//
+•	Pantalla LCD 16X2 //
+•	Display 7 seg// 
+•	4 interruptores// 
 ## Sensor RGB (Sensor de colores) TCS 34725
 
 <img src= "TCS.png">
