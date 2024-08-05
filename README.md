@@ -102,7 +102,7 @@ AEN(RGBC Enable):Habilita el convertidor analogico digital.
 
 ### Funcionalidad 
 
-El sensor TCS34725 se empleará para que la mascota virtual interactúe de manera más interactiva con su dueño, teniendo una experiencia basada en la detección de colores específicos. Cada color detectado por el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
+El sensor TCS34725 se empleará para que la mascota virtual interactúe de manera más amigable con su dueño, teniendo una experiencia basada en la detección de colores específicos. Cada color detectado por el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
 
 ##### Color Azul:
 Se utilizará para simular el suministro de agua a la mascota. Cuando el sensor detecte el color azul, se interpretará como si la mascota estuviera bebiendo agua, lo que contribuirá a mantener su nivel de salud.
