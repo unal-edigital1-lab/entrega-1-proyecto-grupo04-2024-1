@@ -126,6 +126,12 @@ Se desarrolla una lógica en Verilog que interprete los datos recibidos del sens
 ##### 3.	Alimentación y Conexiones Físicas: 
 A continuación, especificaremos las conexiones que el sensor necesita para que esté correctamente alimentado y conectado a los pines I2C de la FPGA.
 
+##### Pines de Alimentación
+
+•	VCC: Fuente de alimentación de 5V en la FPGA.
+
+•	GND: Tierra en la FPGA.
+
 ##### Pines de Comunicación I2C
 El TCS34725 utiliza el protocolo I2C para la comunicación de datos, lo que significa que tiene pines específicos para esta función:
 
