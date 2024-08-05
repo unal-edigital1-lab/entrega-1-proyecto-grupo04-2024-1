@@ -223,7 +223,7 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 •	Interfaz: Puede ser controlado directamente por un microcontrolador o mediante un decodificador BCD a 7 segmentos.
 
 ## Interruptor táctil (push button)
-<img src= "PULSADOR.png">
+<img src= "PULSADOR .png">
 •	Voltaje de operación: 3.3V a 5V.
 
 •	Corriente de operación:  Típica: 50mA.  Máxima: 100mA.
