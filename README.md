@@ -30,7 +30,7 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 •	Display 7 seg 
 •	4 interruptores 
 ## Sensor RGB (Sensor de colores) TCS 34725
-<img src= "tcs.png">
+<img src= "TCS.png">
 •	Voltaje de operación: 3.3V a 5V.
 •	Corriente de operación: 235 µA.
 •	Interfaz de comunicación: I2C
@@ -77,7 +77,8 @@ AEN(RGBC Enable):Habilita el convertidor analogico digital.
 •	Tiempo de Bloqueo: 2.5 segundos (predeterminado)
 •	Temperatura de Funcionamiento: -15°C a +70°C
 ### Funcionamiento 
-IMA
+<img src= "RENDIJA.png">
+
 Los sensores de movimiento PIR constan de dos partes principales: un elemento sensor piroeléctrico y una lente fresnel. El elemento sensor piroeléctrico puede detectar la radiación infrarroja. Todos los objetos con una temperatura superior al cero absoluto (0 Kelvin / -273,15 °C) emiten energía térmica en forma de radiación infrarroja, incluidos los cuerpos humanos. Un sensor piroeléctrico tiene dos ranuras rectangulares de un material que permite el paso de la radiación infrarroja. Detrás de ellas, hay dos electrodos de sensor de infrarrojos separados, uno responsable de producir una salida positiva y el otro una salida negativa. Se busca  un cambio en los niveles de IR (infrarrojos) y no en los niveles de IR del ambiente. Los dos electrodos están conectados para que se anulen mutuamente. Si una mitad ve más o menos radiación IR que la otra, la salida oscilará alta o baja.
 El circuito integrado de procesamiento de señales procesa esta señal y convierte el pin de salida del sensor en ALTO o BAJO en consecuencia.
 ### Ajuste del sensor
