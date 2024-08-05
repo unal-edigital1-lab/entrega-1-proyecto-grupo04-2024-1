@@ -30,6 +30,7 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 •	Display 7 seg 
 •	4 interruptores 
 ## Sensor RGB (Sensor de colores) TCS 34725
+
 <img src= "TCS.png">
 •	Voltaje de operación: 3.3V a 5V.
 •	Corriente de operación: 235 µA.
@@ -39,12 +40,16 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 •	Distancia de medición recomendada: 2mm
 •	Rango dinámico: 3,800,000:1
 •	Temperatura de operación: -30°C a +70°C3
-#Funcionamiento
+
+### Funcionamiento 
+
 <img src= "CAJA.png">
 Como se puede observar en el diagrama de bloques el sensor RGB TCS 34725 funciona filtrando la luz por medio de un filtro IR (Infrarrojo) que permite que pase solo las longitudes de onda de luz del espectro visible. La luz filtrada llega a unos fotodiodos que detectan las longitudes de onda correspondientes, enviando una señal de corriente. Las diferentes longitudes de onda producen diferentes niveles de corriente. Los colores que se pueden detectar por medio de estos fotodiodos son el rojo, verde y azul También se detecta una longitud de onda de claridad.
 <img src= "ESPECTRO.png">
 Por medio del conversor de análogo a Digital (ADC) las longitudes de onda se convierten a valores digitales y son guardados en registros. Los datos guardados van a ser leídos para determinar el color detectado.
+
 ### Diagrama de estados
+
 <img src= "DIAGRAMA DE.png">
 1.	Sleep
 •	Estado Inicial: El sensor está en modo de bajo consumo y no realiza ninguna medición.
@@ -64,7 +69,9 @@ AEN(RGBC Enable):Habilita el convertidor analogico digital.
 •	Medición: El sensor mide las intensidades de luz en los canales claro, rojo, verde y azul.
 •	Tiempo de Integración: Configurable entre 2.4 ms y 614 ms.
 •	Transición a Idle: Después de completar la medición, el sensor vuelve al estado inactivo.
+
 ## Sensor de movimiento PIR HC-SR501
+
 <img src= "SENSOR PIR.png">
 •	Voltaje de Alimentación: 4.5V a 12V DC
 •	Voltaje de Salida (TTL): 3.3V
@@ -76,6 +83,7 @@ AEN(RGBC Enable):Habilita el convertidor analogico digital.
 •	Tiempo de Retardo: 5 segundos a 18 segundos (ajustable)
 •	Tiempo de Bloqueo: 2.5 segundos (predeterminado)
 •	Temperatura de Funcionamiento: -15°C a +70°C
+ 
 ### Funcionamiento 
 <img src= "RENDIJA.png">
 
@@ -106,7 +114,9 @@ La diferencia entre el modo de disparo simple y el repetitivo se muestra en la s
 •	Ciclo de Trabajo: 1/16 duty cycle
 •	Temperatura de Operación: -20°C a +70°C
 <img src= "CAJALCD.png">
+
 ### Componentes y conexiones
+
 #### Microprocesador (MPU):
 Función: Controla la pantalla enviando comandos y datos.
 Conexiones: Se conecta a los pines RS, R/W, E y DB0-DB7 de la pantalla.
@@ -120,7 +130,9 @@ Modo de Operación: Puede operar en modo de 4 bits (DB4-DB7) o 8 bits (DB0-DB7).
 #### Controlador/Driver IC (ICST7066U-0L-BT-BC o equivalente):
 Función: Interpreta los comandos y datos del MPU y controla la pantalla.
 Conexiones: Internamente conectado a los pines de datos y control de la pantalla
+
 ### Funcionamiento
+
 1.	Inicialización:
 •	El MPU envía una serie de comandos de inicialización al controlador de la pantalla para configurar el modo de operación (4 bits o 8 bits), el número de líneas y el tipo de fuente.
 2.	Envío de Datos y Comandos:
@@ -138,12 +150,16 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 •    Tensión Inverso Máxima: 3 VDC
 •    Corriente por Segmento Máxima: 30 mA
 •    Corriente de Operación por Segmento Recomendada: 12 mA
+
 ### Componentes y Pines:
+
 <img src= "DISPLAYD.png">
 •	Segmentos (a-g): Cada uno de los siete segmentos que forman los números.
 •	Punto Decimal (dp): Opcional, utilizado para mostrar números decimales.
 •	Pines de Conexión: 4pines, incluyendo los pines comunes y los pines de cada segmento.
+
 ### Funcionamiento
+
 •	Control de Segmentos: Cada segmento se enciende o apaga para formar los números del 0 al 9 y algunas letras.
 •	Interfaz: Puede ser controlado directamente por un microcontrolador o mediante un decodificador BCD a 7 segmentos.
 ## Interruptor táctil (push button)
@@ -151,21 +167,6 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 •	Voltaje de operación: 3.3V a 5V.
 •	Corriente de operación:  Típica: 50mA.  Máxima: 100mA.
 •	Operación: -20°C a 70°C.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Se han elaborado las especificaciones generales para el correcto funcionamiento del proyecto, incluyendo una representación esquemática de la FPGA. Esta FPGA se visualiza como una caja negra que integra cada uno de los módulos necesarios para el proyecto. Además, se han detallado las funciones específicas de cada módulo, representados también como cajas negras individuales. Se ha especificado además
