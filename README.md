@@ -66,22 +66,37 @@ Por medio del conversor de análogo a Digital (ADC) las longitudes de onda se co
 
 <img src= "DIAGRAMA DE.png">
 1.	Sleep
+
 •	Estado Inicial: El sensor está en modo de bajo consumo y no realiza ninguna medición.
+
 •	Transición a Idle: Ocurre cuando se recibe una señal de inicio (I2C Start).
+
 2.	Idle
+   
 •	Estado de Espera: El sensor está listo para comenzar una medición, pero no está activo.
-•	Transición a Wait: Ocurre cuando se habilita el sensor (WEN y AEN están activos). 
+
+•	Transición a Wait: Ocurre cuando se habilita el sensor (WEN y AEN están activos).
+
 WEN(Wait enable): Habilita el temporizador de espera del sensor 
 AEN(RGBC Enable):Habilita el convertidor analogico digital.
-1.	Wait:
+3.	Wait:
+   
 •	Estado de Espera Activa: El sensor espera durante un tiempo configurado (WTIME) antes de iniciar la medición.
+
 •	Transición a RGBC Init: Después de esperar el tiempo configurado, el sensor se prepara para la medición.
-2.	RGBC Init:
+
+4.	RGBC Init:
+   
 •	Preparación: El sensor se inicializa para comenzar la medición de los canales de color.
+
 •	Transición a RGBC ADC: Una vez inicializado, el sensor comienza la conversión analógica a digital (ADC).
-3.	RGBC ADC:
+
+5.	RGBC ADC:
+   
 •	Medición: El sensor mide las intensidades de luz en los canales claro, rojo, verde y azul.
+
 •	Tiempo de Integración: Configurable entre 2.4 ms y 614 ms.
+
 •	Transición a Idle: Después de completar la medición, el sensor vuelve al estado inactivo.
 
 ## Sensor de movimiento PIR HC-SR501
