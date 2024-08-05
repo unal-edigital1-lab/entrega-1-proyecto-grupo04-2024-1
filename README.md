@@ -101,7 +101,7 @@ AEN(RGBC Enable):Habilita el convertidor analogico digital.
 
 ## Sensor de movimiento PIR HC-SR501
 
-<img src= "SENSOR PIR.png">
+<img src= "SENSOR PIR .png">
 
 •	Voltaje de Alimentación: 4.5V a 12V DC
 
