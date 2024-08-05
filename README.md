@@ -38,14 +38,21 @@ Display 7 seg
 ## Sensor RGB (Sensor de colores) TCS 34725
 
 <img src= "TCS.png">
-•	Voltaje de operación: 3.3V a 5V.
-•	Corriente de operación: 235 µA.
-•	Interfaz de comunicación: I2C
-•	Resolución: 16 bits por canal (RGB y Clear). 
-•	Dimensiones: 27mm x 20mm2.
-•	Distancia de medición recomendada: 2mm
-•	Rango dinámico: 3,800,000:1
-•	Temperatura de operación: -30°C a +70°C3
+Voltaje de operación: 3.3V a 5V.
+
+Corriente de operación: 235 µA.
+
+Interfaz de comunicación: I2C
+
+Resolución: 16 bits por canal (RGB y Clear).
+
+Dimensiones: 27mm x 20mm2.
+
+Distancia de medición recomendada: 2mm
+
+Rango dinámico: 3,800,000:1
+
+Temperatura de operación: -30°C a +70°C3
 
 ### Funcionamiento 
 
