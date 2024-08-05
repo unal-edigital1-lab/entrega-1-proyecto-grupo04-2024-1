@@ -373,7 +373,7 @@ Cada display está controlado directamente desde la FPGA, la cual envía señale
 
 El diagrama representa un sistema  compuesto por tres módulos principales: Sensores, Botones y Visualización. Los sensores incluyen un sensor de movimiento y un sensor de colores que comunican mediante el protocolo I2C. El módulo de botones, que incluye opciones como Jugar, Curar, Reset y Test, está conectado a un sistema de debouncing para gestionar las entradas de forma precisa. Las salidas visuales se manejan a través de un display de 7 segmentos y un LCD de 16x2. Además, un divisor de frecuencia regula las interacciones de tiempo en el sistema, garantizando la sincronización y el correcto despliegue de información.
 
-<img src= "Caja negra.jpg">
+<img src= "caja negra.jpg">
 
 ## Diagrama de flujo
 
