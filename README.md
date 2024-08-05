@@ -402,13 +402,14 @@ Si alguna de las condiciones críticas como la Salud llega a cero, la mascota mu
 
 ## maquina de estados.
 
-       Estado Inicial: La mascota comienza con niveles equilibrados de salud, energía, diversión, hambre y felicidad.
+Estado Inicial: La mascota comienza con niveles equilibrados de salud, energía, diversión, hambre y felicidad.
 
-    Transiciones:
-        Si alguno de estos niveles baja demasiado, la mascota cambia a un estado específico, como Hambriento, Aburrido, Cansado, Enfermo, o Triste.
-        Los usuarios pueden realizar acciones como alimentar, jugar o curar, que restauran esos niveles y devuelven la mascota al estado Saludable.
+Transiciones:
+ 
+Si alguno de estos niveles baja demasiado, la mascota cambia a un estado específico, como Hambriento, Aburrido, Cansado, Enfermo, o Triste.
+Los usuarios pueden realizar acciones como alimentar, jugar o curar, que restauran esos niveles y devuelven la mascota al estado Saludable.
 
-    Estado Final: Si la salud de la mascota llega a cero, entra en el estado Muere, concluyendo la simulación.
+Estado Final: Si la salud de la mascota llega a cero, entra en el estado Muere, concluyendo la simulación.
 
 Importancia:
 
