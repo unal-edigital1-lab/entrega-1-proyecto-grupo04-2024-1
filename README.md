@@ -415,6 +415,6 @@ Importancia:
 
 Esta FSM permite que la mascota reaccione de forma dinámica a las interacciones del usuario y a las condiciones de su entorno, ofreciendo una experiencia interactiva y educativa que simula el cuidado de una mascota real.
 
-<img src= "maquina de estados.jpeg">
+<img src= "maquina de estados.png">
 
 
