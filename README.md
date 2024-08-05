@@ -38,6 +38,7 @@ Display 7 seg
 ## Sensor RGB (Sensor de colores) TCS 34725
 
 <img src= "TCS.png">
+
 Voltaje de operación: 3.3V a 5V.
 
 Corriente de operación: 235 µA.
@@ -86,16 +87,27 @@ AEN(RGBC Enable):Habilita el convertidor analogico digital.
 ## Sensor de movimiento PIR HC-SR501
 
 <img src= "SENSOR PIR.png">
+
 •	Voltaje de Alimentación: 4.5V a 12V DC
+
 •	Voltaje de Salida (TTL): 3.3V
+
 •	Distancia de Detección: 3 a 7 metros aproximadamente
+
 •	Ángulo de Detección: 90° a 110°
+
 •	Intervalo de Tiempo de Alarma: 5 segundos a 5 minutos (ajustable)
+
 •	Dimensiones: 32.7mm x 29mm
+
 •	Corriente de Reposo: <50 µA
+
 •	Tiempo de Retardo: 5 segundos a 18 segundos (ajustable)
+
 •	Tiempo de Bloqueo: 2.5 segundos (predeterminado)
+
 •	Temperatura de Funcionamiento: -15°C a +70°C
+
  
 ### Funcionamiento 
 <img src= "RENDIJA.png">
@@ -117,15 +129,25 @@ La diferencia entre el modo de disparo simple y el repetitivo se muestra en la s
 <img src= "TIEMPO.png">
 ## Pantalla LCD 16X2
 <img src= "LCD.png">
+
 •	Voltaje de Operación: 4.7V a 5.3V
+
 •	Corriente de Operación: 1mA (sin retroiluminación)
+
 •	Retroiluminación: LED  azul
+
 •	Número de Caracteres: 32 (16 caracteres por cada una de las 2 filas)
+
 •	Tamaño de Caracteres: 5x8 puntos por carácter
+
 •	Interfaz: 8 bits (puede configurarse para usar solo 4 bits)
+
 •	Controlador: HD44780 o compatible
+
 •	Ciclo de Trabajo: 1/16 duty cycle
+
 •	Temperatura de Operación: -20°C a +70°C
+
 <img src= "CAJALCD.png">
 
 ### Componentes y conexiones
@@ -155,13 +177,21 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 ## Display de 7 segmentos (ánodo común)
 <img src= "DISPLAY7R.png">
 •    Display 7 Segmentos
+
 •    Componente de 1 Dígito con Punto Decimal
+
 •    Tipo Display: Ánodo Común
+
 •    Tamaño del Dígito: 2.3 Pulgadas (58.80 mm) Ver imágenes para detalles
+
 •    Tensión Directa por Segmento (Vf): 7.2 a 8.5 VDC (excluye punto decimal)
+
 •    Tensión Directa Punto Decimal (Vf): 3.6 a 4.2 VDC
+
 •    Tensión Inverso Máxima: 3 VDC
+
 •    Corriente por Segmento Máxima: 30 mA
+
 •    Corriente de Operación por Segmento Recomendada: 12 mA
 
 ### Componentes y Pines:
@@ -174,11 +204,15 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 ### Funcionamiento
 
 •	Control de Segmentos: Cada segmento se enciende o apaga para formar los números del 0 al 9 y algunas letras.
+
 •	Interfaz: Puede ser controlado directamente por un microcontrolador o mediante un decodificador BCD a 7 segmentos.
+
 ## Interruptor táctil (push button)
 <img src= "PULSADOR.png">
 •	Voltaje de operación: 3.3V a 5V.
+
 •	Corriente de operación:  Típica: 50mA.  Máxima: 100mA.
+
 •	Operación: -20°C a 70°C.
 
 
