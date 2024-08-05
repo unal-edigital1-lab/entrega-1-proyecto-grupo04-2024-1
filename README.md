@@ -39,7 +39,7 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 •	Distancia de medición recomendada: 2mm
 •	Rango dinámico: 3,800,000:1
 •	Temperatura de operación: -30°C a +70°C3
-### Funcionamiento
+#Funcionamiento
 <img src= "CAJA.png">
 Como se puede observar en el diagrama de bloques el sensor RGB TCS 34725 funciona filtrando la luz por medio de un filtro IR (Infrarrojo) que permite que pase solo las longitudes de onda de luz del espectro visible. La luz filtrada llega a unos fotodiodos que detectan las longitudes de onda correspondientes, enviando una señal de corriente. Las diferentes longitudes de onda producen diferentes niveles de corriente. Los colores que se pueden detectar por medio de estos fotodiodos son el rojo, verde y azul También se detecta una longitud de onda de claridad.
 <img src= "ESPECTRO.png">
