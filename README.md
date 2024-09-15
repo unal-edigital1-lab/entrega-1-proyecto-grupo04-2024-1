@@ -23,7 +23,10 @@ Desarrollar la lógica de control para coordinar las interacciones del usuario y
 Implementar salidas visuales utilizando un display de 7 segmentos y una pantalla LCD de 16X2 para representar el estado y la puntuación de la mascota.
 Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 ## Especificacion de los componentes para el proyecto 
-## Perifericos 
+
+## Perifericos
+
+sensor rgb TCS34725
 
 sensor medidor de distancia ultrasonido Hc-sr4
 
@@ -37,7 +40,9 @@ Display 7 seg
 
 4 interruptores
 
-###Sensor TCS34725
+##Sensor TCS34725
+
+<img src= "IMAGENES/Sensor Ultrasonid.png">
 
 Especificaciones  
 
