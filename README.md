@@ -162,9 +162,43 @@ t es el tiempo medido.
 
 ### Funcionalidad 
 
-El sensor ultrasónico HC-SR04 puede ser utilizado para simular una "caricia" para la masccota que modifica su estado.
+El sensor ultrasónico HC-SR04 se utiliza en el proyecto para medir la proximidad entre la mascota virtual (Tamagotchi) y el usuario. La "caricia" se simula detectando que la mano del usuario está a una distancia cercana al sensor, lo que luego se traduce en una interacción positiva que afecta el estado de la mascota, como aumentar su nivel de felicidad.
 
 <img src= "señal cuadrada del sensor ultrasonico.png">
+
+Trigger Input to Module:
+El proceso comienza cuando la FPGA envía una señal de disparo (TRIG) al sensor durante 10 microsegundos (como muestra la primera parte del gráfico). Este pulso activa el sensor, que emite una ráfaga de ondas ultrasónicas de 8 ciclos a 40 kHz, señalada en la imagen como "8 Cycle Sonic Burst".
+
+Echo Pulse Output:
+Después de que la ráfaga ultrasónica es emitida, el sensor espera a recibir el eco del pulso que rebota en el objeto cercano (la mano del usuario). La señal ECHO se pone en alto cuando el sensor detecta el retorno de la onda, y se mantiene en alto por un período de tiempo proporcional a la distancia. Este comportamiento es lo que se representa en la parte inferior del gráfico como "Echo Pulse Output". El tiempo que la señal permanece en alto indica la proximidad del objeto.
+
+Interpretación de la "Caricia":
+Para simular una caricia, la FPGA mide el tiempo en que el pin ECHO permanece en alto. Si el tiempo de retorno del eco indica que la mano del usuario está dentro de un rango específico (por ejemplo, entre 5 cm y 15 cm), se interpreta como una caricia. En este caso, la mascota virtual reaccionará de forma positiva, como si el usuario estuviera acariciándola.
+
+El tiempo medido en microsegundos se convierte en distancia utilizando la fórmula:
+
+Distancia (cm)
+=
+𝑇
+𝑖
+𝑒
+𝑚
+𝑝
+𝑜
+_
+𝑚
+𝑒
+𝑑
+𝑖
+𝑑
+𝑜
+58
+Distancia (cm)= 
+58
+Tiempo_medido
+​
+ 
+Si la distancia está dentro del rango definido, se ejecuta la acción de la "caricia", afectando el comportamiento de la mascota en el juego.
 
 
 ##### Pines de Alimentación
