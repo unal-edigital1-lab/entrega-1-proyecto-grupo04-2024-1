@@ -1,4 +1,4 @@
-# Entrega 1 del proyecto WP01
+# Entrega Final del proyecto WP01
 
 ## Integrantes 
 
@@ -25,7 +25,9 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 ## Especificacion de los componentes para el proyecto 
 ## Perifericos 
 
-Sensor RGB (Sensor de colores) Tcs 34725
+sensor medidor de distancia ultrasonido Hc-sr4
+
+sensor de vibracion sw-420
 
 Sensor de movimiento  PIR HC-SR501
 
@@ -35,7 +37,7 @@ Display 7 seg
 
 4 interruptores
 
-## Sensor RGB (Sensor de colores) TCS 34725
+## Sensor medidor de distancia ultrasonido Hc-sr4
 
 <img src= "TCS.png">
 
