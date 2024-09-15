@@ -64,7 +64,7 @@ d es la distancia,
 v es la velocidad del sonido (aproximadamente 343 m/s en condiciones normales),
 t es el tiempo medido.
 
-<img src= "funcionamaiento del sensor ultrasonico.png">
+<img src= "IMAGENES/funcionamaiento del sensor ultrasonico.png">
 
 
 ### Funcionalidad 
@@ -110,7 +110,7 @@ El TCS34725 utiliza el protocolo I2C para la comunicación de datos, lo que sign
 
 ## Sensor de movimiento PIR HC-SR501
 Para implementar este sensor, necesitaremos lo siguiente:
-<img src= "SENSOR PIR .png">
+<img src= "IMAGENES/SENSOR PIR .png">
 
 •	Voltaje de Alimentación: 4.5V a 12V DC
 
@@ -134,12 +134,12 @@ Para implementar este sensor, necesitaremos lo siguiente:
 
  
 ### Funcionamiento 
-<img src= "RENDIJA .png">
+<img src= "IMAGENES/RENDIJA .png">
 
 Los sensores de movimiento PIR constan de dos partes principales: un elemento sensor piroeléctrico y una lente fresnel. El elemento sensor piroeléctrico puede detectar la radiación infrarroja. Todos los objetos con una temperatura superior al cero absoluto (0 Kelvin / -273,15 °C) emiten energía térmica en forma de radiación infrarroja, incluidos los cuerpos humanos. Un sensor piroeléctrico tiene dos ranuras rectangulares de un material que permite el paso de la radiación infrarroja. Detrás de ellas, hay dos electrodos de sensor de infrarrojos separados, uno responsable de producir una salida positiva y el otro una salida negativa. Se busca  un cambio en los niveles de IR (infrarrojos) y no en los niveles de IR del ambiente. Los dos electrodos están conectados para que se anulen mutuamente. Si una mitad ve más o menos radiación IR que la otra, la salida oscilará alta o baja.
 El circuito integrado de procesamiento de señales procesa esta señal y convierte el pin de salida del sensor en ALTO o BAJO en consecuencia.
 ### Ajuste del sensor
-<img src= "PIR R.png">
+<img src= "IMAGENES/PIR R.png">
  
 #### Ajuste de la sensibilidad (rango)
 El HC-SR501 tiene una distancia máxima de detección de 7 metros. Puede ajustar la distancia de detección girando el potenciómetro de sensibilidad en el sentido de las agujas del reloj o en el sentido contrario (véase la imagen anterior). Al girar el potenciómetro en el sentido de las agujas del reloj, la distancia de detección aumenta hasta un máximo de 7 metros. Si se gira en sentido contrario a las agujas del reloj, la distancia de detección disminuye hasta un mínimo de 3 metros.
@@ -153,7 +153,7 @@ El puente (amarillo) permite seleccionar uno de los dos modos de disparo. Puede 
 •	Disparo repetido - Cada vez que se detecta movimiento, el temporizador de retardo se reinicia.
 
 La diferencia entre el modo de disparo simple y el repetitivo se muestra en la siguiente figura.
-<img src= "TIEMPO.png">
+<img src= "IMAGENES/TIEMPO.png">
 
 ### Funcionalidad 
 
@@ -183,7 +183,7 @@ En el entorno de desarrollo FPGA, se configura el pin seleccionado para que func
 
 
 ## Pantalla LCD 16X2
-<img src= "LCD.png">
+<img src= "IMAGENES/LCD.png">
 
 •	Voltaje de Operación: 4.7V a 5.3V
 
@@ -203,7 +203,7 @@ En el entorno de desarrollo FPGA, se configura el pin seleccionado para que func
 
 •	Temperatura de Operación: -20°C a +70°C
 
-<img src= "CAJALCD.png">
+<img src= "IMAGENES/CAJALCD.png">
 
 ### Funcionamiento
 
@@ -276,7 +276,7 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 
 
 ## Display de 7 segmentos (ánodo común)
-<img src= "DISPLAY7R.png">
+<img src= "IMAGENES/DISPLAY7R.png">
 •    Display 7 Segmentos
 
 •    Componente de 1 Dígito con Punto Decimal
@@ -297,7 +297,7 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 
 ### Componentes y Pines:
 
-<img src= "DISPLAYD.png">
+<img src= "IMAGENES/DISPLAYD.png">
 •	Segmentos (a-g): Cada uno de los siete segmentos que forman los números.
 •	Punto Decimal (dp): Opcional, utilizado para mostrar números decimales.
 •	Pines de Conexión: 4pines, incluyendo los pines comunes y los pines de cada segmento.
@@ -309,7 +309,7 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 •	Interfaz: Puede ser controlado directamente por un microcontrolador o mediante un decodificador BCD a 7 segmentos.
 
 ## Interruptor táctil (push button)
-<img src= "PULSADOR .png">
+<img src= "IMAGENES/PULSADOR .png">
 •	Voltaje de operación: 3.3V a 5V.
 
 •	Corriente de operación:  Típica: 50mA.  Máxima: 100mA.
@@ -346,7 +346,7 @@ Cada display está controlado directamente desde la FPGA, la cual envía señale
 
 El diagrama representa un sistema  compuesto por tres módulos principales: Sensores, Botones y Visualización. Los sensores incluyen un sensor de movimiento y un sensor de colores que comunican mediante el protocolo I2C. El módulo de botones, que incluye opciones como Jugar, Curar, Reset y Test, está conectado a un sistema de debouncing para gestionar las entradas de forma precisa. Las salidas visuales se manejan a través de un display de 7 segmentos y un LCD de 16x2. Además, un divisor de frecuencia regula las interacciones de tiempo en el sistema, garantizando la sincronización y el correcto despliegue de información.
 
-<img src= "caja negra.jpg">
+<img src= "IMAGENES/caja negra.jpg">
 
 ## Diagrama de flujo
 
@@ -364,7 +364,7 @@ El diagrama de flujo describe un sistema de juego donde se simula el cuidado de 
 
 Si alguna de las condiciones críticas como la Salud llega a cero, la mascota muere, y el juego requiere que se realice un reinicio. Este sistema de juego enseña sobre el cuidado y la atención necesaria para mantener el bienestar de un ser, aunque sea virtual, enfatizando la importancia de la observación y la respuesta a las necesidades de los que dependen de nosotros.
 
-<img src= "Diagrama de flujo.jpg">
+<img src= "IMAGENES/Diagrama de flujo.jpg">
 
 
 ## maquina de estados.
@@ -382,6 +382,6 @@ Importancia:
 
 Esta FSM permite que la mascota reaccione de forma dinámica a las interacciones del usuario y a las condiciones de su entorno, ofreciendo una experiencia interactiva y educativa que simula el cuidado de una mascota real.
 
-<img src= "maquina de estados .png">
+<img src= "IMAGENES/maquina de estados .png">
 
 
