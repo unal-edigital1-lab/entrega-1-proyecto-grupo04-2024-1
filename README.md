@@ -22,7 +22,50 @@ Integrar dos sensores, uno de sonido para detectar cuando la mascota es desperta
 Desarrollar la lógica de control para coordinar las interacciones del usuario y los estímulos ambientales.
 Implementar salidas visuales utilizando un display de 7 segmentos y una pantalla LCD de 16X2 para representar el estado y la puntuación de la mascota.
 Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
+
+Justificación y Replanteamiento del Modelo
+
+El diseño inicial del Tamagotchi en FPGA incluía sensores RGB y PIR, además de botones y una pantalla de 7 segmentos. Sin embargo, después de enfrentar dificultades con la implementación del protocolo I2C para el sensor RGB, se tomó la decisión de sustituirlo y agregar otros sensores más viables, como los sensores de vibración y ultrasonido, que simplificaron la implementación y aportaron nuevas formas de interacción.
+
+Justificación
+
+Cambio de Sensor RGB y adición de Sensores de Vibración y Ultrasonido:
+
+El sensor RGB fue reemplazado debido a la complejidad de integrar el protocolo I2C. En su lugar, se añadieron los sensores de vibración y ultrasonido, que aportan nuevas dinámicas al juego. El sensor de vibración permite interpretar acciones físicas, como sacudir el dispositivo para jugar, mientras que el sensor de ultrasonido se usa para detectar la proximidad, simulando interacciones como una "caricia" de parte del usuario.
+Sensor PIR:
+
+
+El sensor PIR se mantuvo en el diseño debido a su facilidad para detectar movimiento, lo que permite acciones automáticas como "despertar" a la mascota cuando el usuario se acerca.
+
+Pantalla de 7 segmentos:
+
+La pantalla de 7 segmentos sigue siendo adecuada para mostrar información básica como el nivel de felicidad o hambre de la mascota, simplificando la visualización y optimizando el uso de los recursos de la FPGA.
+Replanteamiento
+Sensores de Vibración y Ultrasonido:
+
+La integración de los sensores de vibración y ultrasonido aporta interacciones más dinámicas, como la posibilidad de jugar con la mascota mediante sacudidas o activar emociones con proximidad del usuario. Estas modificaciones permitieron mejorar el proyecto sin añadir complejidad innecesaria.
+Optimización de la Visualización:
+
+La pantalla de 7 segmentos cumple su función, pero a largo plazo se podría considerar una pantalla más avanzada para mejorar la visualización de las emociones de la mascota.
+
+Evaluación Cíclica:
+
+El modelo ha sido ajustado a través de iteraciones que permitieron superar las limitaciones técnicas del sensor RGB y hacer pruebas más directas con los sensores de vibración y ultrasonido. Estas mejoras seguirán evaluándose en las próximas fases del proyecto.
+
+
+
+
+
+
+
+
+
+
+
+
 ## Especificacion de los componentes para el proyecto 
+
+
 
 ## Perifericos
 
