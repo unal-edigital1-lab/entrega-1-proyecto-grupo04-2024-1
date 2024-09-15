@@ -1,5 +1,4 @@
-
-module debouncer_con_contador(
+    module boton_antirrebote(
         input wire btn_in, clk,reset,
         output wire out,
         output reg led,
@@ -45,17 +44,6 @@ always @(posedge clk or negedge reset) begin
     end
 end
 
- always @(posedge clk or negedge reset) begin
-    if (!reset) begin
-        led <= 1'b1;
-    end else begin
-        if (press_counter == 4'd1) begin
-            led <= 1'b0;
-        end else begin 
-            led <= 1'b1;
-        end
-    end
-end
 
     assign out = btn_out;
     assign count_out = press_counter;
