@@ -37,6 +37,99 @@ Display 7 seg
 
 4 interruptores
 
+###Sensor TCS34725
+
+Especificaciones  
+Voltaje de operación: 2.7V a 3.6V (recomendado: 3.3V).
+Corriente de operación:
+Modo activo: 60 µA.
+LED activado: 240 µA.
+Modo espera: < 2.5 µA.
+Protocolo de comunicación: I2C (7 bits, hasta 400 kHz).
+Rango de detección de colores:
+Rojo: 610 - 720 nm.
+Verde: 495 - 570 nm.
+Azul: 450 - 495 nm.
+Luz clara: Para la medición de la luminosidad ambiental.
+Resolución de salida: ADC de 16 bits por canal (Rojo, Verde, Azul, Claro).
+Tiempo de integración: 2.4 ms a 700 ms (ajustable).
+LED interno: LED blanco para mejorar la precisión bajo condiciones de baja luz.
+Campo de visión: 35°.
+Dimensiones: 3.94 mm x 2.84 mm x 1.35 mm.
+Temperatura de operación: -30°C a +85°C.
+Distancia de detección: Óptima a 5-10 mm.
+Funcionalidad
+El sensor TCS34725 se empleará para que la mascota virtual interactúe de manera más amigable con su dueño, proporcionando una experiencia basada en la detección de colores específicos. Cada color detectado por el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
+
+
+Color Azul:
+Simulación: Representa el suministro de agua a la mascota.
+Efecto: Cuando el sensor detecte el color azul, se interpretará como si la mascota estuviera bebiendo agua, lo que contribuye a mantener su nivel de salud.
+Color Verde:
+Simulación: Indica la alimentación de la mascota.
+Efecto: La detección del color verde indicará que la mascota está siendo alimentada, ayudando a satisfacer su hambre.
+Color Rojo:
+Simulación: Representa interacciones afectivas entre el dueño y la mascota, como abrazos.
+Efecto: La presencia del color rojo aumentará el nivel de felicidad de la mascota, reflejando el cariño y la atención que recibe de su dueño. Este color también permitirá que la mascota salga del estado de tristeza.
+Implementación en HDL y Conexión
+1. Módulo I2C en HDL:
+Se implementará un módulo I2C en código Verilog para gestionar la comunicación entre la FPGA y el sensor TCS34725. Este módulo manejará el intercambio de datos de color detectados por el sensor hacia la lógica del sistema Tamagotchi.
+
+2. Manejo de Datos:
+La lógica en Verilog interpretará los datos RGB recibidos del sensor y los transformará en las acciones descritas dentro del juego del Tamagotchi. Por ejemplo, si se detecta el color verde, la mascota interpretará que está siendo alimentada.
+
+3. Alimentación y Conexiones Físicas:
+Pines de Alimentación:
+VCC: El sensor requiere una fuente de alimentación de 3.3V que será proporcionada por la FPGA.
+GND: Este pin debe conectarse a la tierra (GND) en la FPGA.
+Pines de Comunicación I2C:
+SCL (Serial Clock Line): Este pin controla el reloj del bus I2C y debe conectarse al pin SCL correspondiente de la FPGA.
+SDA (Serial Data Line): Este pin es la línea de datos del bus I2C y debe conectarse al pin SDA de la FPGA.
+sensor medidor de distancia ultrasonido Hc-sr4
+
+sensor de vibracion sw-420
+
+Sensor de movimiento  PIR HC-SR501
+
+Pantalla LCD 16X2 
+
+Display 7 seg 
+
+4 interruptores
+
+## Sensor medidor de distancia ultrasonido Hc-sr4
+
+<img src= "IMAGENES/Sensor Ultrasonid.png">
+
+Voltaje de operación: 5V.
+
+Corriente de operación: <2 mA en reposo, 15 mA en operación
+
+Dimensiones: 32mm x 20mm2.
+
+Ángulo de detección: 30°.
+
+Distancia de medición: Entre 2 cm y 400 cm
+
+Resolución: 0,3 cm
+
+### Funcionamiento 
+
+El sensor HC-SR04 utiliza ondas ultrasónicas para medir la distancia entre él y un objeto. El principio de funcionamiento se basa en la emisión de un pulso ultrasónico que viaja en el aire, rebota en el objeto, y regresa al sensor. El dispositivo mide el tiempo que tarda en regresar el pulso para calcular la distancia mediante la ecuación de distancia:
+
+d = v × t,
+donde:
+
+d es la distancia,
+v es la velocidad del sonido (aproximadamente 343 m/s en condiciones normales),
+t es el tiempo medido.
+
+<img src= "IMAGENES/funcionamaiento del sensor ultrasonico.png">
+
+
+
+
+
 ## Sensor medidor de distancia ultrasonido Hc-sr4
 
 <img src= "IMAGENES/Sensor Ultrasonid.png">
