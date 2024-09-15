@@ -164,6 +164,9 @@ t es el tiempo medido.
 
 El sensor ultrasónico HC-SR04 puede ser utilizado para simular una "caricia" para la masccota que modifica su estado.
 
+<img src= "IMAGENES/funcionamaiento del sensor ultrasonico.png">
+
+
 ##### Pines de Alimentación
 
 VCC (Alimentación 5V):Este pin se conecta a una fuente de 5V para alimentar el sensor.
