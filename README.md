@@ -208,6 +208,64 @@ Medición del tiempo ECHO: Implementar un temporizador que comience a contar cua
 Cálculo de la distancia: Transformar el tiempo medido en la distancia correspondiente y almacenarla para su uso en la lógica del Tamagotchi.
 
 
+## Sensor de Vibración SW-420
+
+<img src= "IMAGENES/Sensor Vibracion.png">
+
+Voltaje de operación: 3.3V a 5V.
+
+Corriente de operación: <1.5 mA en operación.
+
+Dimensiones: 32mm x 14mm.
+
+Salida digital: 0 y 1, dependiendo de la vibración detectada.
+
+### Funcionamiento
+
+El sensor de vibración SW-420 detecta movimientos o vibraciones. Internamente, tiene un resorte enrollado alrededor de un pasador. Cuando el dispositivo se agita o vibra, el resorte entra en contacto con el pasador y genera una señal digital, indicando que ha ocurrido una vibración. El sensor genera una salida digital de 0 (no hay vibración) o 1 (vibración detectada).
+
+
+<img src= "IMAGENES/funcionamiento del sensor vibracion.png">
+
+###Funcionalidad
+
+En el proyecto del Tamagotchi, el sensor de vibración SW-420 simula una interacción de "juego" con la mascota virtual. Cuando el usuario agita o mueve el dispositivo, el sensor detecta la vibración, y la FPGA interpreta esto como una señal para que la mascota interactúe jugando, lo que incrementa su felicidad o genera acciones dinámicas en el juego.
+
+La vibración se detecta como una sacudida o movimiento, que es interpretado como un evento de "jugar", donde la mascota responde de forma positiva, afectando su comportamiento de manera divertida.
+
+<img src= "señal cuadrada del sensor vibracion.png">
+
+Explicación Basada en el Diagrama de Temporización
+Señal de entrada al sensor:
+El proceso inicia cuando el sensor SW-420 detecta una vibración, cambiando su señal de salida de bajo (0) a alto (1), lo que indica que ha ocurrido una vibración. La FPGA está monitoreando constantemente esta señal digital.
+
+Señal de salida del sensor:
+
+El sensor permanece en alto (1) mientras se detecta la vibración. Este tiempo es suficiente para que la FPGA registre la vibración y la interprete como una acción de juego o interacción física con la mascota.
+
+### Pines de Alimentación
+
+VCC (Alimentación 5V): Este pin se conecta a una fuente de 3.3V o 5V para alimentar el sensor.
+
+GND (Tierra): Debe conectarse al pin de tierra (GND) en la FPGA para completar el circuito de alimentación.
+
+DO (Salida Digital): El pin de salida digital del sensor se conecta a un GPIO de la FPGA configurado como entrada. Este pin cambia a alto cuando se detecta una vibración, y se utiliza para activar la interacción 
+de juego en la mascota.
+
+Implementación HDL y Conexión
+
+<img src= "conecciones del sensor vibracion.png">
+
+El flujo de implementación en la FPGA sería el siguiente:
+
+Monitorización de la señal de salida: La FPGA monitoriza constantemente el estado del pin de salida digital del sensor. Cuando el pin pasa de bajo (0) a alto (1), la FPGA registra la vibración y la interpreta como una interacción de juego.
+
+Activación de la interacción de juego: Una vez que se detecta la vibración, la FPGA genera una respuesta en la mascota virtual, donde la interacción de "juego" se simula a través de cambios en el estado de felicidad o acciones dinámica
+
+
+
+
+
 ## Sensor de movimiento PIR HC-SR501
 Para implementar este sensor, necesitaremos lo siguiente:
 <img src= "IMAGENES/SENSOR PIR .png">
