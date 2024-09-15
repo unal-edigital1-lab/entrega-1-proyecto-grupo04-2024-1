@@ -23,11 +23,11 @@ Desarrollar la lógica de control para coordinar las interacciones del usuario y
 Implementar salidas visuales utilizando un display de 7 segmentos y una pantalla LCD de 16X2 para representar el estado y la puntuación de la mascota.
 Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 
-Justificación y Replanteamiento del Modelo
+## Justificación y Replanteamiento del Modelo
 
 El diseño inicial del Tamagotchi en FPGA incluía sensores RGB y PIR, además de botones y una pantalla de 7 segmentos. Sin embargo, después de enfrentar dificultades con la implementación del protocolo I2C para el sensor RGB, se tomó la decisión de sustituirlo y agregar otros sensores más viables, como los sensores de vibración y ultrasonido, que simplificaron la implementación y aportaron nuevas formas de interacción.
 
-Justificación
+### Justificación
 
 Cambio de Sensor RGB y adición de Sensores de Vibración y Ultrasonido:
 
