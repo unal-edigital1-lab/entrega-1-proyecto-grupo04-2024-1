@@ -167,6 +167,7 @@ El sensor ultrasónico HC-SR04 se utiliza en el proyecto para medir la proximida
 <img src= "señal cuadrada del sensor ultrasonico.png">
 
 Explicación Basada en el Diagrama de Temporización
+
 La imagen que se muestra explica cómo el sensor ultrasónico envía y recibe las señales para medir la distancia
 
 Trigger Input to Module:
