@@ -42,7 +42,7 @@ Display 7 seg
 
 ##Sensor TCS34725
 
-<img src= "IMAGENES/Sensor Ultrasonid.png">
+<img src= IMAGENES/TCS.png>
 
 Especificaciones  
 
