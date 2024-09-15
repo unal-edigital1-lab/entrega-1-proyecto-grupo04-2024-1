@@ -71,42 +71,20 @@ t es el tiempo medido.
 
 El sensor TCS34725 se empleará para que la mascota virtual interactúe de manera más amigable con su dueño, teniendo una experiencia basada en la detección de colores específicos. Cada color detectado por el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
 
-##### Color Azul:
-Se utilizará para simular el suministro de agua a la mascota. Cuando el sensor detecte el color azul, se interpretará como si la mascota estuviera bebiendo agua, lo que contribuirá a mantener su nivel de salud.
-
-##### Color Verde: 
-Este color será indicativo de alimentación. La detección del verde indicará que la mascota está siendo alimentada, lo que ayudará a satisfacer su hambre.
-
-##### Color Rojo: 
-Se usará para representar interacciones afectivas entre el dueño y la mascota como abrazos. La presencia del color rojo aumentará su nivel de felicidad, reflejando el cariño y la atención que recibe de su dueño. Además, con este color podrá salir del estado de tristeza. 
 
 
-### Implementación HDL y Conexión
+VCC (Alimentación 5V):
 
+Este pin se conecta a una fuente de 5V para alimentar el sensor.
+GND (Tierra):
 
-##### 1.	Módulo I2C en HDL: 
-Se implementa un módulo existente I2C en código Verilog para manejar la comunicación entre la FPGA y el sensor TCS34725.
+Debe conectarse al pin de tierra (GND) en la FPGA para completar el circuito de alimentación.
+TRIG (Disparo):
 
-##### 2.	Manejo de Datos: 
-Se desarrolla una lógica en Verilog que interprete los datos recibidos del sensor y los transforme en las acciones anteriormente descritas dentro del juego del Tamagotchi.
+El pin TRIG se conecta a un GPIO de la FPGA configurado como salida. Para activar la medición de distancia, la FPGA debe enviar una señal de 10 microsegundos en alto, lo que generará una ráfaga de ondas ultrasónicas.
+ECHO (Recepción del eco):
 
-##### 3.	Alimentación y Conexiones Físicas: 
-A continuación, especificaremos las conexiones que el sensor necesita para que esté correctamente alimentado y conectado a los pines I2C de la FPGA.
-
-##### Pines de Alimentación
-
-•	VCC: Fuente de alimentación de 3.3V en la FPGA.
-
-•	GND: Tierra en la FPGA.
-
-##### Pines de Comunicación I2C
-El TCS34725 utiliza el protocolo I2C para la comunicación de datos, lo que significa que tiene pines específicos para esta función:
-
-1.	SCL (Serial Clock Line): Es el reloj del bus I2C. Este pin se conecta al pin correspondiente de SCL en la FPGA.
-   
-3.	SDA (Serial Data Line): Es la línea de datos del bus I2C. Este pin se conecta al pin correspondiente de SDA en la FPGA.
-
-
+El pin ECHO se conecta a otro GPIO de la FPGA configurado como entrada. Este pin permanecerá en alto durante el tiempo que tarda el eco en regresar. El tiempo en alto se usa para calcular la distancia al objeto.
 
 ## Sensor de movimiento PIR HC-SR501
 Para implementar este sensor, necesitaremos lo siguiente:
