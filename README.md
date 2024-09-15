@@ -166,6 +166,9 @@ El sensor ultrasónico HC-SR04 se utiliza en el proyecto para medir la proximida
 
 <img src= "señal cuadrada del sensor ultrasonico.png">
 
+Explicación Basada en el Diagrama de Temporización
+La imagen que se muestra explica cómo el sensor ultrasónico envía y recibe las señales para medir la distancia
+
 Trigger Input to Module:
 El proceso comienza cuando la FPGA envía una señal de disparo (TRIG) al sensor durante 10 microsegundos (como muestra la primera parte del gráfico). Este pulso activa el sensor, que emite una ráfaga de ondas ultrasónicas de 8 ciclos a 40 kHz, señalada en la imagen como "8 Cycle Sonic Burst".
 
@@ -175,27 +178,7 @@ Después de que la ráfaga ultrasónica es emitida, el sensor espera a recibir e
 Interpretación de la "Caricia":
 Para simular una caricia, la FPGA mide el tiempo en que el pin ECHO permanece en alto. Si el tiempo de retorno del eco indica que la mano del usuario está dentro de un rango específico (por ejemplo, entre 5 cm y 15 cm), se interpreta como una caricia. En este caso, la mascota virtual reaccionará de forma positiva, como si el usuario estuviera acariciándola.
 
-El tiempo medido en microsegundos se convierte en distancia utilizando la fórmula:
-
-Distancia (cm)
-=
-𝑇
-𝑖
-𝑒
-𝑚
-𝑝
-𝑜
-_
-𝑚
-𝑒
-𝑑
-𝑖
-𝑑
-𝑜
-58
-Distancia (cm)= 
-58
-Tiempo_medido
+El tiempo medido en microsegundos.
 ​
  
 Si la distancia está dentro del rango definido, se ejecuta la acción de la "caricia", afectando el comportamiento de la mascota en el juego.
