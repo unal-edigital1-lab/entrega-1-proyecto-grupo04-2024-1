@@ -39,7 +39,7 @@ Display 7 seg
 
 ## Sensor medidor de distancia ultrasonido Hc-sr4
 
-<img src= "Sensor Ultrasonid.png">
+<img src= "Sensor IMAGENES/Ultrasonid.png">
 
 Voltaje de operación: 5V.
 
