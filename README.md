@@ -26,7 +26,21 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
 
 ## Perifericos
 
-sensor rgb TCS34725
+sensor rgb TCS34725 (no fue implementado debido a limite de tiempo en el cronograma)
+
+sensor medidor de distancia ultrasonido Hc-sr4
+
+sensor de vibracion sw-420
+
+Sensor de movimiento  PIR HC-SR501
+
+Pantalla LCD 16X2 
+
+Display 7 seg 
+
+4 interruptores
+
+## sensor rgb TCS34725
 
 sensor medidor de distancia ultrasonido Hc-sr4
 
@@ -126,49 +140,6 @@ Pines de Comunicación I2C:
 SCL (Serial Clock Line): Este pin controla el reloj del bus I2C y debe conectarse al pin SCL correspondiente de la FPGA.
 
 SDA (Serial Data Line): Este pin es la línea de datos del bus I2C y debe conectarse al pin SDA de la FPGA.
-
-##sensor medidor de distancia ultrasonido Hc-sr4
-
-sensor de vibracion sw-420
-
-Sensor de movimiento  PIR HC-SR501
-
-Pantalla LCD 16X2 
-
-Display 7 seg 
-
-4 interruptores
-
-## Sensor medidor de distancia ultrasonido Hc-sr4
-
-<img src= "IMAGENES/Sensor Ultrasonid.png">
-
-Voltaje de operación: 5V.
-
-Corriente de operación: <2 mA en reposo, 15 mA en operación
-
-Dimensiones: 32mm x 20mm2.
-
-Ángulo de detección: 30°.
-
-Distancia de medición: Entre 2 cm y 400 cm
-
-Resolución: 0,3 cm
-
-### Funcionamiento 
-
-El sensor HC-SR04 utiliza ondas ultrasónicas para medir la distancia entre él y un objeto. El principio de funcionamiento se basa en la emisión de un pulso ultrasónico que viaja en el aire, rebota en el objeto, y regresa al sensor. El dispositivo mide el tiempo que tarda en regresar el pulso para calcular la distancia mediante la ecuación de distancia:
-
-d = v × t,
-donde:
-
-d es la distancia,
-v es la velocidad del sonido (aproximadamente 343 m/s en condiciones normales),
-t es el tiempo medido.
-
-<img src= "IMAGENES/funcionamaiento del sensor ultrasonico.png">
-
-
 
 
 
