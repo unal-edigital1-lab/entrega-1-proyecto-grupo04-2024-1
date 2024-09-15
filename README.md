@@ -164,7 +164,7 @@ t es el tiempo medido.
 
 El sensor ultrasónico HC-SR04 puede ser utilizado para simular una "caricia" para la masccota que modifica su estado.
 
-<img src= "IMAGENES/funcionamaiento del sensor ultrasonico.png">
+<img src= "señal cuadrada del sensor ultrasonico.png">
 
 
 ##### Pines de Alimentación
@@ -178,6 +178,8 @@ TRIG (Disparo):El pin TRIG se conecta a un GPIO de la FPGA configurado como sali
 ECHO (Recepción del eco):El pin ECHO se conecta a otro GPIO de la FPGA configurado como entrada. Este pin permanecerá en alto durante el tiempo que tarda el eco en regresar. El tiempo en alto se usa para calcular la distancia al objeto.
 
 ### Implementación HDL y Conexión
+
+<img src= "conecciones del ultrasonico.png">
 
 El flujo de la implementación en Verilog sería algo similar a lo siguiente:
 
