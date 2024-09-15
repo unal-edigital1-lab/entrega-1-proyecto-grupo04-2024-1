@@ -64,7 +64,7 @@ d es la distancia,
 v es la velocidad del sonido (aproximadamente 343 m/s en condiciones normales),
 t es el tiempo medido.
 
-<img src= "Sensor Ultrasonid.png">
+<img src= "funcionamaiento del sensor ultrasonico.png">
 
 
 ### Funcionalidad 
