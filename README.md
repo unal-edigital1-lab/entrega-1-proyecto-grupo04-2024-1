@@ -63,7 +63,8 @@ donde:
 d es la distancia,
 v es la velocidad del sonido (aproximadamente 343 m/s en condiciones normales),
 t es el tiempo medido.
-Insertar imagen: Diagrama ilustrando cómo el pulso ultrasónico es emitido, rebota en un objeto y regresa al sensor.
+
+<img src= "Sensor Ultrasonid.png">
 
 
 ### Funcionalidad 
