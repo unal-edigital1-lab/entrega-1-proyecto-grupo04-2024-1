@@ -41,65 +41,29 @@ Display 7 seg
 
 <img src= "Sensor Ultrasonid.png">
 
-Voltaje de operación: 3.3V a 5V.
+Voltaje de operación: 5V.
 
-Corriente de operación: 235 µA.
+Corriente de operación: <2 mA en reposo, 15 mA en operación
 
-Interfaz de comunicación: I2C
+Dimensiones: 32mm x 20mm2.
 
-Resolución: 16 bits por canal (RGB y Clear).
+Ángulo de detección: 30°.
 
-Dimensiones: 27mm x 20mm2.
+Distancia de medición: Entre 2 cm y 400 cm
 
-Distancia de medición recomendada: 2mm
-
-Rango dinámico: 3,800,000:1
-
-Temperatura de operación: -30°C a +70°C3
+Resolución: 0,3 cm
 
 ### Funcionamiento 
 
-<img src= "CAJA.png">
-Como se puede observar en el diagrama de bloques el sensor RGB TCS 34725 funciona filtrando la luz por medio de un filtro IR (Infrarrojo) que permite que pase solo las longitudes de onda de luz del espectro visible. La luz filtrada llega a unos fotodiodos que detectan las longitudes de onda correspondientes, enviando una señal de corriente. Las diferentes longitudes de onda producen diferentes niveles de corriente. Los colores que se pueden detectar por medio de estos fotodiodos son el rojo, verde y azul También se detecta una longitud de onda de claridad.
-<img src= "ESPECTRO.png">
-Por medio del conversor de análogo a Digital (ADC) las longitudes de onda se convierten a valores digitales y son guardados en registros. Los datos guardados van a ser leídos para determinar el color detectado.
+El sensor HC-SR04 utiliza ondas ultrasónicas para medir la distancia entre él y un objeto. El principio de funcionamiento se basa en la emisión de un pulso ultrasónico que viaja en el aire, rebota en el objeto, y regresa al sensor. El dispositivo mide el tiempo que tarda en regresar el pulso para calcular la distancia mediante la ecuación de distancia:
 
-### Diagrama de estados
+d = v × t,
+donde:
 
-<img src= "DIAGRAMA DE.png">
-1.	Sleep
-
-•	Estado Inicial: El sensor está en modo de bajo consumo y no realiza ninguna medición.
-
-•	Transición a Idle: Ocurre cuando se recibe una señal de inicio (I2C Start).
-
-2.	Idle
-   
-•	Estado de Espera: El sensor está listo para comenzar una medición, pero no está activo.
-
-•	Transición a Wait: Ocurre cuando se habilita el sensor (WEN y AEN están activos).
-
-WEN(Wait enable): Habilita el temporizador de espera del sensor 
-AEN(RGBC Enable):Habilita el convertidor analogico digital.
-3.	Wait:
-   
-•	Estado de Espera Activa: El sensor espera durante un tiempo configurado (WTIME) antes de iniciar la medición.
-
-•	Transición a RGBC Init: Después de esperar el tiempo configurado, el sensor se prepara para la medición.
-
-4.	RGBC Init:
-   
-•	Preparación: El sensor se inicializa para comenzar la medición de los canales de color.
-
-•	Transición a RGBC ADC: Una vez inicializado, el sensor comienza la conversión analógica a digital (ADC).
-
-5.	RGBC ADC:
-   
-•	Medición: El sensor mide las intensidades de luz en los canales claro, rojo, verde y azul.
-
-•	Tiempo de Integración: Configurable entre 2.4 ms y 614 ms.
-
-•	Transición a Idle: Después de completar la medición, el sensor vuelve al estado inactivo.
+d es la distancia,
+v es la velocidad del sonido (aproximadamente 343 m/s en condiciones normales),
+t es el tiempo medido.
+Insertar imagen: Diagrama ilustrando cómo el pulso ultrasónico es emitido, rebota en un objeto y regresa al sensor.
 
 
 ### Funcionalidad 
