@@ -162,22 +162,28 @@ t es el tiempo medido.
 
 ### Funcionalidad 
 
-El sensor TCS34725 se empleará para que la mascota virtual interactúe de manera más amigable con su dueño, teniendo una experiencia basada en la detección de colores específicos. Cada color detectado por el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
+El sensor ultrasónico HC-SR04 puede ser utilizado para simular una "caricia" para la masccota que modifica su estado.
 
+##### Pines de Alimentación
 
+VCC (Alimentación 5V):Este pin se conecta a una fuente de 5V para alimentar el sensor.
 
-VCC (Alimentación 5V):
+GND (Tierra):Debe conectarse al pin de tierra (GND) en la FPGA para completar el circuito de alimentación.
 
-Este pin se conecta a una fuente de 5V para alimentar el sensor.
-GND (Tierra):
+TRIG (Disparo):El pin TRIG se conecta a un GPIO de la FPGA configurado como salida. Para activar la medición de distancia, la FPGA debe enviar una señal de 10 microsegundos en alto, lo que generará una ráfaga de ondas ultrasónicas.
 
-Debe conectarse al pin de tierra (GND) en la FPGA para completar el circuito de alimentación.
-TRIG (Disparo):
+ECHO (Recepción del eco):El pin ECHO se conecta a otro GPIO de la FPGA configurado como entrada. Este pin permanecerá en alto durante el tiempo que tarda el eco en regresar. El tiempo en alto se usa para calcular la distancia al objeto.
 
-El pin TRIG se conecta a un GPIO de la FPGA configurado como salida. Para activar la medición de distancia, la FPGA debe enviar una señal de 10 microsegundos en alto, lo que generará una ráfaga de ondas ultrasónicas.
-ECHO (Recepción del eco):
+### Implementación HDL y Conexión
 
-El pin ECHO se conecta a otro GPIO de la FPGA configurado como entrada. Este pin permanecerá en alto durante el tiempo que tarda el eco en regresar. El tiempo en alto se usa para calcular la distancia al objeto.
+El flujo de la implementación en Verilog sería algo similar a lo siguiente:
+
+Generación de señal TRIG: Crear un módulo en Verilog que controle el tiempo de activación del pin TRIG (10 µs).
+
+Medición del tiempo ECHO: Implementar un temporizador que comience a contar cuando el pin ECHO se pone en alto y se detenga cuando vuelva a estar en bajo.
+
+Cálculo de la distancia: Transformar el tiempo medido en la distancia correspondiente y almacenarla para su uso en la lógica del Tamagotchi.
+
 
 ## Sensor de movimiento PIR HC-SR501
 Para implementar este sensor, necesitaremos lo siguiente:
