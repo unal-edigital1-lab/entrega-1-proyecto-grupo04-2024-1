@@ -42,19 +42,6 @@ Display 7 seg
 
 ## sensor rgb TCS34725
 
-sensor medidor de distancia ultrasonido Hc-sr4
-
-sensor de vibracion sw-420
-
-Sensor de movimiento  PIR HC-SR501
-
-Pantalla LCD 16X2 
-
-Display 7 seg 
-
-4 interruptores
-
-##Sensor TCS34725
 
 <img src= IMAGENES/TCS.png>
 
