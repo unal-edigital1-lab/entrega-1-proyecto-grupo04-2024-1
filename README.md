@@ -387,7 +387,7 @@ Esta FSM permite que la mascota reaccione de forma dinámica a las interacciones
 ## Codigos 
 ### Top
 
-//--------------------------------------------------------------------------------------------------------------------------------------------\\
+```ruby
 module LCD1602_cust_char #(parameter num_commands = 3, 
                                       num_data_all = 48,  
                                       char_data = 8, 
@@ -1158,4 +1158,4 @@ assign done_cgram_write = (data_counter == num_data_all-1)? 'b1 : 'b0;
 
 
 endmodule
-//--------------------------------------------------------------------------------------------------------------------------------\\
+```
