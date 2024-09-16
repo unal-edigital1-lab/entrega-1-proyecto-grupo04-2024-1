@@ -637,7 +637,25 @@ El modelo ha sido ajustado a través de iteraciones que permitieron superar las 
 
 ### Maquina de estados
 
+### Visualizacion 
+
 <img src= "IMAGENES/Diagrama de estados LCD.jpg">
+
+#### Resumen del Flujo de la FSM:
+
+• IDLE: Espera la señal de inicio.
+
+• INIT_CONFIG: Envia los comandos de configuración al LCD.
+
+• CLEAR_COUNTERS0: Reinicia los contadores para preparar la escritura de caracteres en la CGRAM.
+
+• CREATE_CHARS: Escribe caracteres personalizados en la CGRAM del LCD.
+
+• CLEAR_COUNTERS1: Reinicia los contadores para preparar la escritura de texto en la pantalla.
+
+• SET_CURSOR_AND_WRITE: Mueve el cursor y escribe texto en la pantalla.
+
+• WRITE_ADDITIONAL_TEXT: Escribe texto adicional en la pantalla, incluyendo el manejo de escritura en la segunda línea del LCD.
 
 <img src= "IMAGENES/Diagrama de estados sensor ultrasonido.jpg">
 
