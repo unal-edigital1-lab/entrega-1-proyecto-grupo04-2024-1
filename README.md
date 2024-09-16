@@ -643,6 +643,50 @@ Tras enfrentar desafíos en la implementación del sensor de colores debido a co
 
 <img src= "IMAGENES/caja negra V2.jpg">
 
+### Diagrama de flujo 
+
+<img src= "IMAGENES/Diagrama de flujo V2.jpg">
+
+Función: Incrementa el nivel de Hambre.
+Reacción:
+Si el nivel de Hambre es <2, la mascota muestra la cara de hambriento_cara.txt y el texto de hambriento_texto.txt.
+Al presionar este botón, el nivel de Hambre aumenta, lo que restablece la salud de la mascota si estaba baja.
+Botón para curar:
+
+Función: Incrementa el nivel de Salud.
+Reacción:
+Si la Salud es <2, la mascota se ve enferma con enfermo_cara.txt y enfermo_texto.txt.
+Al presionar este botón, el nivel de Salud aumenta y la mascota vuelve a un estado saludable.
+Botón para test (ver todos los estados):
+
+Función: Activa un modo de prueba que muestra cada uno de los estados posibles.
+Reacción:
+Al activarlo, se cicla a través de cada uno de los estados (feliz, aburrido, cansado, etc.), mostrando las caras y textos correspondientes.
+Botón para speed (acelerar el Tamagotchi):
+
+Función: Acelera el ritmo del juego, haciendo que los niveles de la mascota cambien más rápido (por ejemplo, hambre, energía, salud).
+Reacción:
+Con este modo activado, los niveles disminuirán o aumentarán más rápidamente, haciendo que el jugador tenga que reaccionar más rápido para mantener a la mascota en buen estado.
+Integración Completa del Sistema
+Sensores:
+
+PIR: Despierta a la mascota cuando detecta movimiento.
+Ultrasónico: Simula caricias, aumentando la Felicidad.
+Vibración: Simula juegos, aumentando la Diversión.
+Botones:
+
+Alimentar: Aumenta el nivel de Hambre, lo que mejora la Salud y Felicidad si estaban bajos.
+Curar: Aumenta el nivel de Salud si la mascota estaba enferma.
+Test: Muestra todos los estados de la mascota en modo prueba.
+Speed: Acelera el ciclo de vida del Tamagotchi, haciendo que los niveles cambien más rápido.
+Flujo del Juego
+Estado inicial: La mascota comienza con valores normales en Hambre, Salud, Energía, Diversión y Felicidad.
+Interacciones del jugador: Dependiendo de los niveles, el jugador puede:
+Alimentar, curar, acariciar o jugar con la mascota para evitar que los niveles caigan por debajo de 2.
+Uso de botones y sensores: El jugador puede usar los botones para alimentarla o curarla, mientras los sensores permiten interacciones más dinámicas (despertar, caricias, juegos).
+Modo test: Permite comprobar el correcto funcionamiento de cada estado.
+Modo speed: Acelera la dificultad, obligando al jugador a realizar más acciones en menos tiempo
+
 ### Maquina de estados
 
 ### Visualizacion 
