@@ -545,3 +545,21 @@ El modelo ha sido ajustado a través de iteraciones que permitieron superar las 
 
 ## Trabajo en Equipo y Gestión del Proyecto
 
+### cronograma de actividades 
+
+| **Fase**            | **Semana**   | **Actividad**                                                                 | **Pruebas/Reuniones**                                                               |
+| ------------------- | ------------ | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Diseño del Sistema   | Semana 1     | Análisis de requisitos y especificaciones                                      | Pruebas iniciales de la lógica de estados y Reunión 1                               |
+|                     | Semana 2     | Diseño del circuito y arquitectura del sistema                                 | Pruebas de conexión inicial del circuito con FPGA                                    |
+|                     | Semana 3     | Definición de la lógica de estados del Tamagotchi                              | Pruebas iniciales de funcionalidad                                                  |
+| Implementación       | Semana 4     | Instalación de pantallas y botones                                             | Pruebas de visualización en pantallas y botones                                      |
+|                     | Semana 5     | Integración de sensores (RGB, PIR, vibración)                                  | Pruebas de integración de sensores y hardware                                        |
+|                     | Semana 6     | Pruebas funcionales del hardware y ajuste de sensibilidad                      | Ajustes basados en resultados de pruebas iniciales                                   |
+|                     | Semana 7     | Optimización de la integración y codificación de la lógica inicial             | Reunión 2 (Revisión del hardware) y pruebas adicionales                             |
+| Desarrollo del SW    | Semana 8     | Programación de la lógica de estados (transiciones y respuesta de sensores)    | Pruebas de lógica con sensores y pantallas                                           |
+|                     | Semana 9     | Implementación del modo de prueba y botón Reset                                | Pruebas del modo de prueba y botón Reset                                             |
+|                     | Semana 10    | Ajuste de la lógica de estados y funcionalidad                                 | Reunión 3 (Validación del software) y pruebas finales de software                    |
+| Pruebas y Optimización | Semana 11 | Pruebas exhaustivas del sistema                                                | Pruebas finales con usuarios simulados                                               |
+|                     | Semana 12    | **Cambio del sensor RGB por ultrasonido y vibración**                          | Reunión 4 (Replanteo del cambio de sensor) y pruebas de integración del nuevo sensor |
+| Documentación y Entrega | Semana 13 | Optimización final del sistema, documentación técnica y entrega                | Reunión 5 (Revisión final) y pruebas de validación final                             |
+
