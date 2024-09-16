@@ -172,7 +172,9 @@ SDA (Serial Data Line): Este pin es la línea de datos del bus I2C y debe conect
 
 ## Sensor medidor de distancia ultrasonido Hc-sr4
 
+
 <img src= "IMAGENES/Sensor Ultrasonid.png">
+
 
 Voltaje de operación: 5V.
 
@@ -249,8 +251,10 @@ Cálculo de la distancia: Transformar el tiempo medido en la distancia correspon
 
 
 ## Sensor de movimiento PIR HC-SR501
-Para implementar este sensor, necesitaremos lo siguiente:
+
 <img src= "IMAGENES/SENSOR PIR .png">
+
+Para implementar este sensor, necesitaremos lo siguiente:
 
 •	Voltaje de Alimentación: 4.5V a 12V DC
 
@@ -323,6 +327,7 @@ En el entorno de desarrollo FPGA, se configura el pin seleccionado para que func
 
 
 ## Pantalla LCD 16X2
+
 <img src= "IMAGENES/LCD.png">
 
 •	Voltaje de Operación: 4.7V a 5.3V
@@ -460,7 +465,9 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 •	Interfaz: Puede ser controlado directamente por un microcontrolador o mediante un decodificador BCD a 7 segmentos.
 
 ## Interruptor táctil (push button)
+
 <img src= "IMAGENES/PULSADOR.png">
+
 •	Voltaje de operación: 3.3V a 5V.
 
 •	Corriente de operación:  Típica: 50mA.  Máxima: 100mA.
@@ -492,3 +499,34 @@ Cada display está controlado directamente desde la FPGA, la cual envía señale
 •	VCC: Fuente de alimentación de 5V en la FPGA.
 
 •	GND: Tierra en la FPGA.
+
+## Prototipado
+
+### Justificación y Replanteamiento del Modelo
+
+El diseño inicial del Tamagotchi en FPGA incluía sensores RGB y PIR, además de botones y una pantalla de 7 segmentos. Sin embargo, después de enfrentar dificultades con la implementación del protocolo I2C para el sensor RGB, se tomó la decisión de sustituirlo y agregar otros sensores más viables, como los sensores de vibración y ultrasonido, que simplificaron la implementación y aportaron nuevas formas de interacción.
+
+### Justificación
+
+Cambio de Sensor RGB y adición de Sensores de Vibración y Ultrasonido:
+
+El sensor RGB fue reemplazado debido a la complejidad de integrar el protocolo I2C. En su lugar, se añadieron los sensores de vibración y ultrasonido, que aportan nuevas dinámicas al juego. El sensor de vibración permite interpretar acciones físicas, como sacudir el dispositivo para jugar, mientras que el sensor de ultrasonido se usa para detectar la proximidad, simulando interacciones como una "caricia" de parte del usuario.
+Sensor PIR:
+
+
+El sensor PIR se mantuvo en el diseño debido a su facilidad para detectar movimiento, lo que permite acciones automáticas como "despertar" a la mascota cuando el usuario se acerca.
+
+Pantalla de 7 segmentos:
+
+La pantalla de 7 segmentos sigue siendo adecuada para mostrar información básica como el nivel de felicidad o hambre de la mascota, simplificando la visualización y optimizando el uso de los recursos de la FPGA.
+Replanteamiento
+Sensores de Vibración y Ultrasonido:
+
+La integración de los sensores de vibración y ultrasonido aporta interacciones más dinámicas, como la posibilidad de jugar con la mascota mediante sacudidas o activar emociones con proximidad del usuario. Estas modificaciones permitieron mejorar el proyecto sin añadir complejidad innecesaria.
+Optimización de la Visualización:
+
+La pantalla de 7 segmentos cumple su función, pero a largo plazo se podría considerar una pantalla más avanzada para mejorar la visualización de las emociones de la mascota.
+
+Evaluación Cíclica:
+
+El modelo ha sido ajustado a través de iteraciones que permitieron superar las limitaciones técnicas del sensor RGB y hacer pruebas más directas con los sensores de vibración y ultrasonido. Estas mejoras seguirán evaluándose en las próximas fases del proyecto.
