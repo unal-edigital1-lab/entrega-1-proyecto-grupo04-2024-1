@@ -564,13 +564,18 @@ Los botones cumpliran la funcion de curar, alimentar, reset, modo test, y racing
 
 ### Implementación HDL y Conexión
 
-Cada Cada display está controlado directamente desde la FPGA, la cual envía señales para ajustar los valores mostrados en función de las interacciones realizadas con la mascota virtual mediate la descripción de hardware. Los cambios en los niveles se reflejan inmediatamente en los displays de 7 segmentos, proporcionando retroalimentación instantánea al dueño sobre las necesidades actuales de la mascota.
+Se implementará un mecanismo de antirrebote en hardware para los botones, lo que garantizará una operación confiable al filtrar las señales ruidosas que pueden producirse durante las pulsaciones. Esto evitará lecturas incorrectas o pulsaciones múltiples no deseadas, asegurando que cada interacción del usuario sea registrada de manera precisa. 
 
 #### Pines de Alimentación
+
+<img src= "IMAGENES/Conexion de interruptor.jpg">
+
+De esta manera, realizaremos la conexión de los pulsadores alimentándolos con 5V a través de una resistencia de 220 ohmios. Asignaremos un pin de la FPGA para controlar cada pulsador, permitiendo detectar las señales de entrada. Finalmente, conectaremos el circuito a tierra para completar la configuración y asegurar un funcionamiento adecuado. Esta disposición garantiza que la señal sea correctamente interpretada por la FPGA, evitando fluctuaciones no deseadas y asegurando una respuesta estable ante cada pulsación.
 
 •	VCC: Fuente de alimentación de 5V en la FPGA.
 
 •	GND: Tierra en la FPGA.
+
 ## Prototipado
 
 ### Simulaciones e interpretación 
