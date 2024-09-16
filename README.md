@@ -205,7 +205,7 @@ donde:
 
 El sensor ultrasónico HC-SR04 se utiliza en el proyecto para medir la proximidad entre la mascota virtual (Tamagotchi) y el usuario. La interaccion se denomina como una "caricia" se simula detectando que la mano del usuario está a una distancia cercana al sensor, lo que luego se traduce en una interacción positiva que afecta el estado de la mascota, como aumentar su nivel de felicidad.
 
-<img src= "señal cuadrada del sensor ultrasonico.png">
+<img src= "IMAGENES/señal cuadrada del sensor ultrasonico.png">
 
 Explicación Basada en el Diagrama de Temporización
 
@@ -239,7 +239,7 @@ Si la distancia está dentro del rango definido (3 a 5 centimetros), se ejecuta 
 
 ### Implementación HDL y Conexión
 
-<img src= "conecciones del ultrasonico.png">
+<img src= "IMAGENES/conecciones del ultrasonico.png">
 
 El flujo de la implementación en Verilog sería algo similar a lo siguiente:
 
