@@ -466,7 +466,7 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 
 ## Interruptor táctil (push button)
 
-<img src= "IMAGENES/PULSADOR.png">
+<img src= "IMAGENES/boton-interruptor.png">
 
 •	Voltaje de operación: 3.3V a 5V.
 
