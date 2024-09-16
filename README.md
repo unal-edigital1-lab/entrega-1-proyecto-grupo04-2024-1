@@ -2,13 +2,13 @@
 
 ## Integrantes 
 
-###Juan Manuel Beltrán Botello
+### Juan Manuel Beltrán Botello
 
-###Oscar Jhondairo Siabato León
+### Oscar Jhondairo Siabato León
 
-###Willian Mauricio Meza Patiño
+### Willian Mauricio Meza Patiño
 
-###Jhon Alejandro Cuaspud
+### Jhon Alejandro Cuaspud
 
 
 ## Introduccion 
@@ -29,23 +29,23 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV, re
 
 ## Componentes 
 
-###FPGA cyclone IV
+### FPGA cyclone IV
 
-###Protoboard
+### Protoboard
 
-###Sensor medidor de distancia ultrasonido Hc-sr4
+### Sensor medidor de distancia ultrasonido Hc-sr4
 
-###Sensor de vibracion sw-420
+### Sensor de vibracion sw-420
 
-###Sensor de movimiento  PIR HC-SR501
+### Sensor de movimiento  PIR HC-SR501
 
-###Pantalla LCD 16X2 
+### Pantalla LCD 16X2 
 
-###Display 7 seg 
+### Display 7 seg 
 
-###4 interruptores
+### 4 interruptores
 
-##Especificacion de los sistemas que conforman el proyecto
+## Especificacion de los sistemas que conforman el proyecto
 
 ## Caja Negra 
 
