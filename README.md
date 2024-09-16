@@ -2,86 +2,95 @@
 
 ## Integrantes 
 
-Juan Manuel Beltrán Botello
+###Juan Manuel Beltrán Botello
 
-Oscar Jhondairo Siabato León
+###Oscar Jhondairo Siabato León
 
-Willian Mauricio Meza Patiño
+###Willian Mauricio Meza Patiño
 
-Jhon Alejandro Cuaspud
-
-
-# Propuesta Inicial para el Proyecto en FPGA: 
-Implementación de un Tamagotchi
-Introducción: En este proyecto, proponemos  implementar un Tamagotchi en una FPGA Cyclone IV. El Tamagotchi será una mascota virtual que responderá a la interacción del usuario mediante botones y a estímulos ambientales a través de sensores de sonido y luz. La salida del sistema incluirá un display de 7 segmentos para mostrar los niveles y puntuación de la mascota, así como una pantalla LCD de 16x2 para representar su estado gráficamente.
-
-## Objetivos:
-
-Diseñar e implementar un sistema de interacción para el usuario mediante cinco botones: alimentar, premiar, regañar, reset y test.
-Integrar dos sensores, uno de sonido para detectar cuando la mascota es despertada y otro de luz para determinar si es de día o de noche.
-Desarrollar la lógica de control para coordinar las interacciones del usuario y los estímulos ambientales.
-Implementar salidas visuales utilizando un display de 7 segmentos y una pantalla LCD de 16X2 para representar el estado y la puntuación de la mascota.
-Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV.
-
-## Justificación y Replanteamiento del Modelo
-
-El diseño inicial del Tamagotchi en FPGA incluía sensores RGB y PIR, además de botones y una pantalla de 7 segmentos. Sin embargo, después de enfrentar dificultades con la implementación del protocolo I2C para el sensor RGB, se tomó la decisión de sustituirlo y agregar otros sensores más viables, como los sensores de vibración y ultrasonido, que simplificaron la implementación y aportaron nuevas formas de interacción.
-
-### Justificación
-
-Cambio de Sensor RGB y adición de Sensores de Vibración y Ultrasonido:
-
-El sensor RGB fue reemplazado debido a la complejidad de integrar el protocolo I2C. En su lugar, se añadieron los sensores de vibración y ultrasonido, que aportan nuevas dinámicas al juego. El sensor de vibración permite interpretar acciones físicas, como sacudir el dispositivo para jugar, mientras que el sensor de ultrasonido se usa para detectar la proximidad, simulando interacciones como una "caricia" de parte del usuario.
-Sensor PIR:
+###Jhon Alejandro Cuaspud
 
 
-El sensor PIR se mantuvo en el diseño debido a su facilidad para detectar movimiento, lo que permite acciones automáticas como "despertar" a la mascota cuando el usuario se acerca.
+## Introduccion 
 
-Pantalla de 7 segmentos:
+Proponemos implementar un Tamagotchi en una FPGA Cyclone IV utilizando el lenguaje de programación de hardware Verilog. Este Tamagotchi será una mascota virtual que reaccionará a las interacciones del usuario a través de botones y a estímulos ambientales mediante sensores de ultrasonido, PIR y de vibraciones, los cuales serán detallados más adelante. El sistema contará con un display de 7 segmentos para mostrar los niveles y la puntuación de la mascota, mientras que una pantalla LCD de 16x2 se encargará de representar gráficamente su estado, así como el modo de juego en el que se encuentra el usuario.
 
-La pantalla de 7 segmentos sigue siendo adecuada para mostrar información básica como el nivel de felicidad o hambre de la mascota, simplificando la visualización y optimizando el uso de los recursos de la FPGA.
-Replanteamiento
-Sensores de Vibración y Ultrasonido:
+## Objetivos
 
-La integración de los sensores de vibración y ultrasonido aporta interacciones más dinámicas, como la posibilidad de jugar con la mascota mediante sacudidas o activar emociones con proximidad del usuario. Estas modificaciones permitieron mejorar el proyecto sin añadir complejidad innecesaria.
-Optimización de la Visualización:
+Diseñar e implementar un sistema de interacción en la FPGA Cyclone IV, donde el usuario podrá realizar acciones a través de cinco botones dedicados a las funciones de alimentar, curar, reiniciar, modo test y modo racing.
 
-La pantalla de 7 segmentos cumple su función, pero a largo plazo se podría considerar una pantalla más avanzada para mejorar la visualización de las emociones de la mascota.
+Integrar tres sensores: un sensor de ultrasonido, un sensor PIR (infrarrojo pasivo) y un sensor de vibraciones, para que el Tamagotchi reaccione a estímulos ambientales y físicos.
 
-Evaluación Cíclica:
+Desarrollar la lógica de control en Verilog para coordinar eficientemente las interacciones del usuario y las respuestas a los estímulos de los sensores, asegurando una experiencia de juego fluida.
 
-El modelo ha sido ajustado a través de iteraciones que permitieron superar las limitaciones técnicas del sensor RGB y hacer pruebas más directas con los sensores de vibración y ultrasonido. Estas mejoras seguirán evaluándose en las próximas fases del proyecto.
+Implementar salidas visuales mediante un display de 7 segmentos para mostrar la puntuación de la mascota y una pantalla LCD de 16x2 para representar su estado gráfico y el modo de juego activo.
+
+Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV, resolviendo desafíos de diseño, limitaciones de recursos y posibles errores físicos que puedan surgir durante el desarrollo.
+
+## Componentes 
+
+###FPGA cyclone IV
+
+###Protoboard
+
+###Sensor medidor de distancia ultrasonido Hc-sr4
+
+###Sensor de vibracion sw-420
+
+###Sensor de movimiento  PIR HC-SR501
+
+###Pantalla LCD 16X2 
+
+###Display 7 seg 
+
+###4 interruptores
+
+##Especificacion de los sistemas que conforman el proyecto
+
+## Caja Negra 
+
+El diagrama representa un sistema  compuesto por tres módulos principales: Sensores, Botones y Visualización. Los sensores incluyen un sensor de movimiento y un sensor de colores que comunican mediante el protocolo I2C. El módulo de botones, que incluye opciones como Jugar, Curar, Reset y Test, está conectado a un sistema de debouncing para gestionar las entradas de forma precisa. Las salidas visuales se manejan a través de un display de 7 segmentos y un LCD de 16x2. Además, un divisor de frecuencia regula las interacciones de tiempo en el sistema, garantizando la sincronización y el correcto despliegue de información.
+
+<img src= "IMAGENES/caja negra.jpg">
+
+## Diagrama de flujo
+
+El diagrama de flujo describe un sistema de juego donde se simula el cuidado de una mascota virtual  que determinan su estado de bienestar: Hambre, Diversión, Energía, Salud y Felicidad, todas iniciando en 5. Estas se afectan con el tiempo, y el jugador debe intervenir para mantenerlas dentro de rangos saludables.
+
+1. *Hambre*: Si el nivel de Hambre cae por debajo de 2, la mascota se muestra hambrienta. El jugador debe alimentarla para evitar que la Salud y la Felicidad no disminuyan.
+
+2. *Diversión*: Al reducirse la Diversión por debajo de 2, la mascota se considera aburrida. El jugador puede optar por jugar con la mascota para aumentar su Felicidad y restablecer su Diversión.
+
+3. *Energía*: Si la Energía disminuye a menos de 2, la mascota entra en un estado cansado, necesitando dormir para recuperar Energía y Salud.
+
+4. *Salud*: Un nivel de Salud por debajo de 2 indica que la mascota está enferma. Debe ser curada, o de lo contrario la Salud continuará disminuyendo, pudiendo resultar en la muerte de la mascota si la Salud llega a cero.
+
+5. *Felicidad*: Si la Felicidad cae por debajo de 2, la mascota se pone triste, lo que puede afectar adicionalmente su Salud. Acariciar a la mascota o atender sus otras necesidades puede restaurar la Felicidad.
+
+Si alguna de las condiciones críticas como la Salud llega a cero, la mascota muere, y el juego requiere que se realice un reinicio. Este sistema de juego enseña sobre el cuidado y la atención necesaria para mantener el bienestar de un ser, aunque sea virtual, enfatizando la importancia de la observación y la respuesta a las necesidades de los que dependen de nosotros.
+
+<img src= "IMAGENES/Diagrama de flujo.jpg">
 
 
+## maquina de estados.
+
+Estado Inicial: La mascota comienza con niveles equilibrados de salud, energía, diversión, hambre y felicidad.
+
+Transiciones:
+ 
+Si alguno de estos niveles baja demasiado, la mascota cambia a un estado específico, como Hambriento, Aburrido, Cansado, Enfermo, o Triste.
+Los usuarios pueden realizar acciones como alimentar, jugar o curar, que restauran esos niveles y devuelven la mascota al estado Saludable.
+
+Estado Final: Si la salud de la mascota llega a cero, entra en el estado Muere, concluyendo la simulación.
+
+Importancia:
+
+Esta FSM permite que la mascota reaccione de forma dinámica a las interacciones del usuario y a las condiciones de su entorno, ofreciendo una experiencia interactiva y educativa que simula el cuidado de una mascota real.
+
+<img src= "IMAGENES/maquina de estados .png">
 
 
-
-
-
-
-
-
-
-
-## Especificacion de los componentes para el proyecto 
-
-
-
-## Perifericos
-
-sensor rgb TCS34725 (no fue implementado debido a limite de tiempo en el cronograma)
-
-sensor medidor de distancia ultrasonido Hc-sr4
-
-sensor de vibracion sw-420
-
-Sensor de movimiento  PIR HC-SR501
-
-Pantalla LCD 16X2 
-
-Display 7 seg 
-
-4 interruptores
+##Arquitectura del sistema
 
 ## sensor rgb TCS34725
 
@@ -251,64 +260,6 @@ Medición del tiempo ECHO: Implementar un temporizador que comience a contar cua
 Cálculo de la distancia: Transformar el tiempo medido en la distancia correspondiente y almacenarla para su uso en la lógica del Tamagotchi.
 
 
-## Sensor de Vibración SW-420
-
-<img src= "IMAGENES/Sensor Vibracion.png">
-
-Voltaje de operación: 3.3V a 5V.
-
-Corriente de operación: <1.5 mA en operación.
-
-Dimensiones: 32mm x 14mm.
-
-Salida digital: 0 y 1, dependiendo de la vibración detectada.
-
-### Funcionamiento
-
-El sensor de vibración SW-420 detecta movimientos o vibraciones. Internamente, tiene un resorte enrollado alrededor de un pasador. Cuando el dispositivo se agita o vibra, el resorte entra en contacto con el pasador y genera una señal digital, indicando que ha ocurrido una vibración. El sensor genera una salida digital de 0 (no hay vibración) o 1 (vibración detectada).
-
-
-<img src= "IMAGENES/funcionamiento del sensor vibracion.png">
-
-###Funcionalidad
-
-En el proyecto del Tamagotchi, el sensor de vibración SW-420 simula una interacción de "juego" con la mascota virtual. Cuando el usuario agita o mueve el dispositivo, el sensor detecta la vibración, y la FPGA interpreta esto como una señal para que la mascota interactúe jugando, lo que incrementa su felicidad o genera acciones dinámicas en el juego.
-
-La vibración se detecta como una sacudida o movimiento, que es interpretado como un evento de "jugar", donde la mascota responde de forma positiva, afectando su comportamiento de manera divertida.
-
-<img src= "señal cuadrada del sensor vibracion.png">
-
-Explicación Basada en el Diagrama de Temporización
-Señal de entrada al sensor:
-El proceso inicia cuando el sensor SW-420 detecta una vibración, cambiando su señal de salida de bajo (0) a alto (1), lo que indica que ha ocurrido una vibración. La FPGA está monitoreando constantemente esta señal digital.
-
-Señal de salida del sensor:
-
-El sensor permanece en alto (1) mientras se detecta la vibración. Este tiempo es suficiente para que la FPGA registre la vibración y la interprete como una acción de juego o interacción física con la mascota.
-
-### Pines de Alimentación
-
-VCC (Alimentación 5V): Este pin se conecta a una fuente de 3.3V o 5V para alimentar el sensor.
-
-GND (Tierra): Debe conectarse al pin de tierra (GND) en la FPGA para completar el circuito de alimentación.
-
-DO (Salida Digital): El pin de salida digital del sensor se conecta a un GPIO de la FPGA configurado como entrada. Este pin cambia a alto cuando se detecta una vibración, y se utiliza para activar la interacción 
-de juego en la mascota.
-
-Implementación HDL y Conexión
-
-<img src= "conecciones del sensor vibracion.png">
-
-El flujo de implementación en la FPGA sería el siguiente:
-
-Monitorización de la señal de salida: La FPGA monitoriza constantemente el estado del pin de salida digital del sensor. Cuando el pin pasa de bajo (0) a alto (1), la FPGA registra la vibración y la interpreta como una interacción de juego.
-
-Activación de la interacción de juego: Una vez que se detecta la vibración, la FPGA genera una respuesta en la mascota virtual, donde la interacción de "juego" se simula a través de cambios en el estado de felicidad o acciones dinámica
-
-
-
-
-
 ## Sensor de movimiento PIR HC-SR501
 Para implementar este sensor, necesitaremos lo siguiente:
 <img src= "IMAGENES/SENSOR PIR .png">
@@ -409,10 +360,15 @@ En el entorno de desarrollo FPGA, se configura el pin seleccionado para que func
 ### Funcionamiento
 
 1.	Inicialización:
+
 •	El MPU envía una serie de comandos de inicialización al controlador de la pantalla para configurar el modo de operación (4 bits o 8 bits), el número de líneas y el tipo de fuente.
-2.	Envío de Datos y Comandos:
+
+3.	Envío de Datos y Comandos:
+
 •	El MPU utiliza los pines RS, R/W y E para seleccionar y enviar datos o comandos a través de los pines de datos (DB0-DB7).
-3.	Visualización:
+
+4.	Visualización:
+   
 •	El controlador interpreta los datos y comandos recibidos y actualiza la pantalla en consecuencia, mostrando los caracteres en las posiciones especificadas.
 
 ### Funcionalidad 
@@ -435,7 +391,9 @@ La pantalla está configurada para mostrar emojis y mensajes que representan dif
 
 •	Aburrido: Señala que la mascota necesita más interacción o jugar.
 
-Dependiendo de cómo el usuario interactúa con la mascota virtual (alimentación, juego, descanso), la pantalla actualizará dinámicamente los íconos o mensajes para reflejar el nuevo estado de la mascota. Esto permite al usuario entender inmediatamente las consecuencias de sus acciones y ajustar su comportamiento para mejorar el bienestar de la mascota.
+* Muerto: Indica que el juego se termino y tendra que reiniciar
+
+Dependiendo de cómo el usuario interactúa con la mascota virtual (alimentación, juego, descanso), la pantalla actualizará dinámicamente los íconos y mensajes para reflejar el nuevo estado de la mascota. Esto permite al usuario entender inmediatamente las consecuencias de sus acciones y ajustar su comportamiento para mejorar el bienestar de la mascota.
 
 ### Implementación HDL y Conexión
 
@@ -449,27 +407,27 @@ Función: Controla la pantalla enviando comandos y datos.
 
 Conexiones: Se conecta a los pines RS, R/W, E y DB0-DB7 de la pantalla.
 
-##### Pines de Alimentación
+#### Pines de Alimentación
 
 •	VCC: Fuente de alimentación de 5V en la FPGA.
 
 •	GND: Tierra en la FPGA.
 
-##### Pines de Control:
+#### Pines de Control:
 
-RS (Registro de Selección): Selecciona entre comandos (0) y datos (1).
+* RS (Registro de Selección): Selecciona entre comandos (0) y datos (1).
 
-R/W (Lectura/Escritura): Selecciona entre lectura (1) y escritura (0).
+* R/W (Lectura/Escritura): Selecciona entre lectura (1) y escritura (0).
 
-E (Enable): Habilita la comunicación con la pantalla.
+* E (Enable): Habilita la comunicación con la pantalla.
 
-##### Pines de Datos (DB0-DB7):
+#### Pines de Datos (DB0-DB7):
 
 Función: Transmiten los datos y comandos entre el MPU y la pantalla.
 
 Modo de Operación: Puede operar en modo de 4 bits (DB4-DB7) o 8 bits (DB0-DB7).
 
-##### Controlador/Driver IC (ICST7066U-0L-BT-BC o equivalente):
+#### Controlador/Driver IC (ICST7066U-0L-BT-BC o equivalente):
 
 Función: Interpreta los comandos y datos del MPU y controla la pantalla.
 
@@ -478,6 +436,7 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 
 ## Display de 7 segmentos (ánodo común)
 <img src= "IMAGENES/DISPLAY7R.png">
+
 •    Display 7 Segmentos
 
 •    Componente de 1 Dígito con Punto Decimal
@@ -499,8 +458,11 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 ### Componentes y Pines:
 
 <img src= "IMAGENES/DISPLAYD.png">
+
 •	Segmentos (a-g): Cada uno de los siete segmentos que forman los números.
+
 •	Punto Decimal (dp): Opcional, utilizado para mostrar números decimales.
+
 •	Pines de Conexión: 4pines, incluyendo los pines comunes y los pines de cada segmento.
 
 ### Funcionamiento
@@ -510,7 +472,7 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 •	Interfaz: Puede ser controlado directamente por un microcontrolador o mediante un decodificador BCD a 7 segmentos.
 
 ## Interruptor táctil (push button)
-<img src= "IMAGENES/PULSADOR .png">
+<img src= "IMAGENES/PULSADOR.png">
 •	Voltaje de operación: 3.3V a 5V.
 
 •	Corriente de operación:  Típica: 50mA.  Máxima: 100mA.
@@ -542,47 +504,3 @@ Cada display está controlado directamente desde la FPGA, la cual envía señale
 •	VCC: Fuente de alimentación de 5V en la FPGA.
 
 •	GND: Tierra en la FPGA.
-
-## Caja Negra 
-
-El diagrama representa un sistema  compuesto por tres módulos principales: Sensores, Botones y Visualización. Los sensores incluyen un sensor de movimiento y un sensor de colores que comunican mediante el protocolo I2C. El módulo de botones, que incluye opciones como Jugar, Curar, Reset y Test, está conectado a un sistema de debouncing para gestionar las entradas de forma precisa. Las salidas visuales se manejan a través de un display de 7 segmentos y un LCD de 16x2. Además, un divisor de frecuencia regula las interacciones de tiempo en el sistema, garantizando la sincronización y el correcto despliegue de información.
-
-<img src= "IMAGENES/caja negra.jpg">
-
-## Diagrama de flujo
-
-El diagrama de flujo describe un sistema de juego donde se simula el cuidado de una mascota virtual  que determinan su estado de bienestar: Hambre, Diversión, Energía, Salud y Felicidad, todas iniciando en 5. Estas se afectan con el tiempo, y el jugador debe intervenir para mantenerlas dentro de rangos saludables.
-
-1. **Hambre**: Si el nivel de Hambre cae por debajo de 2, la mascota se muestra hambrienta. El jugador debe alimentarla para evitar que la Salud y la Felicidad no disminuyan.
-
-2. **Diversión**: Al reducirse la Diversión por debajo de 2, la mascota se considera aburrida. El jugador puede optar por jugar con la mascota para aumentar su Felicidad y restablecer su Diversión.
-
-3. **Energía**: Si la Energía disminuye a menos de 2, la mascota entra en un estado cansado, necesitando dormir para recuperar Energía y Salud.
-
-4. **Salud**: Un nivel de Salud por debajo de 2 indica que la mascota está enferma. Debe ser curada, o de lo contrario la Salud continuará disminuyendo, pudiendo resultar en la muerte de la mascota si la Salud llega a cero.
-
-5. **Felicidad**: Si la Felicidad cae por debajo de 2, la mascota se pone triste, lo que puede afectar adicionalmente su Salud. Acariciar a la mascota o atender sus otras necesidades puede restaurar la Felicidad.
-
-Si alguna de las condiciones críticas como la Salud llega a cero, la mascota muere, y el juego requiere que se realice un reinicio. Este sistema de juego enseña sobre el cuidado y la atención necesaria para mantener el bienestar de un ser, aunque sea virtual, enfatizando la importancia de la observación y la respuesta a las necesidades de los que dependen de nosotros.
-
-<img src= "IMAGENES/Diagrama de flujo.jpg">
-
-
-## maquina de estados.
-
-Estado Inicial: La mascota comienza con niveles equilibrados de salud, energía, diversión, hambre y felicidad.
-
-Transiciones:
- 
-Si alguno de estos niveles baja demasiado, la mascota cambia a un estado específico, como Hambriento, Aburrido, Cansado, Enfermo, o Triste.
-Los usuarios pueden realizar acciones como alimentar, jugar o curar, que restauran esos niveles y devuelven la mascota al estado Saludable.
-
-Estado Final: Si la salud de la mascota llega a cero, entra en el estado Muere, concluyendo la simulación.
-
-Importancia:
-
-Esta FSM permite que la mascota reaccione de forma dinámica a las interacciones del usuario y a las condiciones de su entorno, ofreciendo una experiencia interactiva y educativa que simula el cuidado de una mascota real.
-
-<img src= "IMAGENES/maquina de estados .png">
-
-
