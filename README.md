@@ -568,7 +568,7 @@ Se implementará un mecanismo de antirrebote en hardware para los botones, lo qu
 
 #### Pines de Alimentación
 
-<img src= "IMAGENES/Conexion de interruptor.jpg">
+<img src= "IMAGENES/Conexion de interruptor.jpeg">
 
 De esta manera, realizaremos la conexión de los pulsadores alimentándolos con 5V a través de una resistencia de 220 ohmios. Asignaremos un pin de la FPGA para controlar cada pulsador, permitiendo detectar las señales de entrada. Finalmente, conectaremos el circuito a tierra para completar la configuración y asegurar un funcionamiento adecuado. Esta disposición garantiza que la señal sea correctamente interpretada por la FPGA, evitando fluctuaciones no deseadas y asegurando una respuesta estable ante cada pulsación.
 
@@ -579,27 +579,30 @@ De esta manera, realizaremos la conexión de los pulsadores alimentándolos con 
 ## Prototipado
 
 ### Simulaciones e interpretación 
+
 Para la implementacion de la mayoria de los sensores (Modulos implementados en el codigo para cada uno de ellos) y perifericos que componen nuestro proyecto "Tamagochi" se simuló su comportamiento por medio de Questa. los resultados desgregados de cada componente se veran a continación.
-1.Simulación Display 7segmentos:
+
+1. Simulación Display 7segmentos:
 
 <img src= "IMAGENES/DISPLAY_HAMBRE.png">
 
 <img src= "IMAGENES/DISPLAY_VIDA.png">
 
 En la anteriores imagenes se muestra el funcionamiento de los displays de 7 segmentos deacuerdo a su configuración. cada display que representa el nivel de un estado comienza desde el mismo valor numerico en el display seleccionado y cambia con el tiempo. se comprueba el correcto funcionamient de los displays.
+
 2.Simulación pantalla LCD de 16x2:
 
 <img src="IMAGENES/pantalla_lcd.png">
 
 Para la pantalla lcd de 16x2 se probó que  la pantalla estuviera lista para la lectura de los archivos tipo txt que se le subieran, las caras de que hace nuestra mascota "tamagochi". ready_i indica el inicio de nuestra maquina de estados.
 
-3.Simulación Antirrebote:
+3. Simulación Antirrebote:
 
 <img src="IMAGENES/ANTIRREBOTE.png">
 
 Se puede ver como en la imagen, cuando simulamos pulsos de distinta duración no se presentan distorsiones en ningun pulso por lo que podemos concluir el correcto funcionamiento de nuestro modulo antirrebote.
 
-4.Simulación Ultrasonido:
+4. Simulación Ultrasonido:
 
 <img src="IMAGENES/TB_ULTRASONIDO.png">
 
