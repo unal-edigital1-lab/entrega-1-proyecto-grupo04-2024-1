@@ -663,7 +663,7 @@ Salud = 5
 
 Felicidad = 5
 
-#### Modo Racing: 
+
 
 
 | **Parámetro**    | **Condición** | **Acción**             | **Resultado**                                     |
@@ -674,8 +674,8 @@ Felicidad = 5
 |                  | No alimentar | Felicidad = Felicidad - 2 | Disminuye la felicidad al no alimentar.               |
 |                  |Alimentar (boton)|  Hambre = 5             | Hambre se resetea al valor máximo (5).           |
 | **Diversión**    |1ut = Sí      | Diversión = Diversión - 1 | Se reduce el nivel de diversión cada 1 unidad de tiempo.                 |
-|                  | Diversión ≤ 2 | Aburrido               | .                    |
-|                  | NO jugar      | Felicidad = Felicidad - 1 | Disminuye la felicidad al no jugar.                 |
+|                  | Diversión ≤ 2 | Aburrido               |                   |
+|                  | No jugar      | Felicidad = Felicidad - 1 | Disminuye la felicidad al no jugar.                 |
 |                  |Jugar (sensor) | Diversión = 5          | Diversión se resetea al valor máximo (5).        |
 |                  |Jugar (sensor)| Energía = Energía - 1  | Se reduce la energía al jugar.                   |
 |                  |Jugar (sensor)| Hambre = Hambre - 1    | Se reduce el hambre al jugar.                    |
@@ -684,11 +684,11 @@ Felicidad = 5
 |                  |Dormir (sensor)| Energia = 5            | Energia se resetea al valor maximo (5)                                                  
 |                  |Dormir (sensor)| Salud = Salud + 1      | Aumenta la salud al dormir.                      |
 |                  |Dormir (sensor)| Felicidad = Felicidad + 2 | Aumenta la felicidad al dormir.                  |
-| **Salud**        | Salud ≤ 2     | Enfermo                |                               .                    |
+| **Salud**        | Salud ≤ 2     | Enfermo                |                                                   |
 |                  | Curar (Botón) | Salud = 5              |Salud se resetea al valor maximo (5).                    |
 |                  | No curar      | Salud = Salud - 1      | Se reduce la salud si no se cura.                |
 |                  | Salud = 0     | Muerte                 | El Tamagotchi muere y se activa la opción Reset. |
-| **Felicidad**    | Felicidad ≤ 2 | Triste                 |                           .                |
+| **Felicidad**    | Felicidad ≤ 2 | Triste                 |                                          |
 |                  |No acariciar   |  salud = Salud - 1      | Disminuye la salud si no se acaricia             |
 |                  |Acariciar (sensor)| Felicidad =5           | se resetea la felicidad al acariciar al valor maximo (5)        |
 | **Modo Racing**  | Pulsar por 5 seg | Pulsos = 1            | Tiempo x 5.                                      |
@@ -703,7 +703,8 @@ Felicidad = 5
 |                  |               | Pulso = 7             | Hambriento.                                      |
 |                  |               | Pulso = 8             | Feliz.                                           |
 
-Este resumen abarca los diferentes estados y sus respectivos cambios basados en las condiciones que se presentan en el diagrama de flujo. ¿Te gustaría agregar o ajustar algún detalle?
+Este resumen abarca los diferentes estados y sus respectivos cambios basados en las condiciones que se presentan en el diagrama de flujo. 
+
 ### Maquina de estados
 
 ### Visualizacion 
