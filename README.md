@@ -853,5 +853,7 @@ Como se puede evidenciar la conexion de la pantalla, los displays 7 segmenntos q
 Finalmente mostramos en levantamiento total de nuestro poyecto 
 
 ### Video
+ 
+[Ver video en YouTube](https://youtu.be/vZQra_RWRXc)
 
 ## Referencias
