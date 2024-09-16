@@ -46,10 +46,6 @@ module LCD1602_top #(parameter num_commands = 3,
 //----------------------------------- boton ----------------------------------------\\
 
     input wire btn_in,
-    output wire debounced_out,
-	 output wire debounced_out2,
-    output wire debouncer_led,
-	 output wire debouncer_led2r,
     output wire [3:0] debouncer_count_out,
 	 output wire [3:0] debouncer_count_out2
 
