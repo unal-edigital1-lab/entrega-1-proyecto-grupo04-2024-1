@@ -369,7 +369,7 @@ always @(posedge clk or negedge reset) begin
 	  
 //---------------------------------logica dormido-----------------------------------------------------\\
 
-    if (sensor_pir == 0 && counter_tiempo % 625000000 == 0 && energia<5) begin 
+	    if (sensor_pir == 0 && counter_tiempo % 625000000 == 0 && energia<5 ) begin 
       energia <= energia + 1;
     end
     if (sensor_pir == 0 && counter_tiempo % 2500000000 == 0 && energia > 4 && vida<5) begin 
@@ -380,10 +380,10 @@ always @(posedge clk or negedge reset) begin
 
 //---------------------logicas de felicidad------------------------------------------------\\
 
-     if (counter_tiempo % 2500000000 == 0 && diversion<=2 && felicidad>0) begin 
+	    if (counter_tiempo % 2500000000 == 0 && diversion<=2 && felicidad>0 && sensor_pir == 1) begin 
         felicidad <= felicidad - 4'h1;      
      end
-     if (counter_tiempo % 3750000000 == 0 && hambre<=2 && felicidad>0) begin 
+	    if (counter_tiempo % 3750000000 == 0 && hambre<=2 && felicidad>0 && sensor_pir == 1) begin 
         felicidad <= felicidad - 4'h2;      
      end
      if (counter_tiempo % 50000000000 == 0 && energia<=2 && felicidad>0 && sensor_pir == 1) begin 
@@ -400,16 +400,16 @@ always @(posedge clk or negedge reset) begin
 
 //-----------------------------logica vida----------------------------------------------------\\
 
-     if (counter_tiempo % 2500000000 == 0 && hambre<=2 && vida>0) begin 
+	    if (counter_tiempo % 2500000000 == 0 && hambre<=2 && vida>0 && sensor_pir == 1) begin 
         vida <= vida - 4'h1;      
      end
-     if (counter_tiempo % 2500000000 == 0 && energia<=2 && vida>0) begin 
+	    if (counter_tiempo % 2500000000 == 0 && energia<=2 && vida>0 && sensor_pir == 1) begin 
         vida <= vida - 4'h1;      
      end
-     if (counter_tiempo % 2500000000 == 0 && felicidad<=2 && vida>0) begin 
+	    if (counter_tiempo % 2500000000 == 0 && felicidad<=2 && vida>0 && sensor_pir == 1) begin 
         vida <= vida - 4'h1;      
      end
-     if (btn_vida==1'b0 && vida<5 && hambre>0) begin 
+	    if (btn_vida==1'b0 && vida<5 && hambre>0 && sensor_pir == 1) begin 
         vida <= 5;
         hambre <= hambre - 4'h1;
      end
@@ -423,6 +423,9 @@ always @(posedge clk or negedge reset) begin
      end
      if (sensor_vibracion == 1'b1 && diversion < 5 && energia>0 && sensor_pir == 1) begin 
         energia <= energia - 1;      
+     end
+	    if (sensor_vibracion == 1'b1 && hambre < 5 && energia>0 && sensor_pir == 1) begin 
+        hambre <= hambre - 1;      
      end
 
 //----------------------------------------------------------------------------------------------------\\
