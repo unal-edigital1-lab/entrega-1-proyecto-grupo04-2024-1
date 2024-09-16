@@ -669,26 +669,28 @@ Felicidad = 5
 | **Parámetro**    | **Condición** | **Acción**             | **Resultado**                                     |
 |------------------|---------------|------------------------|--------------------------------------------------|
 | **Hambre**       | 2ut = Sí      | Hambre = Hambre - 1    | Se reduce el nivel de hambre cada 2 unidades de tiempo.                    |
-|                  | Hambre ≤ 2    | Hambriento             | Se activa el botón de Alimentar.                 |
-|                  | Alimentar     | Salud = Salud - 1      | Disminuye la salud al alimentar.                 |
-|                  |               | Felicidad = Felicidad + 2 | Aumenta la felicidad al alimentar.               |
-|                  |               | Hambre = 5             | Hambre se resetea al valor máximo (5).           |
-| **Diversión**    | Zut = Sí      | Diversión = Diversión - 1 | Se reduce el nivel de diversión.                 |
-|                  | Diversión ≤ 2 | Aburrido               | Se activa la opción de Jugar.                    |
-|                  | Jugar         | Felicidad = Felicidad - 1 | Disminuye la felicidad al jugar.                 |
-|                  |               | Diversión = 5          | Diversión se resetea al valor máximo (5).        |
+|                  | Hambre ≤ 2    | Hambriento             |                  |
+|                  |               | Salud = Salud - 1      | Disminuye la salud al no alimentar.                 |
+|                  |               | Felicidad = Felicidad - 2 | Disminuye la felicidad al no alimentar.               |
+|                   presionar boton  Hambre = 5             | Hambre se resetea al valor máximo (5).           |
+| **Diversión**    |1ut = Sí      | Diversión = Diversión - 1 | Se reduce el nivel de diversión cada 1 unidad de tiempo.                 |
+|                  | Diversión ≤ 2 | Aburrido               | .                    |
+|                  |              | Felicidad = Felicidad - 1 | Disminuye la felicidad al no jugar.                 |
+|                  |jugar sensor   | Diversión = 5          | Diversión se resetea al valor máximo (5).        |
 |                  |               | Energía = Energía - 1  | Se reduce la energía al jugar.                   |
 |                  |               | Hambre = Hambre - 1    | Se reduce el hambre al jugar.                    |
-| **Energía**      | Aut = Sí      | Energía = Energía - 1   | Se reduce el nivel de energía.                   |
-|                  | Energía ≤ 2   | Cansado                | Se activa la opción de Dormir.                   |
-|                  | Dormir        | Salud = Salud + 1      | Aumenta la salud al dormir.                      |
+| **Energía**      | 4ut = Sí      | Energía = Energía - 1   | Se reduce el nivel de energía cada 4 unidades de tiempo.                   |
+|                  | Energía ≤ 2   | Cansado                |                                                  |
+|                  |Dormir sensor  | Energia = 5            | Energia se resetea al valor maximo (5)                                                  
+|                  |               | Salud = Salud + 1      | Aumenta la salud al dormir.                      |
 |                  |               | Felicidad = Felicidad + 2 | Aumenta la felicidad al dormir.                  |
-| **Salud**        | Salud ≤ 2     | Enfermo                | Se activa la opción de Curar.                    |
+| **Salud**        | Salud ≤ 2     | Enfermo                |                               .                    |
 |                  | Curar (Botón) | Salud = 5              | Se resetea la salud al curar.                    |
 |                  | No curar      | Salud = Salud - 1      | Se reduce la salud si no se cura.                |
 |                  | Salud = 0     | Muerte                 | El Tamagotchi muere y se activa la opción Reset. |
-| **Felicidad**    | Felicidad ≤ 2 | Triste                 | Se activa la opción de Acariciar.                |
-|                  | Acariciar     | Felicidad = Felicidad + 1 | Aumenta la felicidad.                            |
+| **Felicidad**    | Felicidad ≤ 2 | Triste                 |                           .                |
+|                  |               |  salud = Salud - 1      | Disminuye la salud si no se acaricia             |
+|                  |Acariciar sensor| Felicidad =5           | se resetea la felicidad al acariciar al valor maximo (5)        |
 | **Modo Racing**  | Pulsar por 5 seg | Pulsos = 1            | Tiempo x 5.                                      |
 |                  |               | Pulsos = 2             | Tiempo x 10.                                     |
 |                  |               | Pulsos = 3             | Tiempo x 50.                                     |
