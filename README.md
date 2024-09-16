@@ -17,6 +17,8 @@ Implementar un Tamagotchi en una FPGA Cyclone IV utilizando el lenguaje de progr
 
 ## Objetivos
 
+Desarrollar un sistema de Tamagotchi en FPGA (Field-Programmable Gate Array) que simule el cuidado de una mascota virtual. El diseño incorporará una lógica de estados para reflejar las diversas necesidades y condiciones de la mascota, junto con mecanismos de interacción a través de sensores y botones que permitan al usuario cuidar adecuadamente de ella
+
 Diseñar e implementar un sistema de interacción en la FPGA Cyclone IV, donde el usuario podrá realizar acciones a través de cinco botones dedicados a las funciones de alimentar, curar, reiniciar, modo test y modo racing.
 
 Integrar tres sensores: un sensor de ultrasonido, un sensor PIR (infrarrojo pasivo) y un sensor de vibraciones, para que el Tamagotchi reaccione a estímulos ambientales y físicos.
@@ -679,6 +681,7 @@ Tras enfrentar desafíos en la implementación del sensor de colores debido a co
 
 ### Interpretación de resultados de la implementación
 
+Finalmente, se logró la implementación de tres sensores con el objetivo de que la interacción del usuario con la mascota sea más didáctica y se ajuste mejor a las necesidades de una mascota real. Además, se resolvieron las diferentes dificultades que surgieron con la implementación del sensor de colores, sustituyéndolo por los otros dos sensores: uno de vibración y otro de ultrasonido. las pruebas realizadas del  funcionamiento resultaron satisfactorias con algunos problemas con el sensor PIR y su calibracion pero en resumen nuestro resultado fue satisfactorio en relación con las especificaciones que el proyecto sugería.
 
 ### Determinación de causas físicas que puedan generar malos funcionamientos
 
@@ -732,6 +735,8 @@ Interferencia Mecánica: Los botones pueden experimentar interferencia mecánica
 
 ## Evaluación del cumplimiento de los requisitos funcionales 
 
+Tras un análisis minucioso de los requisitos funcionales del proyecto, podemos concluir que su cumplimiento ha sido satisfactorio. Además, se han superado las expectativas al cumplir con requisitos adicionales más allá de los mínimos establecidos por el mismo.
+
 ## Trabajo en Equipo y Gestión del Proyecto
 
 ### cronograma de actividades 
@@ -751,6 +756,7 @@ Interferencia Mecánica: Los botones pueden experimentar interferencia mecánica
 | Pruebas y Optimización | Semana 11 | Pruebas exhaustivas del sistema                                                | Pruebas finales con usuarios simulados                                               |
 |                     | Semana 12    | **Cambio del sensor RGB por ultrasonido y vibración**                          | Reunión 4 (Replanteo del cambio de sensor) y pruebas de integración del nuevo sensor |
 | Documentación y Entrega | Semana 13 | Optimización final del sistema, documentación técnica y entrega                | Reunión 5 (Revisión final) y pruebas de validación final                             |
+
 
 
 ### Procedimiento y anexos fotograficos
