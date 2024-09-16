@@ -260,7 +260,7 @@ end
             end 
          end
 			
-			//contador acelerado
+	//contador acelerado
 			
          if(racing_mode == 1'b1)begin
           if (counter_tiempo_racing == 36'd45000000000) begin
@@ -341,7 +341,7 @@ always @(posedge clk or negedge reset) begin
 
     if (game_over) begin 
 
-        if(!reset)  begin
+	    if(!reset && counter_tiempo % 250000000)  begin
 
         hambre <= 4'h6;
         diversion <= 4'h6;
@@ -570,12 +570,13 @@ always @(posedge clk_16ms) begin
                 done_lcd_write <= 1'b0;
                 text_write_done <= 0;
                 text_counter <= 0;
-					 text_counter2 <=0;
-	             writing_line2 <=0;
+	        text_counter2 <=0;
+	        writing_line2 <=0;
             end
-		 
+	// Configura la LCD
             INIT_CONFIG: begin
                 rs <= 'b0;
+		// Configuració de los comandos 
                 command_counter <= command_counter + 1;
 			    data <= config_memory[command_counter];
                 if(command_counter == num_commands-1) begin
@@ -594,17 +595,19 @@ always @(posedge clk_16ms) begin
                 text_counter <= 0;
 
             end
+	// Crea los caracteres especiales y los guada en unas direcciones 
             CREATE_CHARS: begin
                 case(create_char_task)
                     SET_CGRAM_ADDR: begin 
                         rs <= 'b0; data <= cgram_addrs[cgram_addrs_counter]; 
                         create_char_task <= WRITE_CHARS; 
                     end
+		// Escribe los caracteres especiales dependiendo del estado 
                     WRITE_CHARS: begin
                         rs <= 1;
                     if (test_mode == 1'b0) begin
                     if (vida == 0)begin
-				        data <= data_memory8[data_counter];
+			data <= data_memory8[data_counter];
                    end else if (!sensor_pir)begin
                         data <= data_memory7[data_counter];
                     end else if (felicidad <= 2)begin
@@ -661,12 +664,15 @@ always @(posedge clk_16ms) begin
                 create_char_task <= SET_CURSOR;
                 cgram_addrs_counter <= 'b0;
             end
+	// Ubica el cursor y escribe el caracter especial en la LCD
             SET_CURSOR_AND_WRITE: begin
                 case(create_char_task)
-					SET_CURSOR: begin
+			// Ubica el cursor
+			SET_CURSOR: begin
                         rs <= 0; data <= (cgram_addrs_counter > 2)? 8'h80 + (cgram_addrs_counter%3) + 8'h40 : 8'h80 + (cgram_addrs_counter%3);
                         create_char_task <= WRITE_LCD; 
                     end
+		// Escribe en la LCD
                     WRITE_LCD: begin
                         rs <= 1; 
                         data <=  8'h00 + cgram_addrs_counter;
@@ -680,6 +686,7 @@ always @(posedge clk_16ms) begin
                     end
                 endcase
             end
+		// Escribe el texto en la primera linea de la  LCD
                     WRITE_ADDITIONAL_TEXT: begin
                         if (text_counter == 0) begin
                             rs <= 0;
@@ -728,15 +735,16 @@ always @(posedge clk_16ms) begin
                          end
 
                             text_counter <= text_counter + 1;
-									 if (text_counter == text_lenght) begin
+			 if (text_counter == text_lenght) begin
                                writing_line2 <= 1;
                                text_counter2 <=0;
-									 end
+		  end
 									 
-						 end else if (writing_line2 && text_counter2 == 0) begin
+		  end else if (writing_line2 && text_counter2 == 0) begin
                     rs <= 0;
                     data <= 8'hC4; // Posicionar cursor al inicio de la segunda línea
                     text_counter2 <= text_counter2 + 1;
+			  // Escribe el texto en la segunda linea de la LCD (se usa es para el modo TEST y modo RACING)
                 end else if (writing_line2 && text_counter2 <= text_lenght2) begin
                     rs <= 1;
                     if (test_mode) begin
@@ -762,6 +770,7 @@ always @(posedge clk_16ms) begin
 
 //----------------------------------------------------------------------------------------------------------------------------\\
 
+// Asignación de registros
 assign enable = clk_16ms;
 assign done_cgram_write = (data_counter == num_data_all-1)? 'b1 : 'b0;
 
