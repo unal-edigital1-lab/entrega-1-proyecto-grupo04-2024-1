@@ -679,8 +679,10 @@ Tras enfrentar desafíos en la implementación del sensor de colores debido a co
 
 ### Interpretación de resultados de la implementación
 
+
 ### Determinación de causas físicas que puedan generar malos funcionamientos
-1. Sensor PIR (Passive Infrared Sensor)
+
+#### 1. Sensor PIR (Passive Infrared Sensor)
 
 Interferencia de Señales: El sensor PIR puede ser afectado por interferencias de señales infrarrojas externas, como la luz solar directa o fuentes de calor
 cercanas, lo que puede resultar en lecturas erráticas o falsas alarmas.
@@ -689,7 +691,7 @@ Problemas de Alcance: Si el sensor no está colocado en una posición adecuada, 
 
 Desajuste en el Tiempo de Respuesta: El tiempo de respuesta del sensor puede variar dependiendo de la temperatura y las condiciones ambientales, lo que puede afectar su precisión.
 
-3. Sensor de Ultrasonido
+#### 2. Sensor de Ultrasonido
 
 Problemas de Alcance y Precisión: Los sensores ultrasónicos pueden tener problemas si hay obstáculos o superficies irregulares en el camino de la señal 
 ultrasónica, lo que puede afectar la precisión de la medición de distancia.
@@ -698,7 +700,7 @@ Interferencia de Otras Fuentes de Ultrasonido: Otros dispositivos que emiten ult
 
 Sensibilidad a la Temperatura: La velocidad del sonido cambia con la temperatura, lo que puede afectar la precisión del sensor si no se compensa adecuadamente.
 
-4. Sensor de Vibración
+#### 3. Sensor de Vibración
 
 Sensibilidad a Vibraciones Externas: El sensor puede detectar vibraciones no relacionadas con el propósito previsto debido a vibraciones externas o movimientos en el entorno.
 
@@ -706,13 +708,13 @@ Desgaste con el Tiempo: Los sensores de vibración pueden experimentar desgaste 
 
 Problemas de Instalación: Si el sensor no está montado de manera segura o adecuada, puede resultar en lecturas inexactas o intermitentes.
 
-5. Pantalla de 7 Segmentos
+#### 4. Pantalla de 7 Segmentos
 
-Problemas de Conexión: Las conexiones a la pantalla de 7 segmentos pueden aflojarse, lo que puede llevar a fallos en la visualización de los dígitos.
+Problemas de Conexión: Las conexiones a la display de 7 segmentos pueden aflojarse, lo que puede llevar a fallos en la visualización de los dígitos.
 
 Problemas de Visibilidad: La pantalla puede ser difícil de leer en ciertas condiciones de iluminación o si no se utiliza el contraste adecuado.
 
-6. Pantalla LED 16x2
+#### 5. Pantalla LED 16x2
 
 Problemas de Contraste: La visibilidad de la pantalla LED 16x2 puede verse afectada si el contraste no está ajustado correctamente o si la retroiluminación falla.
 
@@ -720,13 +722,15 @@ Píxeles Muertos: Pueden aparecer píxeles muertos o defectuosos que afectan la 
 
 Problemas de Conexión: Las conexiones de la pantalla pueden ser inestables, lo que puede causar fallos intermitentes en la visualización.
 
-7. Botones
+#### 6. Botones
 
 Desgaste: Los botones pueden desgastarse con el tiempo, lo que puede llevar a una respuesta inexacta o a la falta de respuesta.
 
 Conexiones Sueltas: Las conexiones entre los botones y la FPGA pueden aflojarse, causando que los botones no funcionen correctamente.
 
 Interferencia Mecánica: Los botones pueden experimentar interferencia mecánica si no están instalados adecuadamente o si se usan de manera excesiva.
+
+## Evaluación del cumplimiento de los requisitos funcionales 
 
 ## Trabajo en Equipo y Gestión del Proyecto
 
@@ -748,3 +752,9 @@ Interferencia Mecánica: Los botones pueden experimentar interferencia mecánica
 |                     | Semana 12    | **Cambio del sensor RGB por ultrasonido y vibración**                          | Reunión 4 (Replanteo del cambio de sensor) y pruebas de integración del nuevo sensor |
 | Documentación y Entrega | Semana 13 | Optimización final del sistema, documentación técnica y entrega                | Reunión 5 (Revisión final) y pruebas de validación final                             |
 
+
+### Procedimiento y anexos fotograficos
+
+### Video
+
+## Referencias
