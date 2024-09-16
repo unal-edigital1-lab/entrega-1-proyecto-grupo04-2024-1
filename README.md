@@ -2,18 +2,18 @@
 
 ## Integrantes 
 
-### Juan Manuel Beltrán Botello
+#### Juan Manuel Beltrán Botello
 
-### Oscar Jhondairo Siabato León
+#### Oscar Jhondairo Siabato León
 
-### Willian Mauricio Meza Patiño
+#### Willian Mauricio Meza Patiño
 
-### Jhon Alejandro Cuaspud
+#### Jhon Alejandro Cuaspud
 
 
 ## Introduccion 
 
-Proponemos implementar un Tamagotchi en una FPGA Cyclone IV utilizando el lenguaje de programación de hardware Verilog. Este Tamagotchi será una mascota virtual que reaccionará a las interacciones del usuario a través de botones y a estímulos ambientales mediante sensores de ultrasonido, PIR y de vibraciones, los cuales serán detallados más adelante. El sistema contará con un display de 7 segmentos para mostrar los niveles y la puntuación de la mascota, mientras que una pantalla LCD de 16x2 se encargará de representar gráficamente su estado, así como el modo de juego en el que se encuentra el usuario.
+Implementar un Tamagotchi en una FPGA Cyclone IV utilizando el lenguaje de programación de hardware Verilog. Este Tamagotchi será una mascota virtual que reaccionará a las interacciones del usuario a través de botones y a estímulos ambientales mediante sensores de ultrasonido, PIR y de vibraciones, los cuales serán detallados más adelante. El sistema contará con un display de 7 segmentos para mostrar los niveles y la puntuación de la mascota, mientras que una pantalla LCD de 16x2 se encargará de representar gráficamente su estado, así como el modo de juego en el que se encuentra el usuario.
 
 ## Objetivos
 
@@ -29,31 +29,31 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV, re
 
 ## Componentes 
 
-### FPGA cyclone IV
+#### FPGA cyclone IV
 
-### Protoboard
+#### Protoboard
 
-### Sensor medidor de distancia ultrasonido Hc-sr4
+#### Sensor medidor de distancia ultrasonido Hc-sr4
 
-### Sensor de vibracion sw-420
+#### Sensor de vibracion sw-420
 
-### Sensor de movimiento  PIR HC-SR501
+#### Sensor de movimiento  PIR HC-SR501
 
-### Pantalla LCD 16X2 
+#### Pantalla LCD 16X2 
 
-### Display 7 seg 
+#### Display 7 seg 
 
-### 4 interruptores
+#### 4 interruptores
 
 ## Especificacion de los sistemas que conforman el proyecto
 
-## Caja Negra 
+### Caja Negra 
 
 El diagrama representa un sistema  compuesto por tres módulos principales: Sensores, Botones y Visualización. Los sensores incluyen un sensor de movimiento y un sensor de colores que comunican mediante el protocolo I2C. El módulo de botones, que incluye opciones como Jugar, Curar, Reset y Test, está conectado a un sistema de debouncing para gestionar las entradas de forma precisa. Las salidas visuales se manejan a través de un display de 7 segmentos y un LCD de 16x2. Además, un divisor de frecuencia regula las interacciones de tiempo en el sistema, garantizando la sincronización y el correcto despliegue de información.
 
 <img src= "IMAGENES/caja negra.jpg">
 
-## Diagrama de flujo
+### Diagrama de flujo
 
 El diagrama de flujo describe un sistema de juego donde se simula el cuidado de una mascota virtual  que determinan su estado de bienestar: Hambre, Diversión, Energía, Salud y Felicidad, todas iniciando en 5. Estas se afectan con el tiempo, y el jugador debe intervenir para mantenerlas dentro de rangos saludables.
 
@@ -72,22 +72,8 @@ Si alguna de las condiciones críticas como la Salud llega a cero, la mascota mu
 <img src= "IMAGENES/Diagrama de flujo.jpg">
 
 
-## maquina de estados.
+### Maquina de estados.
 
-Estado Inicial: La mascota comienza con niveles equilibrados de salud, energía, diversión, hambre y felicidad.
-
-Transiciones:
- 
-Si alguno de estos niveles baja demasiado, la mascota cambia a un estado específico, como Hambriento, Aburrido, Cansado, Enfermo, o Triste.
-Los usuarios pueden realizar acciones como alimentar, jugar o curar, que restauran esos niveles y devuelven la mascota al estado Saludable.
-
-Estado Final: Si la salud de la mascota llega a cero, entra en el estado Muere, concluyendo la simulación.
-
-Importancia:
-
-Esta FSM permite que la mascota reaccione de forma dinámica a las interacciones del usuario y a las condiciones de su entorno, ofreciendo una experiencia interactiva y educativa que simula el cuidado de una mascota real.
-
-<img src= "IMAGENES/maquina de estados .png">
 
 
 ##Arquitectura del sistema
