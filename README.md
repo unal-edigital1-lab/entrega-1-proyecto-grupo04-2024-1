@@ -670,6 +670,44 @@ Si se pulsa un botón por 5 segundos, se entra en modo "Racing", donde el usuari
 Dependiendo de la cantidad de pulsos (1, 2 o 3), el tiempo de la acción cambia. Puede ser un multiplicador de tiempo (Tiempo x 5, Tiempo x 10, Tiempo x 50).
 Si no se activa el modo Racing, el flujo continúa al siguiente paso del comportamiento normal del Tamagotchi.
 
+A continuación, te proporciono una tabla que resume los datos del diagrama de flujo y las condiciones de cada parámetro del Tamagotchi:
+
+| **Parámetro**    | **Condición** | **Acción**             | **Resultado**                                     |
+|------------------|---------------|------------------------|--------------------------------------------------|
+| **Hambre**       | Zut = Sí      | Hambre = Hambre - 1    | Se reduce el nivel de hambre.                    |
+|                  | Hambre ≤ 2    | Hambriento             | Se activa el botón de Alimentar.                 |
+|                  | Alimentar     | Salud = Salud - 1      | Disminuye la salud al alimentar.                 |
+|                  |               | Felicidad = Felicidad + 2 | Aumenta la felicidad al alimentar.               |
+|                  |               | Hambre = 5             | Hambre se resetea al valor máximo (5).           |
+| **Diversión**    | Zut = Sí      | Diversión = Diversión - 1 | Se reduce el nivel de diversión.                 |
+|                  | Diversión ≤ 2 | Aburrido               | Se activa la opción de Jugar.                    |
+|                  | Jugar         | Felicidad = Felicidad - 1 | Disminuye la felicidad al jugar.                 |
+|                  |               | Diversión = 5          | Diversión se resetea al valor máximo (5).        |
+|                  |               | Energía = Energía - 1  | Se reduce la energía al jugar.                   |
+|                  |               | Hambre = Hambre - 1    | Se reduce el hambre al jugar.                    |
+| **Energía**      | Aut = Sí      | Energía = Energía - 1   | Se reduce el nivel de energía.                   |
+|                  | Energía ≤ 2   | Cansado                | Se activa la opción de Dormir.                   |
+|                  | Dormir        | Salud = Salud + 1      | Aumenta la salud al dormir.                      |
+|                  |               | Felicidad = Felicidad + 2 | Aumenta la felicidad al dormir.                  |
+| **Salud**        | Salud ≤ 2     | Enfermo                | Se activa la opción de Curar.                    |
+|                  | Curar (Botón) | Salud = 5              | Se resetea la salud al curar.                    |
+|                  | No curar      | Salud = Salud - 1      | Se reduce la salud si no se cura.                |
+|                  | Salud = 0     | Muerte                 | El Tamagotchi muere y se activa la opción Reset. |
+| **Felicidad**    | Felicidad ≤ 2 | Triste                 | Se activa la opción de Acariciar.                |
+|                  | Acariciar     | Felicidad = Felicidad + 1 | Aumenta la felicidad.                            |
+| **Modo Racing**  | Pulsar por 5 seg | Pulsos = 1            | Tiempo x 5.                                      |
+|                  |               | Pulsos = 2             | Tiempo x 10.                                     |
+|                  |               | Pulsos = 3             | Tiempo x 50.                                     |
+| **Modo Test**    | Pulsar por 5 seg | Pulso = 1             | Muerto.                                          |
+|                  |               | Pulso = 2             | Dormido.                                         |
+|                  |               | Pulso = 3             | Triste.                                          |
+|                  |               | Pulso = 4             | Enfermo.                                         |
+|                  |               | Pulso = 5             | Cansado.                                         |
+|                  |               | Pulso = 6             | Aburrido.                                        |
+|                  |               | Pulso = 7             | Hambriento.                                      |
+|                  |               | Pulso = 8             | Feliz.                                           |
+
+Este resumen abarca los diferentes estados y sus respectivos cambios basados en las condiciones que se presentan en el diagrama de flujo. ¿Te gustaría agregar o ajustar algún detalle?
 ### Maquina de estados
 
 ### Visualizacion 
