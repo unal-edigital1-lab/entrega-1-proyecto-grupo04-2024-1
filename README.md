@@ -657,7 +657,19 @@ El modelo ha sido ajustado a través de iteraciones que permitieron superar las 
 
 • WRITE_ADDITIONAL_TEXT: Escribe texto adicional en la pantalla, incluyendo el manejo de escritura en la segunda línea del LCD.
 
+### Diagrama de estados sensor ultrasonido
+
 <img src= "IMAGENES/Diagrama de estados sensor ultrasonido.jpg">
+
+#### Explicación:
+
+• IDLE: Incrementa el contador count y evalúa cuándo activar la señal trigger.
+
+• TRIGGER: Se dispara la señal de trigger, y el sistema está a la espera de la señal echo de vuelta.
+
+• ECHO: El sistema mide el tiempo que echo está activo (incrementando echo_count). Cuando echo pasa de 1 a 0, se almacena el valor en count_out.
+
+• Almacenamiento: Una vez que el eco ha sido recibido completamente, se guarda el valor del tiempo medido y se prepara el sistema para la próxima medición.
 
 ### Interpretación de resultados de la implementación
 
