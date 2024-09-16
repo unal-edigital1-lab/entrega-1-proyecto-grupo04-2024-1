@@ -640,6 +640,7 @@ El modelo ha sido ajustado a través de iteraciones que permitieron superar las 
 Tras enfrentar desafíos en la implementación del sensor de colores debido a complicaciones con el protocolo de comunicación I2C, se ha desarrollado una versión mejorada del sistema. Esta nueva versión introduce dos sensores adicionales: un sensor de ultrasonido y un sensor de vibraciones (los cuales suplen la funcion del sensor de colores), y elimina el sensor de colores original. Además, se han realizado ajustes en la configuración de los botones, reemplazando el botón de jugar por uno para alimentar y añadiendo un nuevo botón dedicado al modo racing.
 
 <img src= "IMAGENES/caja negra V2.jpg">
+
 ### Maquina de estados
 
 ### Visualizacion 
