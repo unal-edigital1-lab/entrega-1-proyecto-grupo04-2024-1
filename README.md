@@ -203,7 +203,7 @@ donde:
 
 ### Funcionalidad 
 
-El sensor ultrasónico HC-SR04 se utiliza en el proyecto para medir la proximidad entre la mascota virtual (Tamagotchi) y el usuario. La interaccion se denomina como un "caricia" se simula detectando que la mano del usuario está a una distancia cercana al sensor, lo que luego se traduce en una interacción positiva que afecta el estado de la mascota, como aumentar su nivel de felicidad.
+El sensor ultrasónico HC-SR04 se utiliza en el proyecto para medir la proximidad entre la mascota virtual (Tamagotchi) y el usuario. La interaccion se denomina como una "caricia" se simula detectando que la mano del usuario está a una distancia cercana al sensor, lo que luego se traduce en una interacción positiva que afecta el estado de la mascota, como aumentar su nivel de felicidad.
 
 <img src= "señal cuadrada del sensor ultrasonico.png">
 
@@ -212,29 +212,30 @@ Explicación Basada en el Diagrama de Temporización
 La imagen que se muestra explica cómo el sensor ultrasónico envía y recibe las señales para medir la distancia
 
 Trigger Input to Module:
+
 El proceso comienza cuando la FPGA envía una señal de disparo (TRIG) al sensor durante 10 microsegundos (como muestra la primera parte del gráfico). Este pulso activa el sensor, que emite una ráfaga de ondas ultrasónicas de 8 ciclos a 40 kHz, señalada en la imagen como "8 Cycle Sonic Burst".
 
 Echo Pulse Output:
+
 Después de que la ráfaga ultrasónica es emitida, el sensor espera a recibir el eco del pulso que rebota en el objeto cercano (la mano del usuario). La señal ECHO se pone en alto cuando el sensor detecta el retorno de la onda, y se mantiene en alto por un período de tiempo proporcional a la distancia. Este comportamiento es lo que se representa en la parte inferior del gráfico como "Echo Pulse Output". El tiempo que la señal permanece en alto indica la proximidad del objeto.
 
 Interpretación de la "Caricia":
-Para simular una caricia, la FPGA mide el tiempo en que el pin ECHO permanece en alto. Si el tiempo de retorno del eco indica que la mano del usuario está dentro de un rango específico (por ejemplo, entre 5 cm y 15 cm), se interpreta como una caricia. En este caso, la mascota virtual reaccionará de forma positiva, como si el usuario estuviera acariciándola.
+
+Para simular una caricia, la FPGA mide el tiempo en que el pin ECHO permanece en alto. Si el tiempo de retorno del eco indica que la mano del usuario está dentro de un rango específico, se interpreta como una caricia. En este caso, la mascota virtual reaccionará de forma positiva, como si el usuario estuviera acariciándola y restablecera el puntaje de la felicidad.
 
 El tiempo medido en microsegundos.
 ​
- 
-Si la distancia está dentro del rango definido, se ejecuta la acción de la "caricia", afectando el comportamiento de la mascota en el juego.
+Si la distancia está dentro del rango definido (3 a 5 centimetros), se ejecuta la acción de la "caricia", afectando el comportamiento de la mascota en el juego.
 
+### Pines de Alimentación
 
-##### Pines de Alimentación
+• VCC (Alimentación 5V): Este pin se conecta a una fuente de 5V para alimentar el sensor.
 
-VCC (Alimentación 5V):Este pin se conecta a una fuente de 5V para alimentar el sensor.
+• GND (Tierra): Debe conectarse al pin de tierra (GND) en la FPGA para completar el circuito de alimentación.
 
-GND (Tierra):Debe conectarse al pin de tierra (GND) en la FPGA para completar el circuito de alimentación.
+• TRIG (Disparo): El pin TRIG se conecta a un GPIO de la FPGA configurado como salida. Para activar la medición de distancia, la FPGA debe enviar una señal de 10 microsegundos en alto, lo que generará una ráfaga de ondas ultrasónicas.
 
-TRIG (Disparo):El pin TRIG se conecta a un GPIO de la FPGA configurado como salida. Para activar la medición de distancia, la FPGA debe enviar una señal de 10 microsegundos en alto, lo que generará una ráfaga de ondas ultrasónicas.
-
-ECHO (Recepción del eco):El pin ECHO se conecta a otro GPIO de la FPGA configurado como entrada. Este pin permanecerá en alto durante el tiempo que tarda el eco en regresar. El tiempo en alto se usa para calcular la distancia al objeto.
+• ECHO (Recepción del eco): El pin ECHO se conecta a otro GPIO de la FPGA configurado como entrada. Este pin permanecerá en alto durante el tiempo que tarda el eco en regresar. El tiempo en alto se usa para calcular la distancia al objeto.
 
 ### Implementación HDL y Conexión
 
@@ -242,12 +243,11 @@ ECHO (Recepción del eco):El pin ECHO se conecta a otro GPIO de la FPGA configur
 
 El flujo de la implementación en Verilog sería algo similar a lo siguiente:
 
-Generación de señal TRIG: Crear un módulo en Verilog que controle el tiempo de activación del pin TRIG (10 µs).
+1. Generación de señal TRIG: Crear un módulo en Verilog que controle el tiempo de activación del pin TRIG (10 µs).
 
-Medición del tiempo ECHO: Implementar un temporizador que comience a contar cuando el pin ECHO se pone en alto y se detenga cuando vuelva a estar en bajo.
+2. Medición del tiempo ECHO: Implementar un temporizador que comience a contar cuando el pin ECHO se pone en alto y se detenga cuando vuelva a estar en bajo.
 
-Cálculo de la distancia: Transformar el tiempo medido en la distancia correspondiente y almacenarla para su uso en la lógica del Tamagotchi.
-
+3. Cálculo de la distancia: Transformar el tiempo medido en la distancia correspondiente y almacenarla para su uso en la lógica del Tamagotchi.
 
 ## Sensor de movimiento PIR HC-SR501
 
@@ -316,7 +316,7 @@ Cuando una persona entra en el rango de detección del sensor, este activa la ma
 
 En el entorno de desarrollo FPGA, se configura el pin seleccionado para que funcione como entrada digital, dependiendo del estado de esta señal se activara las funciones anteriormente descritas, además cuando se detecta un flanco ascendente, indicara movimiento utilizando un disparo simple. 
 
-##### Pines de Alimentación
+#### Pines de Alimentación
 
 •	VCC: Fuente de alimentación de 5V en la FPGA.
 
@@ -367,7 +367,7 @@ En el entorno de desarrollo FPGA, se configura el pin seleccionado para que func
 
 La pantalla LCD 16x2 juega un papel fundamental en la interacción entre el usuario y su mascota virtual, proporcionando una interfaz visual que muestra de forma clara y directa el estado emocional y físico de la mascota.
 
-##### Visualización de Estados Emocionales y Físicos
+#### Visualización de Estados Emocionales y Físicos
 
 La pantalla está configurada para mostrar emojis y mensajes que representan diferentes estados emocionales y físicos de la mascota, tales como:
 
@@ -383,7 +383,7 @@ La pantalla está configurada para mostrar emojis y mensajes que representan dif
 
 •	Aburrido: Señala que la mascota necesita más interacción o jugar.
 
-* Muerto: Indica que el juego se termino y tendra que reiniciar
+•  Muerto: Indica que el juego se termino y tendra que reiniciar
 
 Dependiendo de cómo el usuario interactúa con la mascota virtual (alimentación, juego, descanso), la pantalla actualizará dinámicamente los íconos y mensajes para reflejar el nuevo estado de la mascota. Esto permite al usuario entender inmediatamente las consecuencias de sus acciones y ajustar su comportamiento para mejorar el bienestar de la mascota.
 
@@ -426,7 +426,8 @@ Función: Interpreta los comandos y datos del MPU y controla la pantalla.
 Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 
 
-## Display de 7 segmentos (ánodo común)
+## Display de 7 segmentos (ánodo común)  
+
 <img src= "IMAGENES/DISPLAY7R.png">
 
 •    Display 7 Segmentos
@@ -481,7 +482,7 @@ Los displays de 7 segmentos en nuestro proyecto actúan como paneles de informac
 
 •	Diversión: Refleja cuánta diversión está recibiendo la mascota.
 
-•	Descanso: Muestra cuán descansada está la mascota.
+•	Energia: Muestra cuán descansada está la mascota.
 
 •	Salud: Señala el estado de salud general de la mascota.
 
@@ -493,7 +494,7 @@ A medida que el dueño interactúa con la mascota, estos niveles pueden aumentar
 
 Cada display está controlado directamente desde la FPGA, la cual envía señales para ajustar los valores mostrados en función de las interacciones realizadas con la mascota virtual mediate la descripción de hardware. Los cambios en los niveles se reflejan inmediatamente en los displays de 7 segmentos, proporcionando retroalimentación instantánea al dueño sobre las necesidades actuales de la mascota.
 
-##### Pines de Alimentación
+#### Pines de Alimentación
 
 •	VCC: Fuente de alimentación de 5V en la FPGA.
 
