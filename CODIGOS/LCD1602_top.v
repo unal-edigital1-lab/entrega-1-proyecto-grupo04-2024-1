@@ -47,8 +47,11 @@ module LCD1602_top #(parameter num_commands = 3,
 
     input wire btn_in,
     output wire debounced_out,
+	 output wire debounced_out2,
     output wire debouncer_led,
-    output wire [3:0] debouncer_count_out
+	 output wire debouncer_led2r,
+    output wire [3:0] debouncer_count_out,
+	 output wire [3:0] debouncer_count_out2
 
 //-----------------------------------------------------------------------------------\\
 
@@ -144,6 +147,8 @@ reg [7:0] text_memory7 [0:text_lenght-1];
 reg [7:0] text_memory8 [0:text_lenght-1];
 reg [7:0] text_test_mode [0:text_lenght-1];
 reg [7:0] text_racing_mode [0:text_lenght-1];
+reg [7:0] text_racing_mode2 [0:text_lenght-1];
+reg [7:0] text_racing_mode3 [0:text_lenght-1];
 
 //Registro de la cgram
 reg [7:0] config_memory [0:num_commands-1]; 
@@ -233,6 +238,8 @@ initial begin
     $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/muerto_texto.txt", text_memory8);
 	 $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/test_mode_texto.txt", text_test_mode);
 	 $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/racing_mode_texto.txt", text_racing_mode);
+	 $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/racing_mode_texto2.txt", text_racing_mode2);
+	 $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/racing_mode_texto3.txt", text_racing_mode3);
 
 	config_memory[0] <= LINES2_MATRIX5x8_MODE8bit;
 	config_memory[1] <= DISPON_CURSOROFF;
@@ -253,23 +260,51 @@ end
             counter_tiempo <= 36'b0;     
         end else begin
             if(racing_mode == 1'b0)begin 
-            if (counter_tiempo == 36'd45000000000) begin
+            if (counter_tiempo == 36'd45000000000 ^ btn_racing_mode == 0) begin
                 counter_tiempo = 36'b0;
-            end else begin
+				end else  begin
                 counter_tiempo = counter_tiempo + 1;
             end 
          end
 			
-	//contador acelerado
 			
+			//contador acelerado
+
          if(racing_mode == 1'b1)begin
-          if (counter_tiempo_racing == 36'd45000000000) begin
+			if(!btn_racing_mode) begin
+			   counter_tiempo_racing = 36'b0;
+			end
+			  if(debouncer_count_out2 == 1'd1) begin
+			  
+			  if (counter_tiempo_racing == 36'd45000000000) begin
                 counter_tiempo_racing = 36'b0;
             end else begin
-                counter_tiempo_racing = counter_tiempo_racing + 8;
+                counter_tiempo_racing = counter_tiempo_racing + 5;
             end 
             counter_tiempo <= counter_tiempo_racing;
          end
+         if(debouncer_count_out2 == 2'd2) begin
+
+            if (counter_tiempo_racing == 36'd45000000000) begin
+                counter_tiempo_racing = 36'b0;
+            end else begin
+                counter_tiempo_racing = counter_tiempo_racing + 50;
+            end 
+            counter_tiempo <= counter_tiempo_racing;
+         end
+         if(debouncer_count_out2 == 2'd3) begin
+
+        if (counter_tiempo_racing == 36'd45000000000) begin
+                counter_tiempo_racing = 36'b0;
+            end else begin
+                counter_tiempo_racing = counter_tiempo_racing + 500;
+            end 
+            counter_tiempo <= counter_tiempo_racing;
+        
+         end
+			  end
+          
+			
         end
     end
 
@@ -293,9 +328,9 @@ display_7seg_4digitos display(
 
 always @(posedge clk or negedge reset) begin
     if (!reset) begin
-        hambre <= 4'h6;
-        diversion <= 4'h6;
-        energia <= 4'h6;
+        hambre <= 4'h5;
+        diversion <= 4'h5;
+        energia <= 4'h5;
         felicidad <= 4'h5;
         vida <= 4'h5;
         game_over <= 1'b0;
@@ -341,11 +376,11 @@ always @(posedge clk or negedge reset) begin
 
     if (game_over) begin 
 
-	    if(!reset && counter_tiempo % 250000000)  begin
+        if(!reset)  begin
 
-        hambre <= 4'h6;
-        diversion <= 4'h6;
-        energia <= 4'h6;
+        hambre <= 4'h5;
+        diversion <= 4'h5;
+        energia <= 4'h5;
         felicidad <= 4'h5;
         vida <= 4'h5;
         game_over <= 1'b0;
@@ -354,22 +389,22 @@ always @(posedge clk or negedge reset) begin
 
     end else begin 
 	 
-	 if (counter_tiempo % 2500000000 == 0 && hambre > 4'h0) begin
+	 if (counter_tiempo % 2500000000 == 0 && hambre > 4'h0 && counter_tiempo != 36'd0 ) begin
         hambre <= hambre - 4'h1;
     end 
 
 	 
-    if (counter_tiempo % 1250000000 == 0 && diversion > 4'h0 && sensor_pir == 1) begin
+    if (counter_tiempo % 1250000000 == 0 && diversion > 4'h0 && sensor_pir == 1 && counter_tiempo != 36'd0 ) begin
         diversion <= diversion - 4'h1;
     end
 
-    if (counter_tiempo % 5000000000 == 0 && energia > 4'h0 && sensor_pir == 1) begin 
+    if (counter_tiempo % 5000000000 == 0 && energia > 4'h0 && sensor_pir == 1 && counter_tiempo != 36'd0 ) begin 
         energia <= energia - 4'h1;      
      end
 	  
 //---------------------------------logica dormido-----------------------------------------------------\\
 
-	    if (sensor_pir == 0 && counter_tiempo % 625000000 == 0 && energia<5 ) begin 
+    if (sensor_pir == 0 && counter_tiempo % 250000000 == 0 && energia<5) begin 
       energia <= energia + 1;
     end
     if (sensor_pir == 0 && counter_tiempo % 2500000000 == 0 && energia > 4 && vida<5) begin 
@@ -380,10 +415,10 @@ always @(posedge clk or negedge reset) begin
 
 //---------------------logicas de felicidad------------------------------------------------\\
 
-	    if (counter_tiempo % 2500000000 == 0 && diversion<=2 && felicidad>0 && sensor_pir == 1) begin 
+     if (counter_tiempo % 2500000000 == 0 && diversion<=2 && felicidad>0 && sensor_pir == 1) begin 
         felicidad <= felicidad - 4'h1;      
      end
-	    if (counter_tiempo % 3750000000 == 0 && hambre<=2 && felicidad>0 && sensor_pir == 1) begin 
+     if (counter_tiempo % 3750000000 == 0 && hambre<=2 && felicidad>0 && sensor_pir == 1) begin 
         felicidad <= felicidad - 4'h2;      
      end
      if (counter_tiempo % 50000000000 == 0 && energia<=2 && felicidad>0 && sensor_pir == 1) begin 
@@ -400,16 +435,16 @@ always @(posedge clk or negedge reset) begin
 
 //-----------------------------logica vida----------------------------------------------------\\
 
-	    if (counter_tiempo % 2500000000 == 0 && hambre<=2 && vida>0 && sensor_pir == 1) begin 
+     if (counter_tiempo % 2500000000 == 0 && hambre<=2 && vida>0 && sensor_pir == 1) begin 
         vida <= vida - 4'h1;      
      end
-	    if (counter_tiempo % 2500000000 == 0 && energia<=2 && vida>0 && sensor_pir == 1) begin 
+     if (counter_tiempo % 2500000000 == 0 && energia<=2 && vida>0 && sensor_pir == 1) begin 
         vida <= vida - 4'h1;      
      end
-	    if (counter_tiempo % 2500000000 == 0 && felicidad<=2 && vida>0 && sensor_pir == 1) begin 
+     if (counter_tiempo % 2500000000 == 0 && felicidad<=2 && vida>0 && sensor_pir == 1) begin 
         vida <= vida - 4'h1;      
      end
-	    if (btn_vida==1'b0 && vida<5 && hambre>0 && sensor_pir == 1) begin 
+     if (btn_vida==1'b0 && vida<5 && hambre>0 && sensor_pir == 1) begin 
         vida <= 5;
         hambre <= hambre - 4'h1;
      end
@@ -418,14 +453,11 @@ always @(posedge clk or negedge reset) begin
 
 //-------------------------------------logica diversion-----------------------------------------\\
 
-     if (sensor_vibracion == 1'b1 && diversion < 5 && sensor_pir == 1) begin 
+     if (sensor_vibracion == 1'b0 && diversion < 5 && sensor_pir == 1) begin 
         diversion <= 5;      
      end
-     if (sensor_vibracion == 1'b1 && diversion < 5 && energia>0 && sensor_pir == 1) begin 
+     if (sensor_vibracion == 1'b0  && diversion < 5 && energia>0 && sensor_pir == 1) begin 
         energia <= energia - 1;      
-     end
-	    if (sensor_vibracion == 1'b1 && hambre < 5 && energia>0 && sensor_pir == 1) begin 
-        hambre <= hambre - 1;      
      end
 
 //----------------------------------------------------------------------------------------------------\\
@@ -456,6 +488,14 @@ boton_antirrebote boton_antirrebote_inst (
     .out(debounced_out),
     .led(debouncer_led),
     .count_out(debouncer_count_out)
+);
+boton_antirrebote2 boton_antirrebote_inst2 (
+    .btn_in(btn_racing_mode),
+    .clk(clk),
+    .reset(reset),
+    .out(debounced_out2),
+    .led(debouncer_led2),
+    .count_out(debouncer_count_out2)
 );
 
 //------------------------------------------------------------------------\\
@@ -560,6 +600,8 @@ always @(posedge clk_16ms) begin
     $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/muerto_texto.txt", text_memory8);
 	 $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/test_mode_texto.txt", text_test_mode);
 	 $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/racing_mode_texto.txt", text_racing_mode);
+	 $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/racing_mode_texto2.txt", text_racing_mode2);
+	 $readmemh("C:/Users/OSCAR/Documents/Proyecto_Digital/proyecto/racing_mode_texto3.txt", text_racing_mode3);
 
     end else begin
         case (next)
@@ -573,13 +615,12 @@ always @(posedge clk_16ms) begin
                 done_lcd_write <= 1'b0;
                 text_write_done <= 0;
                 text_counter <= 0;
-	        text_counter2 <=0;
-	        writing_line2 <=0;
+					 text_counter2 <=0;
+	             writing_line2 <=0;
             end
-	// Configura la LCD
+		 
             INIT_CONFIG: begin
                 rs <= 'b0;
-		// Configuració de los comandos 
                 command_counter <= command_counter + 1;
 			    data <= config_memory[command_counter];
                 if(command_counter == num_commands-1) begin
@@ -598,24 +639,22 @@ always @(posedge clk_16ms) begin
                 text_counter <= 0;
 
             end
-	// Crea los caracteres especiales y los guada en unas direcciones 
             CREATE_CHARS: begin
                 case(create_char_task)
                     SET_CGRAM_ADDR: begin 
                         rs <= 'b0; data <= cgram_addrs[cgram_addrs_counter]; 
                         create_char_task <= WRITE_CHARS; 
                     end
-		// Escribe los caracteres especiales dependiendo del estado 
                     WRITE_CHARS: begin
                         rs <= 1;
                     if (test_mode == 1'b0) begin
                     if (vida == 0)begin
-			data <= data_memory8[data_counter];
+				        data <= data_memory8[data_counter];
                    end else if (!sensor_pir)begin
                         data <= data_memory7[data_counter];
-                    end else if (felicidad <= 2)begin
+                    end else if (vida <= 2)begin
                         data <= data_memory6[data_counter];
-                    end else if (vida <= 2)begin 
+                    end else if (felicidad <= 2)begin 
                         data <= data_memory5[data_counter];
                     end else if (hambre <= 2)begin
                         data <= data_memory2[data_counter];
@@ -667,15 +706,12 @@ always @(posedge clk_16ms) begin
                 create_char_task <= SET_CURSOR;
                 cgram_addrs_counter <= 'b0;
             end
-	// Ubica el cursor y escribe el caracter especial en la LCD
             SET_CURSOR_AND_WRITE: begin
                 case(create_char_task)
-			// Ubica el cursor
-			SET_CURSOR: begin
+					SET_CURSOR: begin
                         rs <= 0; data <= (cgram_addrs_counter > 2)? 8'h80 + (cgram_addrs_counter%3) + 8'h40 : 8'h80 + (cgram_addrs_counter%3);
                         create_char_task <= WRITE_LCD; 
                     end
-		// Escribe en la LCD
                     WRITE_LCD: begin
                         rs <= 1; 
                         data <=  8'h00 + cgram_addrs_counter;
@@ -689,11 +725,10 @@ always @(posedge clk_16ms) begin
                     end
                 endcase
             end
-		// Escribe el texto en la primera linea de la  LCD
                     WRITE_ADDITIONAL_TEXT: begin
                         if (text_counter == 0) begin
                             rs <= 0;
-                            data <= 8'h84; // Posiciona el cursor después de los caracteres especiales
+                            data <= 8'h84;
                             text_counter <= text_counter + 1;
                         end else if (!writing_line2 && text_counter <= text_lenght) begin
                             rs <= 1;
@@ -702,9 +737,9 @@ always @(posedge clk_16ms) begin
                             data <= text_memory8[text_counter-1];
                             end else if (!sensor_pir)begin 
                             data <= text_memory7[text_counter-1];
-                            end else if (felicidad <= 2)begin 
-                            data <= text_memory6[text_counter-1];
                             end else if (vida <= 2)begin 
+                            data <= text_memory6[text_counter-1];
+                            end else if (felicidad <= 2)begin 
                             data <= text_memory5[text_counter-1];
                             end else if (hambre <= 2)begin 
                             data <= text_memory2[text_counter-1];
@@ -738,22 +773,28 @@ always @(posedge clk_16ms) begin
                          end
 
                             text_counter <= text_counter + 1;
-			 if (text_counter == text_lenght) begin
+									 if (text_counter == text_lenght) begin
                                writing_line2 <= 1;
                                text_counter2 <=0;
-		  end
+									 end
 									 
-		  end else if (writing_line2 && text_counter2 == 0) begin
+						 end else if (writing_line2 && text_counter2 == 0) begin
                     rs <= 0;
                     data <= 8'hC4; // Posicionar cursor al inicio de la segunda línea
                     text_counter2 <= text_counter2 + 1;
-			  // Escribe el texto en la segunda linea de la LCD (se usa es para el modo TEST y modo RACING)
                 end else if (writing_line2 && text_counter2 <= text_lenght2) begin
                     rs <= 1;
                     if (test_mode) begin
                         data <= text_test_mode[text_counter2-1];
 						  end else if (racing_mode) begin
-						      data <= text_racing_mode[text_counter2-1];
+						  if(debouncer_count_out2 == 2'd1) begin 
+						     data <= text_racing_mode[text_counter2-1];
+						  end else if(debouncer_count_out2 == 2'd2) begin
+						     data <= text_racing_mode2[text_counter2-1];
+                          end else if(debouncer_count_out2 == 2'd3) begin 
+						     data <= text_racing_mode3[text_counter2-1];
+						  end
+					
                     end else begin 
 						      data <= 8'h20;
 						  end
@@ -773,7 +814,6 @@ always @(posedge clk_16ms) begin
 
 //----------------------------------------------------------------------------------------------------------------------------\\
 
-// Asignación de registros
 assign enable = clk_16ms;
 assign done_cgram_write = (data_counter == num_data_all-1)? 'b1 : 'b0;
 
