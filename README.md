@@ -665,16 +665,10 @@ Felicidad = 5
 
 #### Modo Racing: 
 
-Si se pulsa un botón por 5 segundos, se entra en modo "Racing", donde el usuario interactúa pulsando botones.
-
-Dependiendo de la cantidad de pulsos (1, 2 o 3), el tiempo de la acción cambia. Puede ser un multiplicador de tiempo (Tiempo x 5, Tiempo x 10, Tiempo x 50).
-Si no se activa el modo Racing, el flujo continúa al siguiente paso del comportamiento normal del Tamagotchi.
-
-A continuación, te proporciono una tabla que resume los datos del diagrama de flujo y las condiciones de cada parámetro del Tamagotchi:
 
 | **Parámetro**    | **Condición** | **Acción**             | **Resultado**                                     |
 |------------------|---------------|------------------------|--------------------------------------------------|
-| **Hambre**       | Zut = Sí      | Hambre = Hambre - 1    | Se reduce el nivel de hambre.                    |
+| **Hambre**       | 2ut = Sí      | Hambre = Hambre - 1    | Se reduce el nivel de hambre cada 2 unidades de tiempo.                    |
 |                  | Hambre ≤ 2    | Hambriento             | Se activa el botón de Alimentar.                 |
 |                  | Alimentar     | Salud = Salud - 1      | Disminuye la salud al alimentar.                 |
 |                  |               | Felicidad = Felicidad + 2 | Aumenta la felicidad al alimentar.               |
