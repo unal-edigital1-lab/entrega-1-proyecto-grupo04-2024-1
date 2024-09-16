@@ -258,24 +258,26 @@ Corriente de operación: <1.5 mA
 
 Dimensiones: 35mm x 15mm
 
-Funcionamiento
+## Funcionamiento
 
 El sensor de vibración SW-420 detecta vibraciones o golpes mediante un mecanismo de tipo interruptor interno. Cuando se aplica una vibración al sensor, el interruptor interno cambia de estado, lo que genera una señal de salida. El sensor es capaz de detectar pequeñas vibraciones y cambios bruscos en el entorno físico, lo que lo hace ideal para aplicaciones de seguridad o interacción basada en movimiento.
 
 
-Funcionalidad
+### Funcionalidad
 
 En el proyecto de la mascota virtual (Tamagotchi), el sensor SW-420 se utiliza para detectar "golpes" o "sacudidas" que el usuario le da a la mascota virtual. Cada vez que se detecta una vibración, se interpreta como una interacción del usuario, que puede influir en el estado emocional de la mascota, como reducir su nivel de felicidad si se golpea con demasiada fuerza.
 
-Explicación Basada en el Diagrama de Señal
+### Explicación Basada en el Diagrama de Señal
 
 El sensor SW-420 genera una señal de salida digital, donde un nivel bajo indica que se ha detectado una vibración. Al no haber vibración, la salida del sensor permanece en nivel alto. Al detectar una vibración o sacudida, el sensor genera un pulso bajo, el cual puede ser interpretado por la FPGA para tomar acciones en la lógica del Tamagotchi.
 
-Interpretación de la Vibración
+### Interpretación de la Vibración
 
 La FPGA recibe la señal del sensor SW-420. Si se detecta un cambio en el estado de la señal, esto indica que se ha producido una vibración. Dependiendo de la intensidad de la vibración, la mascota virtual puede reaccionar de diferentes maneras, por ejemplo, reduciendo su felicidad si se detecta una sacudida brusca.
 
-Pines de Alimentación
+### Pines de Alimentación
+
+<img src= "IMAGENES/componentes sensor vibracion.png">
 
 • VCC (Alimentación): Este pin se conecta a una fuente de 3.3V o 5V para alimentar el sensor.
 
@@ -293,9 +295,11 @@ Gestión de la respuesta: Implementar la lógica para determinar la acción a to
 
 Respuesta de la mascota: Ajustar el estado emocional de la mascota (como su felicidad) en función de las vibraciones detectadas.
 
+
+
 ## Sensor de movimiento PIR HC-SR501
 
-<img src= "IMAGENES/componentes sensor vibracion.png">
+<img src= "IMAGENES/SENSOR PIR .png">
 
 Para implementar este sensor, necesitaremos lo siguiente:
 
