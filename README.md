@@ -126,7 +126,6 @@ El sensor TCS34725 se empleará para que la mascota virtual interactúe de maner
 el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
 
 
-
 Color Azul:
 
 Simulación: Representa el suministro de agua a la mascota.
@@ -143,27 +142,27 @@ Simulación: Representa interacciones afectivas entre el dueño y la mascota, co
 
 Efecto: La presencia del color rojo aumentará el nivel de felicidad de la mascota, reflejando el cariño y la atención que recibe de su dueño. Este color también permitirá que la mascota salga del estado de tristeza.
 
-Implementación en HDL y Conexión
+### Implementación en HDL y Conexión
 
 1. Módulo I2C en HDL:
+   
 Se implementará un módulo I2C en código Verilog para gestionar la comunicación entre la FPGA y el sensor TCS34725. Este módulo manejará el intercambio de datos de color detectados por el sensor hacia la lógica del sistema Tamagotchi.
 
 2. Manejo de Datos:
+   
 La lógica en Verilog interpretará los datos RGB recibidos del sensor y los transformará en las acciones descritas dentro del juego del Tamagotchi. Por ejemplo, si se detecta el color verde, la mascota interpretará que está siendo alimentada.
 
-3. Alimentación y Conexiones Físicas:
+### Pines de Alimentación:
 
-Pines de Alimentación:
+• VCC: El sensor requiere una fuente de alimentación de 3.3V que será proporcionada por la FPGA.
 
-VCC: El sensor requiere una fuente de alimentación de 3.3V que será proporcionada por la FPGA.
+• GND: Este pin debe conectarse a la tierra (GND) en la FPGA.
+ 
+• Pines de Comunicación I2C:
 
-GND: Este pin debe conectarse a la tierra (GND) en la FPGA.
+• SCL (Serial Clock Line): Este pin controla el reloj del bus I2C y debe conectarse al pin SCL correspondiente de la FPGA.
 
-Pines de Comunicación I2C:
-
-SCL (Serial Clock Line): Este pin controla el reloj del bus I2C y debe conectarse al pin SCL correspondiente de la FPGA.
-
-SDA (Serial Data Line): Este pin es la línea de datos del bus I2C y debe conectarse al pin SDA de la FPGA.
+• SDA (Serial Data Line): Este pin es la línea de datos del bus I2C y debe conectarse al pin SDA de la FPGA.
 
 
 
