@@ -265,7 +265,7 @@ El sensor de vibración SW-420 detecta vibraciones o golpes mediante un mecanism
 
 ### Funcionalidad
 
-En el proyecto de la mascota virtual (Tamagotchi), el sensor SW-420 se utiliza para detectar "golpes" o "sacudidas" que el usuario le da a la mascota virtual. Cada vez que se detecta una vibración, se interpreta como una interacción del usuario, que puede influir en el estado emocional de la mascota, como reducir su nivel de felicidad si se golpea con demasiada fuerza.
+En el proyecto de la mascota virtual (Tamagotchi), el sensor SW-420 se utiliza para detectar "golpes" o "sacudidas" que el usuario le da a la mascota virtual. Cada vez que se detecta una vibración, se interpreta como una interacción del usuario, que puede influir en el estado emocional de la mascota, como aumentar su nivel de felicidad cuando detecta la vibracion.
 
 ### Explicación Basada en el Diagrama de Señal
 
@@ -273,7 +273,7 @@ El sensor SW-420 genera una señal de salida digital, donde un nivel bajo indica
 
 ### Interpretación de la Vibración
 
-La FPGA recibe la señal del sensor SW-420. Si se detecta un cambio en el estado de la señal, esto indica que se ha producido una vibración. Dependiendo de la intensidad de la vibración, la mascota virtual puede reaccionar de diferentes maneras, por ejemplo, reduciendo su felicidad si se detecta una sacudida brusca.
+La FPGA recibe la señal del sensor SW-420. Si se detecta un cambio en el estado de la señal, esto indica que se ha producido una vibración. Cada vez que detecta una vibracion el nivel de felicidad se restablecera.
 
 ### Pines de Alimentación
 
@@ -285,16 +285,15 @@ La FPGA recibe la señal del sensor SW-420. Si se detecta un cambio en el estado
 
 • DO (Salida digital): El pin DO se conecta a un GPIO de la FPGA configurado como entrada. Este pin cambiará su estado dependiendo de si se detecta o no una vibración.
 
-Implementación HDL y Conexión
+### Implementación HDL y Conexión
 
 El flujo de la implementación en Verilog sería algo similar a lo siguiente:
 
-Detección de vibración: Crear un módulo en Verilog que monitoree el pin de salida del sensor. Si se detecta un cambio de estado en la señal, se registra una vibración.
+• Detección de vibración: Crear un módulo en Verilog que monitoree el pin de salida del sensor. Si se detecta un cambio de estado en la señal, se registra una vibración.
 
-Gestión de la respuesta: Implementar la lógica para determinar la acción a tomar según la intensidad o frecuencia de las vibraciones detectadas, afectando el comportamiento de la mascota.
+• Gestión de la respuesta: Implementar la lógica para determinar la acción a tomar según la intensidad o frecuencia de las vibraciones detectadas, afectando el comportamiento de la mascota.
 
-Respuesta de la mascota: Ajustar el estado emocional de la mascota (como su felicidad) en función de las vibraciones detectadas.
-
+• Respuesta de la mascota: Ajustar el estado emocional de la mascota (como su felicidad) en función de las vibraciones detectadas.
 
 
 ## Sensor de movimiento PIR HC-SR501
