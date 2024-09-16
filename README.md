@@ -806,6 +806,34 @@ La contribución del equipo al desarrollo del proyecto ha sido equitativa en rel
 
 ### Procedimiento y anexos fotograficos
 
+<img src= "IMAGENES/Pulsadores.jpeg">
+
+Como se puede evidenciar la conexion de los pulsadores desde la protoboard ademas de la imagen se podra encontrar en la seccion de codigos la descripcion del boton antirrebote 
+
+<img src= "IMAGENES/PIR.jpeg">
+
+Como se puede evidenciar la conexion del sensor PIR desde la protoboard ademas de la imagen se podra encontrar en la seccion de codigos la descripcion del sensor como un simple interruptor en el module LCD1602_top
+
+<img src= "IMAGENES/Vibracion.jpeg">
+
+Como se puede evidenciar la conexion del sensor de vibracion desde la protoboard ademas de la imagen se podra encontrar en la seccion de codigos la descripcion del sensor como un simple interruptor en el module LCD1602_top
+
+<img src= "IMAGENES/Ultrasonido.jpeg">
+
+Como se puede evidenciar la conexion del sensor de ultrasoido desde la protoboard ademas de la imagen se podra encontrar en la seccion de codigos la descripcion del sensor en el module ultrasonido
+
+<img src= "IMAGENES/Procedimiento2.jpg">
+
+Se puede evidenciar la conexion completa de algunos perifericos del montaje en la protoboard 
+
+<img src= "IMAGENES/Procedimiento3.jpg">
+
+Como se puede evidenciar la conexion de la pantalla, los displays 7 segmenntos que anucian las puntuaciones ademas de la imagen se podra encontrar en la seccion de codigos la descripcion de la visualizacion en el module LCD1602_top y el module display_7seg_4digitos
+
+<img src= "IMAGENES/Procedimiento1.jpg">
+
+Finalmente mostramos en levantamiento total de nuestro poyecto 
+
 ### Video
 
 ## Referencias
