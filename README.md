@@ -425,7 +425,6 @@ Función: Interpreta los comandos y datos del MPU y controla la pantalla.
 
 Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 
-
 ## Display de 7 segmentos (ánodo común)  
 
 <img src= "IMAGENES/DISPLAY7R.png">
@@ -464,16 +463,6 @@ Conexiones: Internamente conectado a los pines de datos y control de la pantalla
 
 •	Interfaz: Puede ser controlado directamente por un microcontrolador o mediante un decodificador BCD a 7 segmentos.
 
-## Interruptor táctil (push button)
-
-<img src= "IMAGENES/boton-interruptor.JPG">
-
-•	Voltaje de operación: 3.3V a 5V.
-
-•	Corriente de operación:  Típica: 50mA.  Máxima: 100mA.
-
-•	Operación: -20°C a 70°C.
-
 ### Funcionalidad 
 
 Los displays de 7 segmentos en nuestro proyecto actúan como paneles de información crucial, mostrando de manera efectiva los niveles estadísticos que reflejan el bienestar de la mascota virtual. Estos niveles varían de 1 a 5 y representan diferentes aspectos del estado de la mascota, incluyendo hambre, diversión, descanso, salud y felicidad.
@@ -500,6 +489,40 @@ Cada display está controlado directamente desde la FPGA, la cual envía señale
 
 •	GND: Tierra en la FPGA.
 
+
+## Interruptor táctil (push button)
+
+<img src= "IMAGENES/boton-interruptor.jpg">
+
+•	Voltaje de operación: 3.3V a 5V.
+
+•	Corriente de operación:  Típica: 50mA.  Máxima: 100mA.
+
+•	Operación: -20°C a 70°C.
+
+### Funcionalidad 
+
+Los botones cumpliran la funcion de curar, alimentar, reset, modo test, y racing mode, los cuales nos permitiran interactuar con la mascota de manera fisica con lo cual 
+
+•	Hambre: Restablecera la puntuacion cuando la mascota esta hambrienta.
+
+•	Salud: Restablecera la puntuacion de la salud cumplira con la funcion de curar.
+
+• Reset: Despues de presionar se restablecera el juego
+
+•	Test mode: Despues de presionar durante 5 segundos la mascota entrara en el modo de juego "Test mode" con el cual cada vez que se presione cambiara de estados en la pantalla LCD y finalmente si queremos salir del modo solo tendremos que volver a presionar durante 5 segundos el boton.
+
+• Racing mode: Despues de presionar durante 5 segundos la mascota entrara en el modo de juego "Racing mode" en el cual el tiempo pasara 8 veces mas rapido de lo normal si queremos salir del modo solo tendremos que volver a presionar durante 5 segundos el boton.
+
+### Implementación HDL y Conexión
+
+Cada Cada display está controlado directamente desde la FPGA, la cual envía señales para ajustar los valores mostrados en función de las interacciones realizadas con la mascota virtual mediate la descripción de hardware. Los cambios en los niveles se reflejan inmediatamente en los displays de 7 segmentos, proporcionando retroalimentación instantánea al dueño sobre las necesidades actuales de la mascota.
+
+#### Pines de Alimentación
+
+•	VCC: Fuente de alimentación de 5V en la FPGA.
+
+•	GND: Tierra en la FPGA.
 ## Prototipado
 
 ### Simulaciones y interpretacion 
