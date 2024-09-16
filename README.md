@@ -72,58 +72,55 @@ Si alguna de las condiciones críticas como la Salud llega a cero, la mascota mu
 <img src= "IMAGENES/Diagrama de flujo.jpg">
 
 
-### Maquina de estados
-
-<img src= "IMAGENES/Diagrama de estados LCD.jpg">
-
-<img src= "IMAGENES/Diagrama de estados sensor ultrasonido.jpg">
-
 ## Arquitectura del sistema
 
-## sensor rgb TCS34725
+### Definición clara de la funcionalidad de cada periférico y coherencia con la implementación en HDL y su conexión.
+
+
+### Sensor rgb TCS34725
 
 
 <img src= IMAGENES/TCS.png>
 
-Especificaciones  
+### Especificaciones  
 
-Voltaje de operación: 2.7V a 3.6V (recomendado: 3.3V).
+##### Voltaje de operación: 2.7V a 3.6V (recomendado: 3.3V).
 
-Corriente de operación:
+##### Corriente de operación:
 
-Modo activo: 60 µA.
+##### Modo activo: 60 µA.
 
-LED activado: 240 µA.
+##### LED activado: 240 µA.
 
-Modo espera: < 2.5 µA.
+##### Modo espera: < 2.5 µA.
 
-Protocolo de comunicación: I2C (7 bits, hasta 400 kHz).
+##### Protocolo de comunicación: I2C (7 bits, hasta 400 kHz).
 
-Rango de detección de colores:
+##### Rango de detección de colores:
 
-Rojo: 610 - 720 nm.
+##### Rojo: 610 - 720 nm.
 
-Verde: 495 - 570 nm.
+##### Verde: 495 - 570 nm.
 
-Azul: 450 - 495 nm.
+##### Azul: 450 - 495 nm.
 
-Luz clara: Para la medición de la luminosidad ambiental.
+##### Luz clara: Para la medición de la luminosidad ambiental.
 
-Resolución de salida: ADC de 16 bits por canal (Rojo, Verde, Azul, Claro).
+##### Resolución de salida: ADC de 16 bits por canal (Rojo, Verde, Azul, Claro).
 
-Tiempo de integración: 2.4 ms a 700 ms (ajustable).
+##### Tiempo de integración: 2.4 ms a 700 ms (ajustable).
 
-LED interno: LED blanco para mejorar la precisión bajo condiciones de baja luz.
+##### LED interno: LED blanco para mejorar la precisión bajo condiciones de baja luz.
 
-Campo de visión: 35°.
+##### Campo de visión: 35°.
 
-Dimensiones: 3.94 mm x 2.84 mm x 1.35 mm.
+##### Dimensiones: 3.94 mm x 2.84 mm x 1.35 mm.
 
-Temperatura de operación: -30°C a +85°C.
+##### Temperatura de operación: -30°C a +85°C.
 
-Distancia de detección: Óptima a 5-10 mm.
+##### Distancia de detección: Óptima a 5-10 mm.
 
-Funcionalidad
+### Funcionalidad
 
 El sensor TCS34725 se empleará para que la mascota virtual interactúe de manera más amigable con su dueño, proporcionando una experiencia basada en la detección de colores específicos. Cada color detectado por 
 el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
@@ -532,6 +529,12 @@ La pantalla de 7 segmentos cumple su función, pero a largo plazo se podría con
 Evaluación Cíclica:
 
 El modelo ha sido ajustado a través de iteraciones que permitieron superar las limitaciones técnicas del sensor RGB y hacer pruebas más directas con los sensores de vibración y ultrasonido. Estas mejoras seguirán evaluándose en las próximas fases del proyecto.
+
+### Maquina de estados
+
+<img src= "IMAGENES/Diagrama de estados LCD.jpg">
+
+<img src= "IMAGENES/Diagrama de estados sensor ultrasonido.jpg">
 
 ### Interpretación de resultados de la implementación
 
