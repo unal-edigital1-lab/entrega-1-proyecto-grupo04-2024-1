@@ -250,7 +250,7 @@ El flujo de la implementación en Verilog sería algo similar a lo siguiente:
 3. Cálculo de la distancia: Transformar el tiempo medido en la distancia correspondiente y almacenarla para su uso en la lógica del Tamagotchi.
 
 ## Sensor de vibración SW-420
-<img src= "IIMAGENES/sensor de vibracion.png">
+<img src= "IMAGENES/sensor de vibracion.png">
 
 Voltaje de operación: 3.3V - 5V
 
