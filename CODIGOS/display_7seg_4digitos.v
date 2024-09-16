@@ -10,12 +10,14 @@ module display_7seg_4digitos(
     output reg [4:0] an
 );
 
+// Registro del contador
 reg [19:0] counter_7seg;
 
 function [6:0] seven_seg;
     input [3:0] digit;
     begin
         case(digit)
+            // Converción de hexadecimal a binario
             4'h0: seven_seg = 7'b1000000; // 0
             4'h1: seven_seg = 7'b1111001; // 1
             4'h2: seven_seg = 7'b0100100; // 2
@@ -31,6 +33,7 @@ function [6:0] seven_seg;
     end
 endfunction
 
+//-------------------------------------Logica secuencial de la multiplexació---------------------------\\
 always @(posedge clk or negedge reset) begin
     if (!reset) begin
         counter_7seg <= 0;
@@ -40,22 +43,27 @@ always @(posedge clk or negedge reset) begin
         counter_7seg <= counter_7seg + 1;
         
         case(counter_7seg[19:17])
+            // Primer digito (digit_0)
             3'b000: begin
                 an <= 5'b11110; // Dígito más a la derecha
                 seg_0 <= seven_seg(digit_0);
             end
+            // Segundo digito (digit_1)
             3'b001: begin
-                an <= 5'b11101; // Segundo desde la derecha
+                an <= 5'b11101; // digito segundo desde la derecha
                 seg_0 <= seven_seg(digit_1);
             end
+            // Tercer digito (digit_2)
             3'b010: begin
-                an <= 5'b11011; // Segundo desde la izquierda
+                an <= 5'b11011; // digito central
                 seg_0 <= seven_seg(digit_2);
             end
+            // Cuarto digito (digit_3)
             3'b011: begin
-                an <= 5'b10111; // Dígito más a la izquierda
+                an <= 5'b10111; // Dígito segundo desde la izquierda
                 seg_0 <= seven_seg(digit_3);
             end
+            // Quinto digito (digit_4)
             3'b100: begin
                 an <= 5'b01111; // Dígito más a la izquierda
                 seg_0 <= seven_seg(digit_4);
