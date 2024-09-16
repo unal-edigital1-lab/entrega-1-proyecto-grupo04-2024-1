@@ -256,7 +256,7 @@ end
             counter_tiempo <= 36'b0;     
         end else begin
             if(racing_mode == 1'b0)begin 
-            if (counter_tiempo == 36'd45000000000 ^ btn_racing_mode == 0) begin
+            if (counter_tiempo == 36'd45000000000) begin
                 counter_tiempo = 36'b0;
 				end else  begin
                 counter_tiempo = counter_tiempo + 1;
