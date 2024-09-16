@@ -853,7 +853,19 @@ Como se puede evidenciar la conexion de la pantalla, los displays 7 segmenntos q
 Finalmente mostramos en levantamiento total de nuestro poyecto 
 
 ### Video
+
+Video de explicacion del funcionamiento del Tamagotchi
  
 [Ver video en YouTube](https://youtu.be/vZQra_RWRXc)
 
 ## Referencias
+
+https://www.alldatasheet.com/datasheet-pdf/view/1132204/ETC2/HCSR04.html
+
+https://cdn-learn.adafruit.com/downloads/pdf/pir-passive-infrared-proximity-motion-sensor.pdf
+
+https://media.digikey.com/pdf/Data%20Sheets/Seeed%20Technology/Grove_Vibration_Sensor_SW-420_Web.pdf
+
+https://circuitdigest.com/article/16x2-lcd-display-module-pinout-datasheet
+
+
