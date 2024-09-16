@@ -573,7 +573,21 @@ Cada Cada display está controlado directamente desde la FPGA, la cual envía se
 •	GND: Tierra en la FPGA.
 ## Prototipado
 
-### Simulaciones y interpretacion 
+### Simulaciones e interpretación 
+Para la implementacion de la mayoria de los sensores (Modulos implementados en el codigo para cada uno de ellos) y perifericos que componen nuestro proyecto "Tamagochi" se simuló su comportamiento por medio de Questa. los resultados desgregados de cada componente se veran a continación.
+1.Simulación Display 7segmentos:
+<img src= "DISPLAY_HAMBRE.png">
+<img src= "DISPLAY_VIDA.png">
+En la anteriores imagenes se muestra el funcionamiento de los displays de 7 segmentos deacuerdo a su configuración. cada display que representa el nivel de un estado comienza desde el mismo valor numerico en el display seleccionado y cambia con el tiempo. se comprueba el correcto funcionamient de los displays.
+2.Simulación pantalla LCD de 16x2:
+<img src="pantalla_lcd.png">
+Para la pantalla lcd de 16x2 se probó que  la pantalla estuviera lista para la lectura de los archivos tipo txt que se le subieran, las caras de que hace nuestra mascota "tamagochi". ready_i indica el inicio de nuestra maquina de estados.
+3.Simulación Antirrebote:
+<img src="ANTIRREBOTE.png">
+Se puede ver como en la imagen, cuando simulamos pulsos de distinta duuración no se presentan distorsiones en ningun pulso por lo que podemos concluir el correcto funcionamiento de nuestro modulo antirrebote.
+4.Simulación Ultrasonido:
+<img src="TB_ULTRASONIDO.png">
+Se puede ver en la imagen como, primero que nada el trigger de el sensor se va iniciando durante un periodo de 10 micro segundos, su periodo de ajuste. despues de este tiempo comienza a verse señales de "echo" que simulan las señales que se van arecibir del sensor. señales con cierta duracion y en un intervalo de tiempo corto.
 
 ### Justificación y Replanteamiento del Modelo
 
