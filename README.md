@@ -43,7 +43,7 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV, re
 
 #### Display 7 seg 
 
-#### 4 interruptores
+#### 5 Botones
 
 ## Especificacion de los sistemas que conforman el proyecto
 
@@ -72,11 +72,12 @@ Si alguna de las condiciones críticas como la Salud llega a cero, la mascota mu
 <img src= "IMAGENES/Diagrama de flujo.jpg">
 
 
-### Maquina de estados.
+### Maquina de estados
 
 
 
-##Arquitectura del sistema
+
+## Arquitectura del sistema
 
 ## sensor rgb TCS34725
 
