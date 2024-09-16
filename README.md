@@ -758,6 +758,7 @@ Tras un análisis minucioso de los requisitos funcionales del proyecto, podemos 
 | Documentación y Entrega | Semana 13 | Optimización final del sistema, documentación técnica y entrega                | Reunión 5 (Revisión final) y pruebas de validación final                             |
 
 
+La contribución del equipo al desarrollo del proyecto ha sido equitativa en relacion a las habilidades y fortalezas de cada integrante, las cuales fueron fundamentales para superar los obstáculos que surgieron a lo largo del proceso. Nuestro equipo se destacó por su resiliencia durante todo el desarrollo del proyecto.
 
 ### Procedimiento y anexos fotograficos
 
