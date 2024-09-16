@@ -609,32 +609,31 @@ Se puede ver en la imagen como, primero que nada el trigger de el sensor se va i
 
 ### Justificación y Replanteamiento del Modelo
 
-El diseño inicial del Tamagotchi en FPGA incluía sensores RGB y PIR, además de botones y una pantalla de 7 segmentos. Sin embargo, después de enfrentar dificultades con la implementación del protocolo I2C para el sensor RGB, se tomó la decisión de sustituirlo y agregar otros sensores más viables, como los sensores de vibración y ultrasonido, que simplificaron la implementación y aportaron nuevas formas de interacción.
+El diseño inicial del Tamagotchi en FPGA incluía sensores RGB (TCS34725) y PIR (PIR HC-SR501), botones, Display 7 seg y una pantalla LCD 16x2. Sin embargo, después de enfrentar dificultades con la implementación del protocolo I2C para el sensor RGB, se tomó la decisión de sustituirlo y agregar otros sensores más viables, como los sensores de vibración (SW-420) y ultrasonido (Hc-sr4), que simplificaron la implementación y aportaron nuevas formas de interacción.
 
 ### Justificación
 
-Cambio de Sensor RGB y adición de Sensores de Vibración y Ultrasonido:
+#### Cambio de Sensor RGB y adición de Sensores de Vibración y Ultrasonido:
 
-El sensor RGB fue reemplazado debido a la complejidad de integrar el protocolo I2C. En su lugar, se añadieron los sensores de vibración y ultrasonido, que aportan nuevas dinámicas al juego. El sensor de vibración permite interpretar acciones físicas, como sacudir el dispositivo para jugar, mientras que el sensor de ultrasonido se usa para detectar la proximidad, simulando interacciones como una "caricia" de parte del usuario.
-Sensor PIR:
+El sensor RGB fue reemplazado debido a la complejidad de integrar el protocolo I2C. En su lugar, se añadieron los sensores de vibración y ultrasonido, que aportan nuevas dinámicas al juego. El sensor de vibración permite interpretar acciones físicas, como sacudir el dispositivo para "jugar" restableciendo el puntaje de diversion, mientras que el sensor de ultrasonido se usa para detectar la proximidad, simulando interacciones como una "caricia" de parte del usuario restableciendo el puntaje de la felicidad.
+
+#### Sensor PIR:
+
+El sensor PIR se mantuvo en el diseño debido a su facilidad para detectar movimiento, lo que permite acciones automáticas como "Despertar" a la mascota cuando el usuario se acerca y cuando el usuario no esta entrara er el estado de "dormido" restableciendo el puntaje de la energia.
+
+#### Display de 7 segmentos:
+
+El display de 7 segmentos sigue siendo una opción viable para mostrar la información de los indicadores de la mascota virtual: felicidad, hambre, energía, salud y diversión. Cada uno de estos indicadores tiene una puntuación que varía entre 0 y 5, proporcionando los datos necesarios para interactuar adecuadamente con la mascota. Aunque la pantalla tiene limitaciones, es suficiente para representar estas métricas.
 
 
-El sensor PIR se mantuvo en el diseño debido a su facilidad para detectar movimiento, lo que permite acciones automáticas como "despertar" a la mascota cuando el usuario se acerca.
+#### Pantalla LCD 16x2:
 
-Pantalla de 7 segmentos:
+La pantalla LCD es el componente principal para la visualización, es nuestra máquina de estados, la cual gestiona y muestra los diferentes estados de la mascota. Utilizamos esta pantalla para mostrar los estados correspondientes. Los estados de la mascota se actualizan en función del tiempo y los cambios en los indicadores, estos estados incluyen: "Estoy feliz", "Estoy triste", "Aburrido", "Cansado", "hambriento", "Enfermo", "Dormido" y "Me mori". Cada uno de estos estados es mostrado en la pantalla LCD mediante un emoji acompañado del nombre del estado correspondiente ademas del modo de juego.
 
-La pantalla de 7 segmentos sigue siendo adecuada para mostrar información básica como el nivel de felicidad o hambre de la mascota, simplificando la visualización y optimizando el uso de los recursos de la FPGA.
-Replanteamiento
-Sensores de Vibración y Ultrasonido:
 
-La integración de los sensores de vibración y ultrasonido aporta interacciones más dinámicas, como la posibilidad de jugar con la mascota mediante sacudidas o activar emociones con proximidad del usuario. Estas modificaciones permitieron mejorar el proyecto sin añadir complejidad innecesaria.
-Optimización de la Visualización:
+### Evaluación Cíclica:
 
-La pantalla de 7 segmentos cumple su función, pero a largo plazo se podría considerar una pantalla más avanzada para mejorar la visualización de las emociones de la mascota.
-
-Evaluación Cíclica:
-
-El modelo ha sido ajustado a través de iteraciones que permitieron superar las limitaciones técnicas del sensor RGB y hacer pruebas más directas con los sensores de vibración y ultrasonido. Estas mejoras seguirán evaluándose en las próximas fases del proyecto.
+El modelo ha sido ajustado a través de iteraciones que permitieron superar las limitaciones técnicas del sensor RGB y hacer pruebas más directas con los sensores de vibración y ultrasonido. Estas mejoras las hemos evaluado con el paso del tiempo con el objetivo de presentar un proyecto bien estruturado.
 
 ### Maquina de estados
 
