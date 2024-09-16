@@ -74,8 +74,9 @@ Si alguna de las condiciones críticas como la Salud llega a cero, la mascota mu
 
 ### Maquina de estados
 
+<img src= "IMAGENES/Diagrama de estados LCD.jpg">
 
-
+<img src= "IMAGENES/Diagrama de estados sensor ultrasonido.jpg">
 
 ## Arquitectura del sistema
 
