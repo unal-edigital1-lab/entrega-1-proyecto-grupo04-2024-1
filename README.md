@@ -77,7 +77,7 @@ Si alguna de las condiciones críticas como la Salud llega a cero, la mascota mu
 ### Definición clara de la funcionalidad de cada periférico y coherencia con la implementación en HDL y su conexión.
 
 
-### Sensor rgb TCS34725
+### Sensor RGB TCS34725
 
 
 <img src= IMAGENES/TCS.png>
@@ -166,41 +166,44 @@ La lógica en Verilog interpretará los datos RGB recibidos del sensor y los tra
 
 
 
-## Sensor medidor de distancia ultrasonido Hc-sr4
+## Sensor medidor de distancia ultrasonido HC-SR4
 
 
 <img src= "IMAGENES/Sensor Ultrasonid.png">
 
 
-Voltaje de operación: 5V.
+##### Voltaje de operación: 5V.
 
-Corriente de operación: <2 mA en reposo, 15 mA en operación
+##### Corriente de operación: <2 mA en reposo, 15 mA en operación
 
-Dimensiones: 32mm x 20mm2.
+##### Dimensiones: 32mm x 20mm2.
 
-Ángulo de detección: 30°.
+##### Ángulo de detección: 30°.
 
-Distancia de medición: Entre 2 cm y 400 cm
+##### Distancia de medición: Entre 2 cm y 400 cm
 
-Resolución: 0,3 cm
+##### Resolución: 0,3 cm
 
 ### Funcionamiento 
 
 El sensor HC-SR04 utiliza ondas ultrasónicas para medir la distancia entre él y un objeto. El principio de funcionamiento se basa en la emisión de un pulso ultrasónico que viaja en el aire, rebota en el objeto, y regresa al sensor. El dispositivo mide el tiempo que tarda en regresar el pulso para calcular la distancia mediante la ecuación de distancia:
 
-d = v × t,
+*d = v × t*
+
 donde:
 
-d es la distancia,
-v es la velocidad del sonido (aproximadamente 343 m/s en condiciones normales),
-t es el tiempo medido.
+*d es la distancia*
+
+*v es la velocidad del sonido (aproximadamente 343 m/s en condiciones normales)*
+
+*t es el tiempo medido*
 
 <img src= "IMAGENES/funcionamaiento del sensor ultrasonico.png">
 
 
 ### Funcionalidad 
 
-El sensor ultrasónico HC-SR04 se utiliza en el proyecto para medir la proximidad entre la mascota virtual (Tamagotchi) y el usuario. La "caricia" se simula detectando que la mano del usuario está a una distancia cercana al sensor, lo que luego se traduce en una interacción positiva que afecta el estado de la mascota, como aumentar su nivel de felicidad.
+El sensor ultrasónico HC-SR04 se utiliza en el proyecto para medir la proximidad entre la mascota virtual (Tamagotchi) y el usuario. La interaccion se denomina como un "caricia" se simula detectando que la mano del usuario está a una distancia cercana al sensor, lo que luego se traduce en una interacción positiva que afecta el estado de la mascota, como aumentar su nivel de felicidad.
 
 <img src= "señal cuadrada del sensor ultrasonico.png">
 
