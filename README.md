@@ -502,6 +502,8 @@ Cada display está controlado directamente desde la FPGA, la cual envía señale
 
 ## Prototipado
 
+### Simulaciones y interpretacion 
+
 ### Justificación y Replanteamiento del Modelo
 
 El diseño inicial del Tamagotchi en FPGA incluía sensores RGB y PIR, además de botones y una pantalla de 7 segmentos. Sin embargo, después de enfrentar dificultades con la implementación del protocolo I2C para el sensor RGB, se tomó la decisión de sustituirlo y agregar otros sensores más viables, como los sensores de vibración y ultrasonido, que simplificaron la implementación y aportaron nuevas formas de interacción.
@@ -530,3 +532,10 @@ La pantalla de 7 segmentos cumple su función, pero a largo plazo se podría con
 Evaluación Cíclica:
 
 El modelo ha sido ajustado a través de iteraciones que permitieron superar las limitaciones técnicas del sensor RGB y hacer pruebas más directas con los sensores de vibración y ultrasonido. Estas mejoras seguirán evaluándose en las próximas fases del proyecto.
+
+### Interpretación de resultados de la implementación
+
+### Determinación de causas físicas que puedan generar malos funcionamientos
+
+## Trabajo en Equipo y Gestión del Proyecto
+
