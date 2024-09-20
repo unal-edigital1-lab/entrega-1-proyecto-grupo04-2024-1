@@ -13,7 +13,7 @@
 
 ## Introduccion 
 
-Implementar un Tamagotchi en una FPGA Cyclone IV utilizando el lenguaje de programación de hardware Verilog. Este Tamagotchi será una mascota virtual que reaccionará a las interacciones del usuario a través de botones y a estímulos ambientales mediante sensores de ultrasonido, PIR y de vibraciones, los cuales serán detallados más adelante. El sistema contará con un display de 7 segmentos para mostrar los niveles y la puntuación de la mascota, mientras que una pantalla LCD de 16x2 se encargará de representar gráficamente su estado, así como el modo de juego en el que se encuentra el usuario.
+Implementar un Tamagotchi en una FPGA Cyclone IV utilizando el lenguaje de programación de hardware Verilog. Este Tamagotchi será una mascota virtual que reaccionará a las interacciones del usuario a través de botones y a estímulos ambientales mediante sensores de movimieto PIR y de colores RGB, los cuales serán detallados más adelante. El sistema contará con un display de 7 segmentos para mostrar los niveles y la puntuación de la mascota, mientras que una pantalla LCD de 16x2 se encargará de representar gráficamente su estado.
 
 ## Objetivos
 
