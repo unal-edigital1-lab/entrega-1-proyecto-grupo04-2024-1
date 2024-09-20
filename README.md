@@ -1,7 +1,3 @@
-# Entrega Final del proyecto WP01
-
-## Integrantes 
-
 #### Juan Manuel Beltrán Botello
 
 #### Oscar Jhondairo Siabato León
@@ -49,124 +45,113 @@ Optimizar el diseño para minimizar el uso de recursos en la FPGA Cyclone IV, re
 
 ## Especificacion de los sistemas que conforman el proyecto
 
-### Caja Negra 
+### Caja negra 
 
-El diagrama representa un sistema  compuesto por tres módulos principales: Sensores, Botones y Visualización. Los sensores incluyen un sensor de movimiento y un sensor de colores que comunican mediante el protocolo I2C. El módulo de botones, que incluye opciones como Jugar, Curar, Reset y Test, está conectado a un sistema de debouncing para gestionar las entradas de forma precisa. Las salidas visuales se manejan a través de un display de 7 segmentos y un LCD de 16x2. Además, un divisor de frecuencia regula las interacciones de tiempo en el sistema, garantizando la sincronización y el correcto despliegue de información.
+Tras enfrentar desafíos en la implementación del sensor de colores debido a complicaciones con el protocolo de comunicación I2C, se ha desarrollado una versión mejorada del sistema. Esta nueva versión introduce dos sensores adicionales: un sensor de ultrasonido y un sensor de vibraciones (los cuales suplen la funcion del sensor de colores), y elimina el sensor de colores original. Además, se han realizado ajustes en la configuración de los botones, reemplazando el botón de jugar por uno para alimentar y añadiendo un nuevo botón dedicado al modo racing.
 
-<img src= "IMAGENES/caja negra.jpg">
+<img src= "IMAGENES/caja negra V2.jpg">
 
-### Diagrama de flujo
+### Diagrama de flujo 
 
-El diagrama de flujo describe un sistema de juego donde se simula el cuidado de una mascota virtual  que determinan su estado de bienestar: Hambre, Diversión, Energía, Salud y Felicidad, todas iniciando en 5. Estas se afectan con el tiempo, y el jugador debe intervenir para mantenerlas dentro de rangos saludables.
+<img src= "IMAGENES/Diagrama de flujo V2.jpg">
 
-1. *Hambre*: Si el nivel de Hambre cae por debajo de 2, la mascota se muestra hambrienta. El jugador debe alimentarla para evitar que la Salud y la Felicidad no disminuyan.
+Este diagrama de flujo describe el comportamiento de un Tamagotchi implementado
 
-2. *Diversión*: Al reducirse la Diversión por debajo de 2, la mascota se considera aburrida. El jugador puede optar por jugar con la mascota para aumentar su Felicidad y restablecer su Diversión.
+#### Inicio
 
-3. *Energía*: Si la Energía disminuye a menos de 2, la mascota entra en un estado cansado, necesitando dormir para recuperar Energía y Salud.
+Valores iniciales:
 
-4. *Salud*: Un nivel de Salud por debajo de 2 indica que la mascota está enferma. Debe ser curada, o de lo contrario la Salud continuará disminuyendo, pudiendo resultar en la muerte de la mascota si la Salud llega a cero.
+Hambre = 5
 
-5. *Felicidad*: Si la Felicidad cae por debajo de 2, la mascota se pone triste, lo que puede afectar adicionalmente su Salud. Acariciar a la mascota o atender sus otras necesidades puede restaurar la Felicidad.
+Diversión = 5
 
-Si alguna de las condiciones críticas como la Salud llega a cero, la mascota muere, y el juego requiere que se realice un reinicio. Este sistema de juego enseña sobre el cuidado y la atención necesaria para mantener el bienestar de un ser, aunque sea virtual, enfatizando la importancia de la observación y la respuesta a las necesidades de los que dependen de nosotros.
+Energía = 5
 
-<img src= "IMAGENES/Diagrama de flujo.jpg">
+Salud = 5
 
+Felicidad = 5
+
+
+
+
+| **Parámetro**    | **Condición** | **Acción**             | **Resultado**                                     |
+|------------------|---------------|------------------------|--------------------------------------------------|
+| **Hambre**       | 2ut = Sí      | Hambre = Hambre - 1    | Se reduce el nivel de hambre cada 2 unidades de tiempo.                    |
+|                  | Hambre ≤ 2    | Hambriento             |                  |
+|                  |No alimentar  | Salud = Salud - 1      | Disminuye la salud al no alimentar.                 |
+|                  | No alimentar | Felicidad = Felicidad - 2 | Disminuye la felicidad al no alimentar.               |
+|                  |Alimentar (boton)|  Hambre = 5             | Hambre se resetea al valor máximo (5).           |
+| **Diversión**    |1ut = Sí      | Diversión = Diversión - 1 | Se reduce el nivel de diversión cada 1 unidad de tiempo.                 |
+|                  | Diversión ≤ 2 | Aburrido               |                   |
+|                  | No jugar      | Felicidad = Felicidad - 1 | Disminuye la felicidad al no jugar.                 |
+|                  |Jugar (sensor) | Diversión = 5          | Diversión se resetea al valor máximo (5).        |
+|                  |Jugar (sensor)| Energía = Energía - 1  | Se reduce la energía al jugar.                   |
+|                  |Jugar (sensor)| Hambre = Hambre - 1    | Se reduce el hambre al jugar.                    |
+| **Energía**      | 4ut = Sí      | Energía = Energía - 1   | Se reduce el nivel de energía cada 4 unidades de tiempo.                   |
+|                  | Energía ≤ 2   | Cansado                |                                                  |
+|                  |Dormir (sensor)| Energia = 5            | Energia se resetea al valor maximo (5)                                                  
+|                  |Dormir (sensor)| Salud = Salud + 1      | Aumenta la salud al dormir.                      |
+|                  |Dormir (sensor)| Felicidad = Felicidad + 2 | Aumenta la felicidad al dormir.                  |
+| **Salud**        | Salud ≤ 2     | Enfermo                |                                                   |
+|                  | Curar (Botón) | Salud = 5              |Salud se resetea al valor maximo (5).                    |
+|                  | No curar      | Salud = Salud - 1      | Se reduce la salud si no se cura.                |
+|                  | Salud = 0     | Muerte                 | El Tamagotchi muere y se activa la opción Reset. |
+| **Felicidad**    | Felicidad ≤ 2 | Triste                 |                                          |
+|                  |No acariciar   |  salud = Salud - 1      | Disminuye la salud si no se acaricia             |
+|                  |Acariciar (sensor)| Felicidad =5           | se resetea la felicidad al acariciar al valor maximo (5)        |
+| **Modo Racing**  | Pulsar por 5 seg | Pulsos = 1            | Tiempo x 5.                                      |
+|                  |               | Pulsos = 2             | Tiempo x 10.                                     |
+|                  |               | Pulsos = 3             | Tiempo x 50.                                     |
+| **Modo Test**    | Pulsar por 5 seg | Pulso = 1             | Muerto.                                          |
+|                  |               | Pulso = 2             | Dormido.                                         |
+|                  |               | Pulso = 3             | Triste.                                          |
+|                  |               | Pulso = 4             | Enfermo.                                         |
+|                  |               | Pulso = 5             | Cansado.                                         |
+|                  |               | Pulso = 6             | Aburrido.                                        |
+|                  |               | Pulso = 7             | Hambriento.                                      |
+|                  |               | Pulso = 8             | Feliz.                                           |
+
+Este resumen abarca los diferentes estados y sus respectivos cambios basados en las condiciones que se presentan en el diagrama de flujo. 
+
+### Maquina de estados
+
+### Visualizacion 
+
+<img src= "IMAGENES/Diagrama de estados LCD.jpg">
+
+#### Resumen del Flujo de la FSM:
+
+• IDLE: Espera la señal de inicio.
+
+• INIT_CONFIG: Envia los comandos de configuración al LCD.
+
+• CLEAR_COUNTERS0: Reinicia los contadores para preparar la escritura de caracteres en la CGRAM.
+
+• CREATE_CHARS: Escribe caracteres personalizados en la CGRAM del LCD.
+
+• CLEAR_COUNTERS1: Reinicia los contadores para preparar la escritura de texto en la pantalla.
+
+• SET_CURSOR_AND_WRITE: Mueve el cursor y escribe texto en la pantalla.
+
+• WRITE_ADDITIONAL_TEXT: Escribe texto adicional en la pantalla, incluyendo el manejo de escritura en la segunda línea del LCD.
+
+### Diagrama de estados sensor ultrasonido
+
+<img src= "IMAGENES/Diagrama de estados sensor ultrasonido.jpg">
+
+#### Explicación:
+
+• IDLE: Incrementa el contador count y evalúa cuándo activar la señal trigger.
+
+• TRIGGER: Se dispara la señal de trigger, y el sistema está a la espera de la señal echo de vuelta.
+
+• ECHO: El sistema mide el tiempo que echo está activo (incrementando echo_count). Cuando echo pasa de 1 a 0, se almacena el valor en count_out.
+
+• Almacenamiento: Una vez que el eco ha sido recibido completamente, se guarda el valor del tiempo medido y se prepara el sistema para la próxima medición.
 
 ## Arquitectura del sistema
 
 ### Definición clara de la funcionalidad de cada periférico y coherencia con la implementación en HDL y su conexión.
-
-
-### Sensor RGB TCS34725
-
-
-<img src= IMAGENES/TCS.png>
-
-### Especificaciones  
-
-##### Voltaje de operación: 2.7V a 3.6V (recomendado: 3.3V).
-
-##### Corriente de operación:
-
-##### Modo activo: 60 µA.
-
-##### LED activado: 240 µA.
-
-##### Modo espera: < 2.5 µA.
-
-##### Protocolo de comunicación: I2C (7 bits, hasta 400 kHz).
-
-##### Rango de detección de colores:
-
-##### Rojo: 610 - 720 nm.
-
-##### Verde: 495 - 570 nm.
-
-##### Azul: 450 - 495 nm.
-
-##### Luz clara: Para la medición de la luminosidad ambiental.
-
-##### Resolución de salida: ADC de 16 bits por canal (Rojo, Verde, Azul, Claro).
-
-##### Tiempo de integración: 2.4 ms a 700 ms (ajustable).
-
-##### LED interno: LED blanco para mejorar la precisión bajo condiciones de baja luz.
-
-##### Campo de visión: 35°.
-
-##### Dimensiones: 3.94 mm x 2.84 mm x 1.35 mm.
-
-##### Temperatura de operación: -30°C a +85°C.
-
-##### Distancia de detección: Óptima a 5-10 mm.
-
-### Funcionalidad
-
-El sensor TCS34725 se empleará para que la mascota virtual interactúe de manera más amigable con su dueño, proporcionando una experiencia basada en la detección de colores específicos. Cada color detectado por 
-el sensor influirá en el comportamiento y el estado de la mascota de la siguiente manera:
-
-
-Color Azul:
-
-Simulación: Representa el suministro de agua a la mascota.
-Efecto: Cuando el sensor detecte el color azul, se interpretará como si la mascota estuviera bebiendo agua, lo que contribuye a mantener su nivel de salud.
-
-Color Verde:
-
-Simulación: Indica la alimentación de la mascota.
-Efecto: La detección del color verde indicará que la mascota está siendo alimentada, ayudando a satisfacer su hambre.
-
-Color Rojo:
-
-Simulación: Representa interacciones afectivas entre el dueño y la mascota, como abrazos.
-
-Efecto: La presencia del color rojo aumentará el nivel de felicidad de la mascota, reflejando el cariño y la atención que recibe de su dueño. Este color también permitirá que la mascota salga del estado de tristeza.
-
-### Implementación en HDL y Conexión
-
-1. Módulo I2C en HDL:
-   
-Se implementará un módulo I2C en código Verilog para gestionar la comunicación entre la FPGA y el sensor TCS34725. Este módulo manejará el intercambio de datos de color detectados por el sensor hacia la lógica del sistema Tamagotchi.
-
-2. Manejo de Datos:
-   
-La lógica en Verilog interpretará los datos RGB recibidos del sensor y los transformará en las acciones descritas dentro del juego del Tamagotchi. Por ejemplo, si se detecta el color verde, la mascota interpretará que está siendo alimentada.
-
-### Pines de Alimentación:
-
-• VCC: El sensor requiere una fuente de alimentación de 3.3V que será proporcionada por la FPGA.
-
-• GND: Este pin debe conectarse a la tierra (GND) en la FPGA.
- 
-• Pines de Comunicación I2C:
-
-• SCL (Serial Clock Line): Este pin controla el reloj del bus I2C y debe conectarse al pin SCL correspondiente de la FPGA.
-
-• SDA (Serial Data Line): Este pin es la línea de datos del bus I2C y debe conectarse al pin SDA de la FPGA.
-
-
 
 ## Sensor medidor de distancia ultrasonido HC-SR4
 
@@ -637,109 +622,7 @@ La pantalla LCD es el componente principal para la visualización, es nuestra m�
 
 El modelo ha sido ajustado a través de iteraciones que permitieron superar las limitaciones técnicas del sensor RGB y hacer pruebas más directas con los sensores de vibración y ultrasonido. Estas mejoras las hemos evaluado con el paso del tiempo con el objetivo de presentar un proyecto bien estruturado.
 
-### Caja negra 
 
-Tras enfrentar desafíos en la implementación del sensor de colores debido a complicaciones con el protocolo de comunicación I2C, se ha desarrollado una versión mejorada del sistema. Esta nueva versión introduce dos sensores adicionales: un sensor de ultrasonido y un sensor de vibraciones (los cuales suplen la funcion del sensor de colores), y elimina el sensor de colores original. Además, se han realizado ajustes en la configuración de los botones, reemplazando el botón de jugar por uno para alimentar y añadiendo un nuevo botón dedicado al modo racing.
-
-<img src= "IMAGENES/caja negra V2.jpg">
-
-### Diagrama de flujo 
-
-<img src= "IMAGENES/Diagrama de flujo V2.jpg">
-
-Este diagrama de flujo describe el comportamiento de un Tamagotchi implementado
-
-#### Inicio
-
-Valores iniciales:
-
-Hambre = 5
-
-Diversión = 5
-
-Energía = 5
-
-Salud = 5
-
-Felicidad = 5
-
-
-
-
-| **Parámetro**    | **Condición** | **Acción**             | **Resultado**                                     |
-|------------------|---------------|------------------------|--------------------------------------------------|
-| **Hambre**       | 2ut = Sí      | Hambre = Hambre - 1    | Se reduce el nivel de hambre cada 2 unidades de tiempo.                    |
-|                  | Hambre ≤ 2    | Hambriento             |                  |
-|                  |No alimentar  | Salud = Salud - 1      | Disminuye la salud al no alimentar.                 |
-|                  | No alimentar | Felicidad = Felicidad - 2 | Disminuye la felicidad al no alimentar.               |
-|                  |Alimentar (boton)|  Hambre = 5             | Hambre se resetea al valor máximo (5).           |
-| **Diversión**    |1ut = Sí      | Diversión = Diversión - 1 | Se reduce el nivel de diversión cada 1 unidad de tiempo.                 |
-|                  | Diversión ≤ 2 | Aburrido               |                   |
-|                  | No jugar      | Felicidad = Felicidad - 1 | Disminuye la felicidad al no jugar.                 |
-|                  |Jugar (sensor) | Diversión = 5          | Diversión se resetea al valor máximo (5).        |
-|                  |Jugar (sensor)| Energía = Energía - 1  | Se reduce la energía al jugar.                   |
-|                  |Jugar (sensor)| Hambre = Hambre - 1    | Se reduce el hambre al jugar.                    |
-| **Energía**      | 4ut = Sí      | Energía = Energía - 1   | Se reduce el nivel de energía cada 4 unidades de tiempo.                   |
-|                  | Energía ≤ 2   | Cansado                |                                                  |
-|                  |Dormir (sensor)| Energia = 5            | Energia se resetea al valor maximo (5)                                                  
-|                  |Dormir (sensor)| Salud = Salud + 1      | Aumenta la salud al dormir.                      |
-|                  |Dormir (sensor)| Felicidad = Felicidad + 2 | Aumenta la felicidad al dormir.                  |
-| **Salud**        | Salud ≤ 2     | Enfermo                |                                                   |
-|                  | Curar (Botón) | Salud = 5              |Salud se resetea al valor maximo (5).                    |
-|                  | No curar      | Salud = Salud - 1      | Se reduce la salud si no se cura.                |
-|                  | Salud = 0     | Muerte                 | El Tamagotchi muere y se activa la opción Reset. |
-| **Felicidad**    | Felicidad ≤ 2 | Triste                 |                                          |
-|                  |No acariciar   |  salud = Salud - 1      | Disminuye la salud si no se acaricia             |
-|                  |Acariciar (sensor)| Felicidad =5           | se resetea la felicidad al acariciar al valor maximo (5)        |
-| **Modo Racing**  | Pulsar por 5 seg | Pulsos = 1            | Tiempo x 5.                                      |
-|                  |               | Pulsos = 2             | Tiempo x 10.                                     |
-|                  |               | Pulsos = 3             | Tiempo x 50.                                     |
-| **Modo Test**    | Pulsar por 5 seg | Pulso = 1             | Muerto.                                          |
-|                  |               | Pulso = 2             | Dormido.                                         |
-|                  |               | Pulso = 3             | Triste.                                          |
-|                  |               | Pulso = 4             | Enfermo.                                         |
-|                  |               | Pulso = 5             | Cansado.                                         |
-|                  |               | Pulso = 6             | Aburrido.                                        |
-|                  |               | Pulso = 7             | Hambriento.                                      |
-|                  |               | Pulso = 8             | Feliz.                                           |
-
-Este resumen abarca los diferentes estados y sus respectivos cambios basados en las condiciones que se presentan en el diagrama de flujo. 
-
-### Maquina de estados
-
-### Visualizacion 
-
-<img src= "IMAGENES/Diagrama de estados LCD.jpg">
-
-#### Resumen del Flujo de la FSM:
-
-• IDLE: Espera la señal de inicio.
-
-• INIT_CONFIG: Envia los comandos de configuración al LCD.
-
-• CLEAR_COUNTERS0: Reinicia los contadores para preparar la escritura de caracteres en la CGRAM.
-
-• CREATE_CHARS: Escribe caracteres personalizados en la CGRAM del LCD.
-
-• CLEAR_COUNTERS1: Reinicia los contadores para preparar la escritura de texto en la pantalla.
-
-• SET_CURSOR_AND_WRITE: Mueve el cursor y escribe texto en la pantalla.
-
-• WRITE_ADDITIONAL_TEXT: Escribe texto adicional en la pantalla, incluyendo el manejo de escritura en la segunda línea del LCD.
-
-### Diagrama de estados sensor ultrasonido
-
-<img src= "IMAGENES/Diagrama de estados sensor ultrasonido.jpg">
-
-#### Explicación:
-
-• IDLE: Incrementa el contador count y evalúa cuándo activar la señal trigger.
-
-• TRIGGER: Se dispara la señal de trigger, y el sistema está a la espera de la señal echo de vuelta.
-
-• ECHO: El sistema mide el tiempo que echo está activo (incrementando echo_count). Cuando echo pasa de 1 a 0, se almacena el valor en count_out.
-
-• Almacenamiento: Una vez que el eco ha sido recibido completamente, se guarda el valor del tiempo medido y se prepara el sistema para la próxima medición.
 
 ### Interpretación de resultados de la implementación
 
