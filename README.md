@@ -680,7 +680,7 @@ Interferencia Mecánica: Los botones pueden experimentar interferencia mecánica
 
 ## Evaluación del cumplimiento de los requisitos funcionales 
 
-Tras un análisis minucioso de los requisitos funcionales del proyecto, podemos concluir que su cumplimiento ha sido satisfactorio. Además, se han superado las expectativas al cumplir con requisitos adicionales más allá de los mínimos establecidos por el mismo.
+Tras un análisis minucioso de los requisitos funcionales del proyecto, podemos concluir que su cumplimiento ha sido casi satisfactorio, dado que el funcionaminto del modo test y del boton reset no se realizo de acuerdo a las especificaciones esperadas. Además, se han superado las expectativas al cumplir con requisitos adicionales más allá de los mínimos establecidos por el mismo.
 
 ## Trabajo en Equipo y Gestión del Proyecto
 
